@@ -44,6 +44,8 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
+	<true/>	
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app uses the local network to discover and connect to debugging services</string>
 </dict>
 </plist>
