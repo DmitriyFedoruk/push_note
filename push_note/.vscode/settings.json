@@ -1,0 +1,15 @@
+{
+  "CodeGPT.apiKey": "OpenAI",
+  "dart.lineLength": 120,
+  "editor.formatOnSave": true,
+  "notebook.formatOnSave.enabled": true,
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.codeActionsOnSave": [
+        "source.organizeImports",
+    ],
+    "editor.formatOnSave": true,
+  },
+  "cmake.ignoreCMakeListsMissing": true,
+  "chat.agent.enabled": true
+}

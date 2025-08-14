@@ -3,7 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles.dart';
-import 'package:push_note/main.dart';
+import 'package:push_note/main/main_variables.dart';
 
 class CreateButton extends StatelessWidget {
   const CreateButton({super.key});
@@ -39,8 +39,7 @@ class CreateButton extends StatelessWidget {
   }
 
   Future<void> showSimpleNotification() async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
+    const AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'your_channel_id', // Unique channel ID
       'your_channel_name', // Channel name visible in settings
       channelDescription: 'your_channel_description', // Channel description
@@ -49,8 +48,7 @@ class CreateButton extends StatelessWidget {
       ticker: 'ticker',
     );
 
-    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
-        DarwinNotificationDetails();
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics = DarwinNotificationDetails();
 
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
@@ -64,5 +62,6 @@ class CreateButton extends StatelessWidget {
       platformChannelSpecifics,
       payload: 'item x', // Optional payload
     );
+    print('show');
   }
 }
