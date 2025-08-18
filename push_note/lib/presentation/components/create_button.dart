@@ -62,6 +62,5 @@ class CreateButton extends StatelessWidget {
       platformChannelSpecifics,
       payload: 'item x', // Optional payload
     );
-    print('show');
   }
 }

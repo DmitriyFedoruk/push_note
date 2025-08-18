@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:push_note/const/colors.dart';
 import 'package:push_note/presentation/components/create_button.dart';
+import 'package:push_note/presentation/components/title_field.dart';
 
 class CreateNoteCluster extends StatelessWidget {
   const CreateNoteCluster({super.key});
@@ -12,17 +13,13 @@ class CreateNoteCluster extends StatelessWidget {
       width: double.infinity,
       height: 400,
       borderRadius: 24,
-      linearGradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            AppColors.white.withOpacity(0.5),
-            AppColors.white.withOpacity(0.25),
-          ],
-          stops: const [
-            0.1,
-            1,
-          ]),
+      linearGradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
+        AppColors.white.withOpacity(0.5),
+        AppColors.white.withOpacity(0.25),
+      ], stops: const [
+        0.1,
+        1,
+      ]),
       border: 2,
       blur: 20,
       borderGradient: LinearGradient(
@@ -37,6 +34,7 @@ class CreateNoteCluster extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           child: Column(
             children: [
+              TitleField(),
               CreateButton(),
             ],
           )),
