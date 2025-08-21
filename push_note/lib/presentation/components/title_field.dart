@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:push_note/providers.dart';
 
-class TitleField extends ConsumerStatefulWidget {
+class TitleField extends StatelessWidget {
   const TitleField({super.key});
 
   @override
-  ConsumerState<TitleField> createState() => _TitleFieldState();
-}
-
-class _TitleFieldState extends ConsumerState<TitleField> {
-  final TextEditingController controller = TextEditingController();
-
-  @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
+    return ValueListenableBuilder(
+      valueListenable: titleNotifier,
+      builder: (context, value, child) {
+        return TextFormField(
+          initialValue: value,
+          onChanged: (value) => titleNotifier.value = value,
+        );
+      },
     );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }

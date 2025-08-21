@@ -4,6 +4,7 @@ import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles.dart';
 import 'package:push_note/main/main_variables.dart';
+import 'package:push_note/providers.dart';
 
 class CreateButton extends StatelessWidget {
   const CreateButton({super.key});
@@ -39,21 +40,34 @@ class CreateButton extends StatelessWidget {
   }
 
   Future<void> showSimpleNotification() async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'your_channel_id', // Unique channel ID
-      'your_channel_name', // Channel name visible in settings
-      channelDescription: 'your_channel_description', // Channel description
+    print('ddd');
+    final text = titleNotifier.value;
+
+    AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      'push_note', // Unique channel ID
+      'Push Note', // Channel name visible in settings
       importance: Importance.max,
       priority: Priority.high,
-      ticker: 'ticker',
+      ticker: text,
     );
 
-    const DarwinNotificationDetails iOSPlatformChannelSpecifics = DarwinNotificationDetails();
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics = DarwinNotificationDetails(
+        // threadIdentifier: 'push_note',
+        // subtitle: text,
+        );
 
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+    NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
     );
+
+    // await flutterLocalNotificationsPlugin.show(
+    //   0, // Notification ID
+    //   text,
+    //   text,
+    //   platformChannelSpecifics,
+    //   payload: 'fff',
+    // );
 
     await flutterLocalNotificationsPlugin.show(
       0, // Notification ID
@@ -62,5 +76,7 @@ class CreateButton extends StatelessWidget {
       platformChannelSpecifics,
       payload: 'item x', // Optional payload
     );
+
+    titleNotifier.value = '';
   }
 }

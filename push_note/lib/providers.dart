@@ -1,3 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
 
-final titleProvider = Provider<String>((_) => '');
+final ValueNotifier<String> titleNotifier = ValueNotifier<String>('');
