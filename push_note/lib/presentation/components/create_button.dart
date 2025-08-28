@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:push_note/business_logic/create_note.dart';
 import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles.dart';
-import 'package:push_note/main/main_variables.dart';
-import 'package:push_note/providers.dart';
 
 class CreateButton extends StatelessWidget {
-  const CreateButton({super.key});
+  final VoidCallback clear;
+  final TextEditingController controller;
+  const CreateButton({
+    required this.clear,
+    required this.controller,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,8 @@ class CreateButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(24.0),
         ),
         onPressed: () async {
-          await showSimpleNotification();
+          await createNote(controller.text);
+          clear();
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,46 +42,5 @@ class CreateButton extends StatelessWidget {
             )
           ],
         ));
-  }
-
-  Future<void> showSimpleNotification() async {
-    print('ddd');
-    final text = titleNotifier.value;
-
-    AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'push_note', // Unique channel ID
-      'Push Note', // Channel name visible in settings
-      importance: Importance.max,
-      priority: Priority.high,
-      ticker: text,
-    );
-
-    const DarwinNotificationDetails iOSPlatformChannelSpecifics = DarwinNotificationDetails(
-        // threadIdentifier: 'push_note',
-        // subtitle: text,
-        );
-
-    NotificationDetails platformChannelSpecifics = NotificationDetails(
-      android: androidPlatformChannelSpecifics,
-      iOS: iOSPlatformChannelSpecifics,
-    );
-
-    // await flutterLocalNotificationsPlugin.show(
-    //   0, // Notification ID
-    //   text,
-    //   text,
-    //   platformChannelSpecifics,
-    //   payload: 'fff',
-    // );
-
-    await flutterLocalNotificationsPlugin.show(
-      0, // Notification ID
-      'Simple Notification Title',
-      'This is the body of your simple notification.',
-      platformChannelSpecifics,
-      payload: 'item x', // Optional payload
-    );
-
-    titleNotifier.value = '';
   }
 }
