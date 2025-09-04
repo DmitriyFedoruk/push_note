@@ -8,15 +8,15 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        SystemNavigator.pop();
-      },
-      child: Scaffold(
-        body: Stack(
-          alignment: Alignment.center,
-          children: [
-            SizedBox(
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              SystemNavigator.pop();
+            },
+            child: SizedBox(
               height: double.infinity,
               width: double.infinity,
               child: Image.asset(
@@ -24,12 +24,12 @@ class MainScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: CreateNoteCluster(),
-            )
-          ],
-        ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: CreateNoteCluster(),
+          )
+        ],
       ),
     );
   }

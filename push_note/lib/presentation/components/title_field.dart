@@ -7,18 +7,26 @@ class TitleField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: _controller,
-      onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.buttonSplashColor),
-          borderRadius: BorderRadius.circular(24.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.lightGrey),
-          borderRadius: BorderRadius.circular(24.0),
+    return SizedBox(
+      height: 60.0,
+      child: TextFormField(
+        controller: _controller,
+        onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 15,
+          ),
+          border: const OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.buttonSplashColor),
+            borderRadius: BorderRadius.circular(24.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.lightGrey),
+            borderRadius: BorderRadius.circular(24.0),
+          ),
         ),
       ),
     );

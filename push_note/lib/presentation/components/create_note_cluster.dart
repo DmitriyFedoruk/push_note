@@ -13,6 +13,14 @@ class CreateNoteCluster extends StatefulWidget {
 
 class _CreateNoteClusterState extends State<CreateNoteCluster> {
   final TextEditingController _controller = TextEditingController();
+  bool isDisabled = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_simpleListener);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GlassmorphicContainer(
@@ -46,6 +54,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
               CreateButton(
                 clear: clear,
                 controller: _controller,
+                isDisabled: isDisabled,
               ),
             ],
           )),
@@ -58,8 +67,18 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
     });
   }
 
+  void _simpleListener() {
+    final newIsDisabled = _controller.text.isEmpty;
+    if (newIsDisabled != isDisabled) {
+      setState(() {
+        isDisabled = newIsDisabled;
+      });
+    }
+  }
+
   @override
   void dispose() {
+    _controller.removeListener(_simpleListener);
     _controller.dispose();
     super.dispose();
   }

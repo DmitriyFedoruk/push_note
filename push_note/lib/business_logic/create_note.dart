@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:push_note/main/main_variables.dart';
 
@@ -25,7 +23,7 @@ Future<void> createNote(String text) async {
   );
 
   await flutterLocalNotificationsPlugin.show(
-    Random().nextInt(10000),
+    text.hashCode,
     null,
     text,
     platformChannelSpecifics,
