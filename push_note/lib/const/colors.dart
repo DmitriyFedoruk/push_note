@@ -10,7 +10,7 @@ class AppColors {
   static const Color buttonSplashColor = Color(0xff4C0059);
 }
 
-class NotesTypesColors {
+class NoteColors {
   static const Color red = Color(0xfff83743);
   static const Color orange = Color(0xfff88d00);
   static const Color yellow = Color(0xfff8d000);

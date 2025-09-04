@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:push_note/const/colors.dart';
 import 'package:push_note/presentation/components/create_button.dart';
+import 'package:push_note/presentation/components/list_of_types.dart';
 import 'package:push_note/presentation/components/title_field.dart';
 
 class CreateNoteCluster extends StatefulWidget {
@@ -25,7 +26,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
   Widget build(BuildContext context) {
     return GlassmorphicContainer(
       width: double.infinity,
-      height: 200,
+      height: 250,
       borderRadius: 24,
       linearGradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
         AppColors.white.withOpacity(0.5),
@@ -50,6 +51,8 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TitleField(_controller),
+              const SizedBox(height: 24.0),
+              const ListOfTypes(),
               const SizedBox(height: 24.0),
               CreateButton(
                 clear: clear,
