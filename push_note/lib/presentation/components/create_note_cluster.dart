@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:push_note/const/colors.dart';
+import 'package:push_note/dto/notes_colors_type.dart';
 import 'package:push_note/presentation/components/create_button.dart';
 import 'package:push_note/presentation/components/list_of_types.dart';
 import 'package:push_note/presentation/components/title_field.dart';
@@ -15,6 +16,7 @@ class CreateNoteCluster extends StatefulWidget {
 class _CreateNoteClusterState extends State<CreateNoteCluster> {
   final TextEditingController _controller = TextEditingController();
   bool isDisabled = true;
+  NotesColorsEnum? noteType;
 
   @override
   void initState() {
@@ -52,12 +54,16 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
             children: [
               TitleField(_controller),
               const SizedBox(height: 24.0),
-              const ListOfTypes(),
+              ListOfTypes(
+                selectedItem: noteType,
+                chooseItem: chooseItem,
+              ),
               const SizedBox(height: 24.0),
               CreateButton(
                 clear: clear,
                 controller: _controller,
                 isDisabled: isDisabled,
+                noteType: noteType,
               ),
             ],
           )),
@@ -77,6 +83,16 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
         isDisabled = newIsDisabled;
       });
     }
+  }
+
+  void chooseItem(NotesColorsEnum item) {
+    setState(() {
+      if (noteType == item) {
+        noteType = null;
+      } else {
+        noteType = item;
+      }
+    });
   }
 
   @override

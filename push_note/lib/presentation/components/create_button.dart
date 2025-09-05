@@ -3,15 +3,18 @@ import 'package:push_note/business_logic/create_note.dart';
 import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles.dart';
+import 'package:push_note/dto/notes_colors_type.dart';
 
 class CreateButton extends StatelessWidget {
   final VoidCallback clear;
   final bool isDisabled;
   final TextEditingController controller;
+  final NotesColorsEnum? noteType;
   const CreateButton({
     required this.clear,
     required this.isDisabled,
     required this.controller,
+    required this.noteType,
     super.key,
   });
 
@@ -35,7 +38,10 @@ class CreateButton extends StatelessWidget {
       onPressed: isDisabled
           ? null
           : () async {
-              await createNote(controller.text);
+              await createNote(
+                controller.text,
+                noteType,
+              );
               clear();
             },
       child: Row(
