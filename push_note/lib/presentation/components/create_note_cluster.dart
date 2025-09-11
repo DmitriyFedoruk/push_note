@@ -73,6 +73,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
   void clear() {
     setState(() {
       _controller.clear();
+      noteType = null;
     });
   }
 

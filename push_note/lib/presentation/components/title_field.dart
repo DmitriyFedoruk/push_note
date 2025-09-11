@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:push_note/const/colors.dart';
+import 'package:push_note/const/strings.dart';
 
 class TitleField extends StatelessWidget {
   final TextEditingController _controller;
@@ -12,12 +13,14 @@ class TitleField extends StatelessWidget {
       child: TextFormField(
         controller: _controller,
         onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+        textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 15,
           ),
+          hintText: AppStrings.printSomething,
           border: const OutlineInputBorder(),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.buttonSplashColor),

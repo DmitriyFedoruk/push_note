@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:push_note/dto/notes_colors_type.dart';
 import 'package:push_note/main/main_variables.dart';
 
@@ -6,17 +10,18 @@ Future<void> createNote(
   String text,
   NotesColorsEnum? type,
 ) async {
+  final String imagePath = await getImageFilePathFromAssets('assets/logo.png');
+
   AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
     // Unique channel ID
     'push_note',
     // Channel name visible in settings
     'Push Note',
     category: AndroidNotificationCategory.event,
-    importance: Importance.high,
-    priority: Priority.high,
+    importance: Importance.max,
+    priority: Priority.max,
     ticker: text,
-    colorized: true,
-    color: type?.color,
+    largeIcon: FilePathAndroidBitmap(imagePath),
   );
 
   //  DarwinNotificationDetails iOSPlatformChannelSpecifics = DarwinNotificationDetails(
@@ -35,4 +40,11 @@ Future<void> createNote(
     text,
     platformChannelSpecifics,
   );
+}
+
+Future<String> getImageFilePathFromAssets(String assetPath) async {
+  final byteData = await rootBundle.load(assetPath);
+  final file = File('${(await getTemporaryDirectory()).path}/${assetPath.split('/').last}');
+  await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+  return file.path;
 }
