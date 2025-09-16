@@ -7,4 +7,9 @@ class BodyTextStyle {
     fontSize: 20.0,
     color: AppColors.white,
   );
+  static final TextStyle appBarTextStyle = GoogleFonts.dmSerifText(
+    fontSize: 40.0,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+  );
 }

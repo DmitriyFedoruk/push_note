@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:push_note/presentation/screens/main_screen.dart';
+import 'package:push_note/routing/router.dart';
 
 class PushNoteApp extends StatelessWidget {
   const PushNoteApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      routerConfig: router,
     );
   }
 }
