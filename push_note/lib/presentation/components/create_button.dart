@@ -28,7 +28,7 @@ class CreateButton extends StatelessWidget {
       highlightElevation: 0,
       hoverElevation: 0,
       enableFeedback: false,
-      color: AppColors.buttonColor.withOpacity(0.2),
+      color: AppColors.buttonColor.withValues(alpha: 0.2),
       disabledColor: AppColors.disabledColor,
       highlightColor: Colors.transparent,
       splashColor: AppColors.buttonSplashColor,

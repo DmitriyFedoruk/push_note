@@ -9,8 +9,9 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         children: [
           GestureDetector(
             onTap: () {
@@ -26,7 +27,10 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 200.0,
+            ),
             child: CreateNoteCluster(),
           )
         ],

@@ -31,8 +31,8 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
       height: 250,
       borderRadius: 24,
       linearGradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
-        AppColors.white.withOpacity(0.5),
-        AppColors.white.withOpacity(0.25),
+        AppColors.white.withValues(alpha: 0.5),
+        AppColors.white.withValues(alpha: 0.25),
       ], stops: const [
         0.1,
         1,
@@ -43,8 +43,8 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          AppColors.white.withOpacity(0.5),
-          AppColors.white.withOpacity(0.5),
+          AppColors.white.withValues(alpha: 0.5),
+          AppColors.white.withValues(alpha: 0.5),
         ],
       ),
       child: Padding(
