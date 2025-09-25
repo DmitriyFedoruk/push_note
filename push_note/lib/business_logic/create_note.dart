@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:push_note/const/images.dart';
-import 'package:push_note/dto/notes_colors_type.dart';
+import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/main/main_variables.dart';
 
 Future<void> createNote(

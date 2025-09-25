@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:push_note/const/colors.dart';
-import 'package:push_note/dto/notes_colors_type.dart';
+import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/presentation/components/create_button.dart';
 import 'package:push_note/presentation/components/list_of_types.dart';
 import 'package:push_note/presentation/components/title_field.dart';
