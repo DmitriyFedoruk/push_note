@@ -13,7 +13,7 @@ class Note extends HiveObject {
   int? colorValue;
 
   @HiveField(2)
-  //1 - high,2 - pre_high, 3 - middle, 4 - pre_middle, 5 - low
+  //5 - high,4 - pre_high, 3 - middle, 2 - pre_middle, 1 - low
   int? priority;
 
   @HiveField(3)

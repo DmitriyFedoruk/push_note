@@ -23,13 +23,33 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
             AppStrings.appName,
             style: BodyTextStyle.appBarTextStyle,
           ),
-          IconButton(
-            onPressed: () => context.go(AppRoutes.history),
+          PopupMenuButton(
+            padding: const EdgeInsets.all(12),
             icon: const Icon(
               Icons.more_vert,
               color: AppColors.white,
             ),
-          )
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  value: "history",
+                  onTap: () => context.go(AppRoutes.history),
+                  child: Text(
+                    AppStrings.history,
+                    style: BodyTextStyle.typeTextStyle,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "scheduled",
+                  onTap: () => context.go(AppRoutes.scheduled),
+                  child: Text(
+                    AppStrings.scheduled,
+                    style: BodyTextStyle.typeTextStyle,
+                  ),
+                ),
+              ];
+            },
+          ),
         ],
       ),
       elevation: 0,

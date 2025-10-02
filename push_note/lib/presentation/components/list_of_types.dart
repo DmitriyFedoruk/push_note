@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:push_note/const/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 
 class ListOfTypes extends StatelessWidget {
@@ -47,15 +48,24 @@ class _OneItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        height: 40.0,
-        width: 40.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
-          border: isSelected ? Border.all() : null,
-          color: item.color,
-        ),
-        child: isSelected ? const Icon(Icons.check) : null,
+      child: Column(
+        children: [
+          Container(
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
+              border: isSelected ? Border.all() : null,
+              color: item.color,
+            ),
+            child: isSelected ? const Icon(Icons.check) : null,
+          ),
+          const SizedBox(height: 4.0),
+          Text(
+            item.title,
+            style: BodyTextStyle.typeTextStyle,
+          )
+        ],
       ),
     );
   }

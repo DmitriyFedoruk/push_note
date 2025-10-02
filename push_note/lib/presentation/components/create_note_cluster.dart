@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:provider/provider.dart';
+import 'package:push_note/business_logic/create_note.dart';
 import 'package:push_note/const/colors.dart';
+import 'package:push_note/const/strings.dart';
+import 'package:push_note/const/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
-import 'package:push_note/presentation/components/create_button.dart';
+import 'package:push_note/presentation/components/custom_button.dart';
 import 'package:push_note/presentation/components/list_of_types.dart';
 import 'package:push_note/presentation/components/title_field.dart';
+import 'package:push_note/presentation/providers/notes_provider.dart';
 
 class CreateNoteCluster extends StatefulWidget {
   const CreateNoteCluster({super.key});
@@ -26,9 +31,11 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.read<NotesProvider>();
+
     return GlassmorphicContainer(
       width: double.infinity,
-      height: 250,
+      height: 280,
       borderRadius: 24,
       linearGradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
         AppColors.white.withValues(alpha: 0.5),
@@ -50,20 +57,61 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
       child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TitleField(_controller),
-              const SizedBox(height: 24.0),
-              ListOfTypes(
-                selectedItem: noteType,
-                chooseItem: chooseItem,
+              Column(
+                children: [
+                  TitleField(_controller),
+                  const SizedBox(height: 24.0),
+                  ListOfTypes(
+                    selectedItem: noteType,
+                    chooseItem: chooseItem,
+                  ),
+                  const SizedBox(height: 24.0),
+                ],
               ),
-              const SizedBox(height: 24.0),
-              CreateButton(
-                clear: clear,
-                controller: _controller,
-                isDisabled: isDisabled,
-                noteType: noteType,
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      onTap: isDisabled
+                          ? null
+                          : () async {
+                              await createNote(
+                                _controller.text,
+                                noteType,
+                              );
+                              provider.addNote(title: _controller.text, type: noteType);
+                              clear();
+                            },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            AppStrings.create,
+                            style: BodyTextStyle.buttonTextStyle,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  CustomButton(
+                    onTap: () {
+                      final now = DateTime.now();
+                      showDatePicker(
+                          context: context,
+                          initialDate: now,
+                          firstDate: now,
+                          lastDate: now.add(const Duration(days: 1825)));
+                    },
+                    child: const Icon(
+                      Icons.calendar_month,
+                      size: 24,
+                      color: AppColors.white,
+                    ),
+                  ),
+                ],
               ),
             ],
           )),

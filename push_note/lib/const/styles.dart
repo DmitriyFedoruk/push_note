@@ -12,4 +12,10 @@ class BodyTextStyle {
     fontWeight: FontWeight.w700,
     color: AppColors.white,
   );
+
+  static final TextStyle typeTextStyle = GoogleFonts.roboto(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
 }
