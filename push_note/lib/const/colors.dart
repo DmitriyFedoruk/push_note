@@ -10,6 +10,7 @@ class AppColors {
   static const Color buttonSplashColor = Color(0xff4C0059);
 
   static const Color primaryColor = Color(0xffBFD7EA);
+  static const Color secondaryColor = Color(0xff461515);
 }
 
 class NoteColors {

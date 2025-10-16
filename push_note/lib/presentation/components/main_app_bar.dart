@@ -32,7 +32,15 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
             itemBuilder: (context) {
               return [
                 PopupMenuItem(
-                  value: "history",
+                  value: _Options.scheduled,
+                  onTap: () => context.go(AppRoutes.scheduled),
+                  child: Text(
+                    AppStrings.scheduled,
+                    style: BodyTextStyle.typeTextStyle,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: _Options.history,
                   onTap: () => context.go(AppRoutes.history),
                   child: Text(
                     AppStrings.history,
@@ -40,10 +48,10 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 PopupMenuItem(
-                  value: "scheduled",
-                  onTap: () => context.go(AppRoutes.scheduled),
+                  value: _Options.settings,
+                  onTap: () => context.go(AppRoutes.settings),
                   child: Text(
-                    AppStrings.scheduled,
+                    AppStrings.settings,
                     style: BodyTextStyle.typeTextStyle,
                   ),
                 ),
@@ -57,3 +65,5 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
+
+enum _Options { scheduled, history, settings }

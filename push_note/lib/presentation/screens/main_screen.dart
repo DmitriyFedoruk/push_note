@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:push_note/const/images.dart';
+import 'package:provider/provider.dart';
 import 'package:push_note/presentation/components/create_note_cluster.dart';
 import 'package:push_note/presentation/components/main_app_bar.dart';
+import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -23,9 +24,14 @@ class MainScreen extends StatelessWidget {
             child: SizedBox(
               height: double.infinity,
               width: double.infinity,
-              child: Image.asset(
-                AppImages.background,
-                fit: BoxFit.cover,
+              child: Selector<SettingsProvider, String>(
+                selector: (_, prov) => prov.background,
+                builder: (context, background, _) {
+                  return Image.asset(
+                    background,
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
           ),

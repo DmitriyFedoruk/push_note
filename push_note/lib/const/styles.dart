@@ -19,3 +19,11 @@ class BodyTextStyle {
     color: AppColors.black,
   );
 }
+
+class RobotoTextStyle {
+  static final TextStyle middle = GoogleFonts.roboto(
+    fontSize: 18.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+}
