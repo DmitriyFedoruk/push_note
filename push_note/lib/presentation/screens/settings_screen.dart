@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:push_note/const/enums.dart';
 import 'package:push_note/presentation/components/settings/background_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
 
@@ -17,11 +18,11 @@ class SettingsScreen extends StatelessWidget {
           SizedBox(
             height: double.infinity,
             width: double.infinity,
-            child: Selector<SettingsProvider, String>(
+            child: Selector<SettingsProvider, AppBackgrounds>(
               selector: (_, prov) => prov.background,
               builder: (context, background, _) {
                 return Image.asset(
-                  background,
+                  background.image,
                   fit: BoxFit.cover,
                 );
               },

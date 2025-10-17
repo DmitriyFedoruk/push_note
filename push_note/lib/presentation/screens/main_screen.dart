@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:push_note/const/enums.dart';
 import 'package:push_note/presentation/components/create_note_cluster.dart';
 import 'package:push_note/presentation/components/main_app_bar.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
@@ -10,6 +11,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(AssetImage(context.read<SettingsProvider>().background.image), context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
@@ -24,11 +26,11 @@ class MainScreen extends StatelessWidget {
             child: SizedBox(
               height: double.infinity,
               width: double.infinity,
-              child: Selector<SettingsProvider, String>(
+              child: Selector<SettingsProvider, AppBackgrounds>(
                 selector: (_, prov) => prov.background,
                 builder: (context, background, _) {
                   return Image.asset(
-                    background,
+                    background.image,
                     fit: BoxFit.cover,
                   );
                 },
