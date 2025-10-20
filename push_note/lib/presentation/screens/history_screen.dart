@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
-import 'package:push_note/const/styles.dart';
+import 'package:push_note/const/styles/colors.dart';
+import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/models/note.dart';
 import 'package:push_note/infra/date_extension.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';

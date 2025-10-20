@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:push_note/const/colors.dart';
+import 'package:push_note/const/styles/colors.dart';
 
 class BodyTextStyle {
   static final TextStyle buttonTextStyle = GoogleFonts.dmSerifText(

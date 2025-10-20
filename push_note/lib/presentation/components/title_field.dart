@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/strings.dart';
+import 'package:push_note/const/styles/colors.dart';
 
 class TitleField extends StatelessWidget {
   final TextEditingController _controller;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:push_note/const/colors.dart';
 import 'package:push_note/const/strings.dart';
-import 'package:push_note/const/styles.dart';
+import 'package:push_note/const/styles/colors.dart';
+import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 class MainAppbar extends StatelessWidget implements PreferredSizeWidget {

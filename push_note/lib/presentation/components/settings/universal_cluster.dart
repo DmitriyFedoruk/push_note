@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:push_note/const/colors.dart';
+import 'package:push_note/const/styles/colors.dart';
 
 class UniversalCluster extends StatelessWidget {
   final Widget child;

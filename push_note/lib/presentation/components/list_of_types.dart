@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:push_note/const/styles.dart';
+import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 
 class ListOfTypes extends StatelessWidget {

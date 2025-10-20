@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:push_note/const/styles.dart';
+import 'package:push_note/const/styles/styles.dart';
 
 class TitleForCluster extends StatelessWidget {
   final String icon;

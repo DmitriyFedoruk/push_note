@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:push_note/const/colors.dart';
+import 'package:push_note/const/styles/colors.dart';
 
 class CustomRadioButton extends StatelessWidget {
   final bool isActive;
