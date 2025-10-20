@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
+import 'package:push_note/presentation/components/app_bar/settings_app_bar.dart';
 import 'package:push_note/presentation/components/settings/background_cluster.dart';
+import 'package:push_note/presentation/components/settings/theme_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -11,7 +13,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // appBar: const MainAppbar(),
+      appBar: const SettingsAppbar(),
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -28,15 +30,12 @@ class SettingsScreen extends StatelessWidget {
               },
             ),
           ),
-          SafeArea(
+          const SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: SingleChildScrollView(
                   child: Column(
-                children: [
-                  const SizedBox(height: 14.0),
-                  BackgroundCluster(),
-                ],
+                children: [SizedBox(height: 14.0), BackgroundCluster(), SizedBox(height: 36.0), ThemeCluster()],
               )),
             ),
           )

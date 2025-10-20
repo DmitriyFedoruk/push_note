@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
+import 'package:push_note/presentation/components/app_bar/main_app_bar.dart';
 import 'package:push_note/presentation/components/create_note_cluster.dart';
-import 'package:push_note/presentation/components/main_app_bar.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class MainScreen extends StatelessWidget {

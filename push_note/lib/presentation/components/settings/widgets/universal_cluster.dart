@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:push_note/const/styles/colors.dart';
+import 'package:push_note/extensions/theme_extension.dart';
 
 class UniversalCluster extends StatelessWidget {
   final Widget child;
@@ -8,6 +8,7 @@ class UniversalCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = context.theme.cardColor;
     return GlassmorphicContainer(
         width: double.infinity,
         height: 192,
@@ -16,8 +17,8 @@ class UniversalCluster extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            AppColors.white.withValues(alpha: 0.2),
-            AppColors.white.withValues(alpha: 0),
+            color.withValues(alpha: 0.2),
+            color.withValues(alpha: 0),
           ],
         ),
         border: 2,
@@ -26,8 +27,8 @@ class UniversalCluster extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            AppColors.white.withValues(alpha: 1),
-            AppColors.white.withValues(alpha: 0.1),
+            color.withValues(alpha: 1),
+            color.withValues(alpha: 0.1),
           ],
         ),
         child: child);

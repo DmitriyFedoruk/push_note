@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
-import 'package:push_note/presentation/components/settings/custom_radio_button.dart';
-import 'package:push_note/presentation/components/settings/title_for_cluster.dart';
-import 'package:push_note/presentation/components/settings/universal_cluster.dart';
+import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
+import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
+import 'package:push_note/presentation/components/settings/widgets/title_for_cluster.dart';
+import 'package:push_note/presentation/components/settings/widgets/universal_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class BackgroundCluster extends StatelessWidget {
@@ -76,19 +77,13 @@ class _OneItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: SizedBox(
-            width: width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [_OneImage(image), const SizedBox(height: 12), CustomRadioButton(isActive: isActive)],
-            ),
-          ),
+    return TapSector(
+      onTap: onTap,
+      child: SizedBox(
+        width: width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [_OneImage(image), const SizedBox(height: 12), CustomRadioButton(isActive: isActive)],
         ),
       ),
     );

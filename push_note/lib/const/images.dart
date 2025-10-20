@@ -14,4 +14,8 @@ class AppImages {
 
 class AppIcons {
   static const String background = 'assets/icons/background.svg';
+  static const String theme = 'assets/icons/theme.svg';
+  static const String add = 'assets/icons/add.svg';
+  static const String reschedule = 'assets/icons/reschedule.svg';
+  static const String trash = 'assets/icons/trash.svg';
 }

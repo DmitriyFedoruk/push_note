@@ -7,4 +7,8 @@ class AppStrings {
   static const String settings = 'Settings';
   //
   static const String background = 'Background';
+  static const String theme = 'Theme';
+  static const String addNow = 'Add now';
+  static const String reschedule = 'Reschedule';
+  static const String remove = 'Remove';
 }
