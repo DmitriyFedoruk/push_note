@@ -4,14 +4,15 @@ import 'package:push_note/extensions/theme_extension.dart';
 
 class UniversalCluster extends StatelessWidget {
   final Widget child;
-  const UniversalCluster(this.child, {super.key});
+  final double height;
+  const UniversalCluster(this.child, {this.height = 192, super.key});
 
   @override
   Widget build(BuildContext context) {
     final color = context.theme.cardColor;
     return GlassmorphicContainer(
         width: double.infinity,
-        height: 192,
+        height: height,
         borderRadius: 12,
         linearGradient: LinearGradient(
           begin: Alignment.topLeft,

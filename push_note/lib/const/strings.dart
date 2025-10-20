@@ -8,6 +8,8 @@ class AppStrings {
   //
   static const String background = 'Background';
   static const String theme = 'Theme';
+  static const String gradient = 'Gradient';
+
   static const String addNow = 'Add now';
   static const String reschedule = 'Reschedule';
   static const String remove = 'Remove';
