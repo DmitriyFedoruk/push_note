@@ -5,6 +5,7 @@ import 'package:push_note/const/enums.dart';
 
 class SettingsProvider extends ChangeNotifier {
   AppBackgrounds background = AppBackgrounds.background1;
+  CardFillType cardFillType = CardFillType.gradient;
 
   SettingsProvider() {
     initialLoad();
@@ -12,12 +13,19 @@ class SettingsProvider extends ChangeNotifier {
 
   void initialLoad() {
     background = AppBackgrounds.fromString(SharedPreferencesService.getBackgroundString());
+    cardFillType = SharedPreferencesService.getCardFillType();
     notifyListeners();
   }
 
   void setBackground(AppBackgrounds bk) {
     background = bk;
     SharedPreferencesService.setBackgroundString(bk.name);
+    notifyListeners();
+  }
+
+  void setCardFillType(CardFillType type) {
+    cardFillType = type;
+    SharedPreferencesService.setCardFillType(type);
     notifyListeners();
   }
 }

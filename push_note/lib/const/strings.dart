@@ -13,4 +13,6 @@ class AppStrings {
   static const String addNow = 'Add now';
   static const String reschedule = 'Reschedule';
   static const String remove = 'Remove';
+
+  static const String createNewTask = 'Create a new task';
 }

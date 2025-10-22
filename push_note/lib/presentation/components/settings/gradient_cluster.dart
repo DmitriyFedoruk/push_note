@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
+import 'package:push_note/domain/dto/notes_colors_type.dart';
+import 'package:push_note/domain/models/note.dart';
+import 'package:push_note/presentation/components/cards/custon_card.dart';
+import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
+import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
 import 'package:push_note/presentation/components/settings/widgets/title_for_cluster.dart';
 import 'package:push_note/presentation/components/settings/widgets/universal_cluster.dart';
+import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class GradientCluster extends StatelessWidget {
   const GradientCluster({super.key});
@@ -28,116 +36,53 @@ class _OptionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FlutterLogo(), FlutterLogo(),
-            // _OneItem(
-            //   isActive: isLight,
-            //   onTap: () => AdaptiveTheme.of(context).setLight(),
-            // ),
-            // _OneItem(
-            //   isActive: !isLight,
-            //   onTap: () => AdaptiveTheme.of(context).setDark(),
-            // ),
-          ],
-        ));
+        child: Selector<SettingsProvider, CardFillType>(
+            selector: (_, s) => s.cardFillType,
+            builder: (context, cardFillType, _) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _OneItem(
+                    type: CardFillType.gradient,
+                    activeType: cardFillType,
+                  ),
+                  _OneItem(
+                    type: CardFillType.plain,
+                    activeType: cardFillType,
+                  ),
+                ],
+              );
+            }));
   }
 }
 
-// class _OneItem extends StatelessWidget {
-//   final bool isActive;
-//   final VoidCallback onTap;
-//   const _OneItem({
-//     required this.isActive,
-//     required this.onTap,
-//   });
+class _OneItem extends StatelessWidget {
+  final CardFillType type;
+  final CardFillType activeType;
+  const _OneItem({
+    required this.type,
+    required this.activeType,
+  });
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return TapSector(
-//       onTap: onTap,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           _Menu(isLight),
-//           const SizedBox(height: 23),
-//           CustomRadioButton(isActive: isActive),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// class _Menu extends StatelessWidget {
-//   final bool isLight;
-//   const _Menu(this.isLight);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final color = isLight ? AppColors.black : AppColors.white;
-//     return Container(
-//         width: 100,
-//         height: 88,
-//         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-//         decoration: BoxDecoration(
-//           borderRadius: BorderRadius.circular(12.0),
-//           color: isLight ? AppColors.white : AppColors.black,
-//         ),
-//         child: Column(
-//           children: [
-//             Expanded(
-//               child: _Point(
-//                 icon: AppIcons.add,
-//                 text: AppStrings.addNow,
-//                 color: color,
-//               ),
-//             ),
-//             Expanded(
-//               child: _Point(
-//                 icon: AppIcons.reschedule,
-//                 text: AppStrings.reschedule,
-//                 color: color,
-//               ),
-//             ),
-//             Expanded(
-//               child: _Point(
-//                 icon: AppIcons.trash,
-//                 text: AppStrings.remove,
-//                 color: color,
-//               ),
-//             ),
-//           ],
-//         ));
-//   }
-// }
-
-// class _Point extends StatelessWidget {
-//   final String icon;
-//   final String text;
-//   final Color color;
-//   const _Point({
-//     required this.icon,
-//     required this.text,
-//     required this.color,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         SvgPicture.asset(
-//           icon,
-//           width: 16.0,
-//           height: 16.0,
-//           colorFilter: color.toFilter,
-//         ),
-//         const SizedBox(width: 4),
-//         Text(
-//           text,
-//           style: RobotoTextStyle.small.copyWith(color: color),
-//         )
-//       ],
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return TapSector(
+      onTap: () => context.read<SettingsProvider>().setCardFillType(type),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomCard(
+            type: type,
+            note: Note(
+              title: AppStrings.createNewTask,
+              createdAt: DateTime.now(),
+              type: NotesColorsEnum.red,
+            ),
+          ),
+          const SizedBox(height: 12),
+          CustomRadioButton(isActive: type == activeType),
+        ],
+      ),
+    );
+  }
+}

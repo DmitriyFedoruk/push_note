@@ -22,3 +22,16 @@ enum AppBackgrounds {
     };
   }
 }
+
+enum CardFillType {
+  gradient,
+  plain;
+
+  factory CardFillType.fromString(String str) {
+    return switch (str) {
+      'gradient' => CardFillType.gradient,
+      'plain' => CardFillType.plain,
+      String() => CardFillType.gradient,
+    };
+  }
+}

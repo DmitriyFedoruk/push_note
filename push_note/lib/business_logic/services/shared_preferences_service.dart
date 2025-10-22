@@ -1,8 +1,9 @@
+import 'package:push_note/const/enums.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
   static const String _backgroundKey = 'background';
-  static const String _themeKey = 'themeKey';
+  static const String _cardFillTypeKey = 'cardFillTypeKey';
 
   static late SharedPreferences _prefs;
 
@@ -26,5 +27,14 @@ class SharedPreferencesService {
 
   static String getBackgroundString() {
     return _prefs.getString(_backgroundKey) ?? '';
+  }
+
+  //CardFillType
+  static void setCardFillType(CardFillType type) {
+    _prefs.setString(_cardFillTypeKey, type.name);
+  }
+
+  static CardFillType getCardFillType() {
+    return CardFillType.fromString(_prefs.getString(_cardFillTypeKey) ?? '');
   }
 }
