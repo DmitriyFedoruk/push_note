@@ -6,6 +6,7 @@ import 'package:push_note/const/enums.dart';
 class SettingsProvider extends ChangeNotifier {
   AppBackgrounds background = AppBackgrounds.background1;
   CardFillType cardFillType = CardFillType.gradient;
+  TimeFormatType timeFormatType = TimeFormatType.hours24;
 
   SettingsProvider() {
     initialLoad();
@@ -14,6 +15,7 @@ class SettingsProvider extends ChangeNotifier {
   void initialLoad() {
     background = AppBackgrounds.fromString(SharedPreferencesService.getBackgroundString());
     cardFillType = SharedPreferencesService.getCardFillType();
+    timeFormatType = SharedPreferencesService.getTimeFormatType();
     notifyListeners();
   }
 
@@ -26,6 +28,12 @@ class SettingsProvider extends ChangeNotifier {
   void setCardFillType(CardFillType type) {
     cardFillType = type;
     SharedPreferencesService.setCardFillType(type);
+    notifyListeners();
+  }
+
+  void setTimeFormatType(TimeFormatType type) {
+    timeFormatType = type;
+    SharedPreferencesService.setTimeFormatType(type);
     notifyListeners();
   }
 }

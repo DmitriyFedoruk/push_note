@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesService {
   static const String _backgroundKey = 'background';
   static const String _cardFillTypeKey = 'cardFillTypeKey';
+  static const String _timeFormatTypeKey = 'timeFormatTypeKey';
 
   static late SharedPreferences _prefs;
 
@@ -36,5 +37,14 @@ class SharedPreferencesService {
 
   static CardFillType getCardFillType() {
     return CardFillType.fromString(_prefs.getString(_cardFillTypeKey) ?? '');
+  }
+
+  //TimeFormatType
+  static void setTimeFormatType(TimeFormatType type) {
+    _prefs.setString(_timeFormatTypeKey, type.name);
+  }
+
+  static TimeFormatType getTimeFormatType() {
+    return TimeFormatType.fromString(_prefs.getString(_timeFormatTypeKey) ?? '');
   }
 }

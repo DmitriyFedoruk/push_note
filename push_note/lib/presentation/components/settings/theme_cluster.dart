@@ -95,6 +95,7 @@ class _Menu extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
           color: isLight ? AppColors.white : AppColors.black,
+          boxShadow: shadow(color),
         ),
         child: Column(
           children: [
@@ -147,7 +148,7 @@ class _Point extends StatelessWidget {
         const SizedBox(width: 4),
         Text(
           text,
-          style: RobotoTextStyle.small.copyWith(color: color),
+          style: RobotoTextStyle.small_10.copyWith(color: color),
         )
       ],
     );

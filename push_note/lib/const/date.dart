@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
 
-final russianFormat = DateFormat('HH:mm, dd MM yyyy');
+final format24 = DateFormat('HH:mm, dd.MM.yyyy');
 
-final englishFormat = DateFormat('hh:mm a, dd MM yyyy');
+final format12 = DateFormat('hh.mm a, dd.MM.yyyy');

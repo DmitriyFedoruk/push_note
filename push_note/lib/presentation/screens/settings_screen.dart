@@ -5,6 +5,7 @@ import 'package:push_note/presentation/components/app_bar/settings_app_bar.dart'
 import 'package:push_note/presentation/components/settings/background_cluster.dart';
 import 'package:push_note/presentation/components/settings/gradient_cluster.dart';
 import 'package:push_note/presentation/components/settings/theme_cluster.dart';
+import 'package:push_note/presentation/components/settings/time_format_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -43,6 +44,8 @@ class SettingsScreen extends StatelessWidget {
                   ThemeCluster(),
                   SizedBox(height: 36.0),
                   GradientCluster(),
+                  SizedBox(height: 36.0),
+                  TimeFormatCluster()
                 ],
               )),
             ),

@@ -4,8 +4,6 @@ import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/models/note.dart';
-import 'package:push_note/infra/date_extension.dart';
-import 'package:push_note/presentation/components/priority.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -50,11 +48,11 @@ class _OneItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        title: Text(note.title),
-        subtitle: Text(note.createdAt.toReadFormat()),
-        trailing: Priority(note.priority),
-      ),
-    );
+        // child: ListTile(
+        //   title: Text(note.title),
+        //   subtitle: Text(note.createdAt.toReadFormat(is24HourFormat: true)),
+        //   trailing: Priority(note.priority),
+        // ),
+        );
   }
 }

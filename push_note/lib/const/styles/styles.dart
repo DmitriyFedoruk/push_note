@@ -16,14 +16,42 @@ class BodyTextStyle {
   );
 }
 
+class DMSerifTextStyle {
+  static final TextStyle middle = GoogleFonts.dmSerifText(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w400,
+  );
+}
+
 class RobotoTextStyle {
   static final TextStyle middle = GoogleFonts.roboto(
     fontSize: 18.0,
     fontWeight: FontWeight.w600,
   );
 
-  static final TextStyle small = GoogleFonts.roboto(
+  static final TextStyle small_12 = GoogleFonts.roboto(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle small_10 = GoogleFonts.roboto(
     fontSize: 10.0,
     fontWeight: FontWeight.w400,
   );
+
+  static final TextStyle small_8 = GoogleFonts.roboto(
+    fontSize: 8.0,
+    fontWeight: FontWeight.w500,
+  );
 }
+
+List<BoxShadow> shadow(final Color color) => [
+      BoxShadow(
+        color: color.withValues(alpha: 0.25),
+        blurRadius: 4.0,
+        offset: const Offset(
+          0,
+          4.0,
+        ),
+      )
+    ];
