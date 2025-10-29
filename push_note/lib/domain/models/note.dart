@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:objectbox/objectbox.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 
-part 'note.g.dart';
-
-@HiveType(typeId: 0)
-class Note extends HiveObject {
-  @HiveField(0)
+@Entity()
+class Note {
+  @Id()
+  int id = 0;
   String title;
-
-  @HiveField(1)
   int? colorValue;
-
-  @HiveField(2)
   //5 - high,4 - pre_high, 3 - middle, 2 - pre_middle, 1 - low
   int? priority;
-
-  @HiveField(3)
   DateTime createdAt;
 
   Note({

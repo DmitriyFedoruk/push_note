@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/models/note.dart';
+import 'package:push_note/infra/date_extension.dart';
+import 'package:push_note/presentation/components/priority.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -12,6 +15,7 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final notes = context.select((NotesProvider provider) => provider.notes);
+    print('## notes $notes');
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -47,12 +51,15 @@ class _OneItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dateTime = note.createdAt.toReadFormat(TimeFormatType.hours24);
+    final time = dateTime[0];
+    final date = dateTime[1];
     return Card(
-        // child: ListTile(
-        //   title: Text(note.title),
-        //   subtitle: Text(note.createdAt.toReadFormat(is24HourFormat: true)),
-        //   trailing: Priority(note.priority),
-        // ),
-        );
+      child: ListTile(
+        title: Text(note.title),
+        subtitle: Text(time),
+        trailing: Priority(note.priority),
+      ),
+    );
   }
 }
