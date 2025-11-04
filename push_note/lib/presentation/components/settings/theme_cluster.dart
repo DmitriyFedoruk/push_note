@@ -2,10 +2,10 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:push_note/const/images.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/color_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
 import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
 import 'package:push_note/presentation/components/settings/widgets/title_for_cluster.dart';
@@ -16,10 +16,11 @@ class ThemeCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final t = Translations.of(context);
+    return Column(
       children: [
-        TitleForCluster(icon: AppIcons.theme, title: AppStrings.theme),
-        UniversalCluster(
+        TitleForCluster(icon: AppIcons.theme, title: t.theme),
+        const UniversalCluster(
           _ThemesList(),
         ),
       ],
@@ -87,6 +88,7 @@ class _Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     final color = isLight ? AppColors.black : AppColors.white;
     return Container(
         width: 100,
@@ -102,21 +104,21 @@ class _Menu extends StatelessWidget {
             Expanded(
               child: _Point(
                 icon: AppIcons.add,
-                text: AppStrings.addNow,
+                text: t.addNow,
                 color: color,
               ),
             ),
             Expanded(
               child: _Point(
                 icon: AppIcons.reschedule,
-                text: AppStrings.reschedule,
+                text: t.reschedule,
                 color: color,
               ),
             ),
             Expanded(
               child: _Point(
                 icon: AppIcons.trash,
-                text: AppStrings.remove,
+                text: t.remove,
                 color: color,
               ),
             ),
@@ -146,9 +148,13 @@ class _Point extends StatelessWidget {
           colorFilter: color.toFilter,
         ),
         const SizedBox(width: 4),
-        Text(
-          text,
-          style: RobotoTextStyle.small_10.copyWith(color: color),
+        Expanded(
+          child: Text(
+            text,
+            style: RobotoTextStyle.small_10.copyWith(color: color),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         )
       ],
     );

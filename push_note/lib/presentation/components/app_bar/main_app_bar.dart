@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -51,7 +52,7 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
                   value: _Options.settings,
                   onTap: () => context.go(AppRoutes.settings),
                   child: Text(
-                    AppStrings.settings,
+                    t.settings,
                     style: BodyTextStyle.typeTextStyle,
                   ),
                 ),

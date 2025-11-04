@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 class SettingsAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -31,7 +31,7 @@ class SettingsAppbar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Text(
-            AppStrings.settings,
+            t.settings,
             style: BodyTextStyle.appBarTextStyle.copyWith(color: color),
           ),
           const SizedBox(

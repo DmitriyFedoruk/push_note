@@ -4,6 +4,7 @@ import 'package:push_note/const/enums.dart';
 import 'package:push_note/presentation/components/app_bar/settings_app_bar.dart';
 import 'package:push_note/presentation/components/settings/background_cluster.dart';
 import 'package:push_note/presentation/components/settings/gradient_cluster.dart';
+import 'package:push_note/presentation/components/settings/language_cluster.dart';
 import 'package:push_note/presentation/components/settings/theme_cluster.dart';
 import 'package:push_note/presentation/components/settings/time_format_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
@@ -34,20 +35,25 @@ class SettingsScreen extends StatelessWidget {
           ),
           const SafeArea(
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: SingleChildScrollView(
-                  child: Column(
-                children: [
-                  SizedBox(height: 14.0),
-                  BackgroundCluster(),
-                  SizedBox(height: 36.0),
-                  ThemeCluster(),
-                  SizedBox(height: 36.0),
-                  GradientCluster(),
-                  SizedBox(height: 36.0),
-                  TimeFormatCluster()
-                ],
-              )),
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    SizedBox(height: 30.0),
+                    BackgroundCluster(),
+                    SizedBox(height: 36.0),
+                    ThemeCluster(),
+                    SizedBox(height: 36.0),
+                    GradientCluster(),
+                    SizedBox(height: 36.0),
+                    TimeFormatCluster(),
+                    SizedBox(height: 36.0),
+                    LanguageCluster(),
+                    SizedBox(height: 16.0),
+                  ],
+                ),
+              ),
             ),
           )
         ],

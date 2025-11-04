@@ -1,0 +1,13 @@
+{
+  "settings": "Settings",
+  "background": "Background",
+  "theme": "Theme",
+  "gradient": "Gradient",
+  "timeFormat": "Time format",
+  "language": "Language", 
+  "addNow": "Add now",
+  "reschedule":"Reschedule",
+  "remove":"Remove",
+  "createNewTask":"Create a new task"
+}
+

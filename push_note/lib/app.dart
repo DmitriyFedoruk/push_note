@@ -1,7 +1,9 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/styles/themes.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
 import 'package:push_note/routing/router.dart';
@@ -21,6 +23,9 @@ class PushNoteApp extends StatelessWidget {
         dark: darkTheme,
         initial: AdaptiveThemeMode.light,
         builder: (theme, darkTheme) => MaterialApp.router(
+          locale: TranslationProvider.of(context).flutterLocale,
+          supportedLocales: AppLocaleUtils.supportedLocales,
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
           theme: theme,
           darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,

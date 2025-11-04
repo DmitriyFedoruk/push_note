@@ -5,6 +5,7 @@ import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
 import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
 import 'package:push_note/presentation/components/settings/widgets/title_for_cluster.dart';
@@ -16,10 +17,11 @@ class TimeFormatCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final t = Translations.of(context);
+    return Column(
       children: [
-        TitleForCluster(icon: AppIcons.timeFormat, title: AppStrings.timeFormat),
-        UniversalCluster(
+        TitleForCluster(icon: AppIcons.timeFormat, title: t.timeFormat),
+        const UniversalCluster(
           _OptionsList(),
           height: 118,
         ),

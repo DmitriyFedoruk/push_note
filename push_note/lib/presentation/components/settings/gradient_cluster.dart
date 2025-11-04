@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/images.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/domain/models/note.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/components/cards/custom_card.dart';
 import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
 import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
@@ -17,13 +17,14 @@ class GradientCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final t = Translations.of(context);
+    return Column(
       children: [
         TitleForCluster(
           icon: AppIcons.gradient,
-          title: AppStrings.gradient,
+          title: t.gradient,
         ),
-        UniversalCluster(
+        const UniversalCluster(
           _OptionsList(),
           height: 264,
         ),
@@ -80,7 +81,7 @@ class _OneItem extends StatelessWidget {
               return CustomCard(
                 type: type,
                 note: Note(
-                  title: AppStrings.createNewTask,
+                  title: t.createNewTask,
                   createdAt: DateTime.now(),
                   type: NotesColorsEnum.red,
                 ),

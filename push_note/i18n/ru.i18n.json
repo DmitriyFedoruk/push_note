@@ -1,0 +1,12 @@
+{
+  "settings": "Настройки",
+  "background": "Фон",
+  "theme": "Тема",
+  "gradient": "Градиент",
+  "timeFormat": "Формат времени",
+  "language": "Язык", 
+  "addNow": "Добавить сейчас",
+  "reschedule":"Перенести",
+  "remove":"Удалить",
+  "createNewTask":"Создать новую задачу"
+}

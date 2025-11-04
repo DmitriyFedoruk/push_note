@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/images.dart';
-import 'package:push_note/const/strings.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
 import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
 import 'package:push_note/presentation/components/settings/widgets/title_for_cluster.dart';
@@ -14,10 +14,11 @@ class BackgroundCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final t = Translations.of(context);
+    return Column(
       children: [
-        TitleForCluster(icon: AppIcons.background, title: AppStrings.background),
-        UniversalCluster(_BackgroundsList())
+        TitleForCluster(icon: AppIcons.background, title: t.background),
+        const UniversalCluster(_BackgroundsList())
       ],
     );
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:push_note/const/enums.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/models/note.dart';
 import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/infra/date_extension.dart';
 import 'package:push_note/presentation/components/priority.dart';
 
@@ -48,7 +48,7 @@ class CustomCard extends StatelessWidget {
             const SizedBox(width: 4),
             Expanded(
               child: Text(
-                AppStrings.createNewTask,
+                t.createNewTask,
                 style: DMSerifTextStyle.middle.copyWith(color: theme.textTheme.labelMedium?.color),
               ),
             ),
