@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/models/note.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/infra/date_extension.dart';
 import 'package:push_note/presentation/components/priority.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
@@ -19,7 +19,7 @@ class HistoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.history,
+          t.history,
           style: BodyTextStyle.appBarTextStyle,
         ),
         backgroundColor: AppColors.primaryColor,

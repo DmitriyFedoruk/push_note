@@ -13,6 +13,7 @@ ThemeData get lightTheme => ThemeData(
         ),
       ),
       shadowColor: AppColors.black,
+      hoverColor: AppColors.grey,
     );
 
 ThemeData get darkTheme => ThemeData(
@@ -27,4 +28,5 @@ ThemeData get darkTheme => ThemeData(
         ),
       ),
       shadowColor: AppColors.white,
+      hoverColor: AppColors.greyDark,
     );

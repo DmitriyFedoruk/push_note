@@ -8,6 +8,8 @@
   "addNow": "Add now",
   "reschedule":"Reschedule",
   "remove":"Remove",
-  "createNewTask":"Create a new task"
+  "createNewTask":"Create a new task",
+  "history":"History",
+  "scheduled":"Scheduled"
 }
 

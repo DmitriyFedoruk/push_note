@@ -1,10 +1,12 @@
 import 'package:push_note/const/enums.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
   static const String _backgroundKey = 'background';
   static const String _cardFillTypeKey = 'cardFillTypeKey';
   static const String _timeFormatTypeKey = 'timeFormatTypeKey';
+  static const String _localeTypeKey = 'localeTypeKey';
 
   static late SharedPreferences _prefs;
 
@@ -46,5 +48,14 @@ class SharedPreferencesService {
 
   static TimeFormatType getTimeFormatType() {
     return TimeFormatType.fromString(_prefs.getString(_timeFormatTypeKey) ?? '');
+  }
+
+  //TimeFormatType
+  static void setLocale(AppLocale locale) {
+    _prefs.setString(_localeTypeKey, locale.name);
+  }
+
+  static AppLocale getLocale() {
+    return _prefs.getString(_localeTypeKey) == 'ru' ? AppLocale.ru : AppLocale.en;
   }
 }

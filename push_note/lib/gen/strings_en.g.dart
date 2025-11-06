@@ -69,6 +69,12 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Create a new task'
 	String get createNewTask => 'Create a new task';
+
+	/// en: 'History'
+	String get history => 'History';
+
+	/// en: 'Scheduled'
+	String get scheduled => 'Scheduled';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -93,6 +99,8 @@ extension on Translations {
 			case 'reschedule': return 'Reschedule';
 			case 'remove': return 'Remove';
 			case 'createNewTask': return 'Create a new task';
+			case 'history': return 'History';
+			case 'scheduled': return 'Scheduled';
 			default: return null;
 		}
 	}

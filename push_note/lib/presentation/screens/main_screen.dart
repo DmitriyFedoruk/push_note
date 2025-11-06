@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
 import 'package:push_note/presentation/components/app_bar/main_app_bar.dart';
@@ -19,27 +18,22 @@ class MainScreen extends StatelessWidget {
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
-          GestureDetector(
-            onTap: () {
-              SystemNavigator.pop();
-            },
-            child: SizedBox(
-              height: double.infinity,
-              width: double.infinity,
-              child: Selector<SettingsProvider, AppBackgrounds>(
-                selector: (_, prov) => prov.background,
-                builder: (context, background, _) {
-                  return Image.asset(
-                    background.image,
-                    fit: BoxFit.cover,
-                  );
-                },
-              ),
+          SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Selector<SettingsProvider, AppBackgrounds>(
+              selector: (_, prov) => prov.background,
+              builder: (context, background, _) {
+                return Image.asset(
+                  background.image,
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: 20.0,
+              horizontal: 30.0,
               vertical: 200.0,
             ),
             child: CreateNoteCluster(),

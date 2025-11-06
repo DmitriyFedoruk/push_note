@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:push_note/app.dart';
 import 'package:push_note/business_logic/services/object_box.dart';
 import 'package:push_note/business_logic/services/shared_preferences_service.dart';
@@ -12,7 +13,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeNotification();
   await SharedPreferencesService.init();
+  LocaleSettings.setLocale(SharedPreferencesService.getLocale());
   objectbox = await ObjectBox.create();
+  var orientations = [
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ];
+
+  SystemChrome.setPreferredOrientations(orientations);
   runApp(TranslationProvider(
     child: const PushNoteApp(),
   ));

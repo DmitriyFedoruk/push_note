@@ -6,6 +6,7 @@ import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
+import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/presentation/components/custom_button.dart';
 import 'package:push_note/presentation/components/list_of_types.dart';
 import 'package:push_note/presentation/components/title_field.dart';
@@ -32,17 +33,18 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
   @override
   Widget build(BuildContext context) {
     final provider = context.read<NotesProvider>();
+    final color = context.theme.cardColor;
 
     return GlassmorphicContainer(
       width: double.infinity,
       height: 280,
-      borderRadius: 24,
+      borderRadius: 40,
       linearGradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          AppColors.white.withValues(alpha: 0.5),
-          AppColors.white.withValues(alpha: 0.25),
+          color.withValues(alpha: 0.2),
+          color.withValues(alpha: 0),
         ],
         stops: const [
           0.1,
@@ -50,13 +52,13 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
         ],
       ),
       border: 2,
-      blur: 20,
+      blur: 24,
       borderGradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          AppColors.white.withValues(alpha: 0.5),
-          AppColors.white.withValues(alpha: 0.5),
+          color.withValues(alpha: 1),
+          color.withValues(alpha: 0.1),
         ],
       ),
       child: Padding(

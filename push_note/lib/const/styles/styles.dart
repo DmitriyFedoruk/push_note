@@ -29,6 +29,11 @@ class RobotoTextStyle {
     fontWeight: FontWeight.w600,
   );
 
+  static final TextStyle middle14 = GoogleFonts.roboto(
+    fontSize: 18.0,
+    fontWeight: FontWeight.w400,
+  );
+
   static final TextStyle small_12 = GoogleFonts.roboto(
     fontSize: 12.0,
     fontWeight: FontWeight.w500,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:push_note/business_logic/services/shared_preferences_service.dart';
 import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
@@ -63,7 +64,10 @@ class _OneItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TapSector(
-      onTap: () => LocaleSettings.setLocale(type),
+      onTap: () {
+        LocaleSettings.setLocale(type);
+        SharedPreferencesService.setLocale(type);
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

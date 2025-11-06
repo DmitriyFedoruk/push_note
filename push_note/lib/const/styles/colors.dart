@@ -7,7 +7,6 @@ class AppColors {
   static const Color greyDark = Color(0xff8D8C8C);
   static const Color turquoise = Color(0xffBFD7EA);
 
-  static const Color lightGrey = Color(0xff577399);
   static const Color disabledColor = Color.fromARGB(190, 178, 180, 200);
 
   static const Color buttonColor = Color(0xff9302A6);

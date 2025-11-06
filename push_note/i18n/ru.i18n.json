@@ -8,5 +8,7 @@
   "addNow": "Добавить сейчас",
   "reschedule":"Перенести",
   "remove":"Удалить",
-  "createNewTask":"Создать новую задачу"
+  "createNewTask":"Создать новую задачу",
+  "history":"История",
+  "scheduled":"Запланированно"
 }

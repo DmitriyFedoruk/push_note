@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:push_note/const/strings.dart';
-import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
+import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/routing/app_routes.dart';
 
@@ -14,6 +14,7 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: false,
@@ -22,42 +23,37 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(
             AppStrings.appName,
-            style: BodyTextStyle.appBarTextStyle,
+            style: BodyTextStyle.appBarTextStyle.copyWith(color: theme.textTheme.bodyMedium?.color),
           ),
-          PopupMenuButton(
-            padding: const EdgeInsets.all(12),
-            icon: const Icon(
-              Icons.more_vert,
-              color: AppColors.white,
-            ),
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  value: _Options.scheduled,
-                  onTap: () => context.go(AppRoutes.scheduled),
-                  child: Text(
-                    AppStrings.scheduled,
-                    style: BodyTextStyle.typeTextStyle,
-                  ),
+          MenuAnchor(
+            alignmentOffset: const Offset(-90, 0),
+            builder: (BuildContext context, MenuController controller, Widget? child) {
+              return IconButton(
+                icon: Icon(
+                  Icons.more_vert,
+                  color: theme.textTheme.bodyMedium?.color,
                 ),
-                PopupMenuItem(
-                  value: _Options.history,
-                  onTap: () => context.go(AppRoutes.history),
-                  child: Text(
-                    AppStrings.history,
-                    style: BodyTextStyle.typeTextStyle,
-                  ),
-                ),
-                PopupMenuItem(
-                  value: _Options.settings,
-                  onTap: () => context.go(AppRoutes.settings),
-                  child: Text(
-                    t.settings,
-                    style: BodyTextStyle.typeTextStyle,
-                  ),
-                ),
-              ];
+                onPressed: () => controller.open(),
+              );
             },
+            style: MenuStyle(
+              shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+              backgroundColor: WidgetStateProperty.all(theme.cardColor),
+            ),
+            menuChildren: [
+              _Button(
+                onPressed: () => context.go(AppRoutes.scheduled),
+                text: t.scheduled,
+              ),
+              _Button(
+                onPressed: () => context.go(AppRoutes.history),
+                text: t.history,
+              ),
+              _Button(
+                onPressed: () => context.go(AppRoutes.settings),
+                text: t.settings,
+              ),
+            ],
           ),
         ],
       ),
@@ -67,4 +63,28 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-enum _Options { scheduled, history, settings }
+class _Button extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+  const _Button({
+    required this.onPressed,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    return MenuItemButton(
+      onPressed: onPressed,
+      style: ButtonStyle(overlayColor: WidgetStatePropertyAll(theme.hoverColor)),
+      child: SizedBox(
+        width: 100,
+        child: Text(
+          text,
+          style: BodyTextStyle.typeTextStyle.copyWith(color: theme.textTheme.labelMedium?.color),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}

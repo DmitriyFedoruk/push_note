@@ -46,6 +46,8 @@ class TranslationsRu implements Translations {
 	@override String get reschedule => 'Перенести';
 	@override String get remove => 'Удалить';
 	@override String get createNewTask => 'Создать новую задачу';
+	@override String get history => 'История';
+	@override String get scheduled => 'Запланированно';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -70,6 +72,8 @@ extension on TranslationsRu {
 			case 'reschedule': return 'Перенести';
 			case 'remove': return 'Удалить';
 			case 'createNewTask': return 'Создать новую задачу';
+			case 'history': return 'История';
+			case 'scheduled': return 'Запланированно';
 			default: return null;
 		}
 	}
