@@ -13,19 +13,19 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      height: 60.0,
+      height: 48.0,
       elevation: 0,
       disabledElevation: 0,
       focusElevation: 0,
       highlightElevation: 0,
       hoverElevation: 0,
       enableFeedback: false,
-      color: AppColors.buttonColor.withValues(alpha: 0.2),
+      color: AppColors.turquoise,
       disabledColor: AppColors.disabledColor,
       highlightColor: Colors.transparent,
-      splashColor: AppColors.buttonSplashColor,
+      splashColor: AppColors.buttonColor.withValues(alpha: 0.2),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24.0),
+        borderRadius: BorderRadius.circular(40.0),
       ),
       onPressed: onTap,
       child: child,

@@ -22,7 +22,7 @@ class HistoryScreen extends StatelessWidget {
           t.history,
           style: BodyTextStyle.appBarTextStyle,
         ),
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.turquoise,
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 0,

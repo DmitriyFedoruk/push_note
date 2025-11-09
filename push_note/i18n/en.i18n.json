@@ -10,6 +10,8 @@
   "remove":"Remove",
   "createNewTask":"Create a new task",
   "history":"History",
-  "scheduled":"Scheduled"
+  "scheduled":"Scheduled",
+  "scheduledAt ":"Scheduled at"
+  
 }
 

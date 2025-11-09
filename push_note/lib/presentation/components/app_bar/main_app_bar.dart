@@ -81,7 +81,7 @@ class _Button extends StatelessWidget {
         width: 100,
         child: Text(
           text,
-          style: BodyTextStyle.typeTextStyle.copyWith(color: theme.textTheme.labelMedium?.color),
+          style: RobotoTextStyle.small_12_reg.copyWith(color: theme.textTheme.labelMedium?.color),
           textAlign: TextAlign.center,
         ),
       ),

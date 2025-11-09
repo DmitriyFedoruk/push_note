@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:push_note/const/images.dart';
 import 'package:push_note/const/styles/colors.dart';
 
 enum NotesColorsEnum {
@@ -15,3 +16,13 @@ enum NotesColorsEnum {
 }
 
 const noteColors = NotesColorsEnum.values;
+String getImage(NotesColorsEnum? type) {
+  return switch (type) {
+    NotesColorsEnum.red => AppImages.statusHigh,
+    NotesColorsEnum.orange => AppImages.statusPreHigh,
+    NotesColorsEnum.yellow => AppImages.statusMiddle,
+    NotesColorsEnum.green => AppImages.statusPreMiddle,
+    NotesColorsEnum.blue => AppImages.statusLow,
+    null => AppImages.logo,
+  };
+}

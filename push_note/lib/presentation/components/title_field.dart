@@ -17,6 +17,7 @@ class TitleField extends StatelessWidget {
         controller: _controller,
         onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
         textCapitalization: TextCapitalization.sentences,
+        cursorColor: theme.cardColor,
         style: RobotoTextStyle.middle14.copyWith(color: theme.textTheme.bodyMedium?.color),
         decoration: InputDecoration(
           isDense: true,

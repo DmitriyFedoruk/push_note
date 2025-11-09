@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
+import 'package:push_note/extensions/theme_extension.dart';
 
 class ListOfTypes extends StatelessWidget {
   final NotesColorsEnum? selectedItem;
@@ -14,21 +15,23 @@ class ListOfTypes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 40.0,
         width: double.infinity,
-        child: Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 24.0,
+        child: Column(
           children: [
-            ...noteColors.map(
-              (e) => _OneItem(
-                e,
-                isSelected: selectedItem == e,
-                onTap: () {
-                  chooseItem(e);
-                },
-              ),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ...noteColors.map(
+                  (e) => _OneItem(
+                    e,
+                    isSelected: selectedItem == e,
+                    onTap: () {
+                      chooseItem(e);
+                    },
+                  ),
+                )
+              ],
+            ),
           ],
         ));
   }
@@ -54,16 +57,26 @@ class _OneItem extends StatelessWidget {
             height: 40.0,
             width: 40.0,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-              border: isSelected ? Border.all() : null,
+              borderRadius: BorderRadius.circular(12.0),
+              border: isSelected
+                  ? Border.all(
+                      width: 2,
+                      strokeAlign: BorderSide.strokeAlignOutside,
+                      color: context.theme.cardColor,
+                    )
+                  : null,
               color: item.color,
             ),
-            child: isSelected ? const Icon(Icons.check) : null,
+            padding: const EdgeInsets.all(6),
+            child: Image.asset(
+              getImage(item),
+              color: context.theme.cardColor,
+            ),
           ),
-          const SizedBox(height: 4.0),
+          const SizedBox(height: 8.0),
           Text(
             item.title,
-            style: BodyTextStyle.typeTextStyle,
+            style: RobotoTextStyle.small_12_reg,
           )
         ],
       ),

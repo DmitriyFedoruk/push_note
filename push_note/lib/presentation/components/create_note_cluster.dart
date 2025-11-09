@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/create_note.dart';
+import 'package:push_note/const/date.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/components/custom_button.dart';
 import 'package:push_note/presentation/components/list_of_types.dart';
 import 'package:push_note/presentation/components/title_field.dart';
@@ -23,6 +25,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
   final TextEditingController _controller = TextEditingController();
   bool isDisabled = true;
   NotesColorsEnum? noteType;
+  DateTime? scheduledDate;
 
   @override
   void initState() {
@@ -70,53 +73,74 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                 children: [
                   TitleField(_controller),
                   const SizedBox(height: 24.0),
-                  ListOfTypes(
-                    selectedItem: noteType,
-                    chooseItem: chooseItem,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ListOfTypes(
+                      selectedItem: noteType,
+                      chooseItem: chooseItem,
+                    ),
                   ),
-                  const SizedBox(height: 24.0),
                 ],
               ),
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: CustomButton(
-                      onTap: isDisabled
-                          ? null
-                          : () async {
-                              await createNote(
-                                _controller.text,
-                                noteType,
-                              );
-                              provider.addNote(title: _controller.text, type: noteType);
-                              clear();
-                            },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            AppStrings.create,
-                            style: BodyTextStyle.buttonTextStyle,
-                          )
-                        ],
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      scheduledDate == null ? '' : '${t.scheduledAt} ${formatOnlyForDate.format(scheduledDate!)}',
+                      style: RobotoTextStyle.middle14,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  CustomButton(
-                    onTap: () {
-                      final now = DateTime.now();
-                      showDatePicker(
-                          context: context,
-                          initialDate: now,
-                          firstDate: now,
-                          lastDate: now.add(const Duration(days: 1825)));
-                    },
-                    child: const Icon(
-                      Icons.calendar_month,
-                      size: 24,
-                      color: AppColors.white,
-                    ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: CustomButton(
+                          onTap: isDisabled
+                              ? null
+                              : () async {
+                                  await createNote(
+                                    _controller.text,
+                                    noteType,
+                                    scheduledDate,
+                                  );
+                                  provider.addNote(title: _controller.text, type: noteType);
+                                  clear();
+                                },
+                          child: Text(
+                            AppStrings.create,
+                            style: DMSerifTextStyle.middle_24.copyWith(color: AppColors.secondaryColor),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 22),
+                      Expanded(
+                        child: CustomButton(
+                          onTap: () async {
+                            final now = DateTime.now();
+                            final first = DateTime(now.year, now.month, now.day + 1);
+                            final res = await showDatePicker(
+                              context: context,
+                              initialDate: first,
+                              firstDate: first,
+                              lastDate: first.add(
+                                const Duration(days: 1825),
+                              ),
+                            );
+                            setState(() {
+                              scheduledDate = res;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.calendar_month,
+                            size: 24,
+                            color: AppColors.secondaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

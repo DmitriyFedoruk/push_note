@@ -3,13 +3,14 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:push_note/const/images.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/main/main_variables.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 Future<void> createNote(
   String text,
   NotesColorsEnum? type,
+  DateTime? date,
 ) async {
   final String imagePath = await getImageFilePathFromAssets(getImage(type));
 
@@ -18,6 +19,7 @@ Future<void> createNote(
     'push_note',
     // Channel name visible in settings
     'Push Note',
+    channelDescription: 'Channel for scheduled notes',
     category: AndroidNotificationCategory.event,
     importance: Importance.max,
     priority: Priority.max,
@@ -25,22 +27,36 @@ Future<void> createNote(
     largeIcon: FilePathAndroidBitmap(imagePath),
   );
 
-  //  DarwinNotificationDetails iOSPlatformChannelSpecifics = DarwinNotificationDetails(
-  //      threadIdentifier: 'push_note',
-  //     subtitle: text,
-  //     );
-
   NotificationDetails platformChannelSpecifics = NotificationDetails(
     android: androidPlatformChannelSpecifics,
-    //iOS: iOSPlatformChannelSpecifics,
   );
 
-  await flutterLocalNotificationsPlugin.show(
-    text.hashCode + type.hashCode,
-    null,
-    text,
-    platformChannelSpecifics,
-  );
+  if (date != null) {
+    // Convert DateTime to TZDateTime
+    final tz.TZDateTime scheduledTime = tz.TZDateTime.from(
+      date,
+      tz.local,
+    );
+
+    print('# schedu ${scheduledTime}');
+
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      text.hashCode + type.hashCode,
+      null,
+      text,
+      // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      scheduledTime,
+      platformChannelSpecifics,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+    );
+  } else {
+    await flutterLocalNotificationsPlugin.show(
+      text.hashCode + type.hashCode,
+      null,
+      text,
+      platformChannelSpecifics,
+    );
+  }
 }
 
 Future<String> getImageFilePathFromAssets(String assetPath) async {
@@ -48,15 +64,4 @@ Future<String> getImageFilePathFromAssets(String assetPath) async {
   final file = File('${(await getTemporaryDirectory()).path}/${assetPath.split('/').last}');
   await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
   return file.path;
-}
-
-String getImage(NotesColorsEnum? type) {
-  return switch (type) {
-    NotesColorsEnum.red => AppImages.statusHigh,
-    NotesColorsEnum.orange => AppImages.statusPreHigh,
-    NotesColorsEnum.yellow => AppImages.statusMiddle,
-    NotesColorsEnum.green => AppImages.statusPreMiddle,
-    NotesColorsEnum.blue => AppImages.statusLow,
-    null => AppImages.logo,
-  };
 }

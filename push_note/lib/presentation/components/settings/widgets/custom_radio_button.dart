@@ -43,7 +43,13 @@ class _InActiveRadio extends StatelessWidget {
     return Container(
       height: 20,
       width: 20,
-      decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(width: 1.0, color: AppColors.inactiveColor)),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          width: 1.0,
+          color: AppColors.inactiveColor,
+        ),
+      ),
     );
   }
 }

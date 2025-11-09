@@ -1,22 +1,21 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BodyTextStyle {
-  static final TextStyle buttonTextStyle = GoogleFonts.dmSerifText(
-    fontSize: 20.0,
-  );
   static final TextStyle appBarTextStyle = GoogleFonts.dmSerifText(
     fontSize: 40.0,
     fontWeight: FontWeight.w700,
   );
-
-  static final TextStyle typeTextStyle = GoogleFonts.roboto(
-    fontSize: 12.0,
-    fontWeight: FontWeight.w400,
-  );
 }
 
 class DMSerifTextStyle {
+  static final TextStyle middle_24 = GoogleFonts.dmSerifText(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w400,
+  );
+
   static final TextStyle middle = GoogleFonts.dmSerifText(
     fontSize: 20.0,
     fontWeight: FontWeight.w400,
@@ -37,6 +36,11 @@ class RobotoTextStyle {
   static final TextStyle small_12 = GoogleFonts.roboto(
     fontSize: 12.0,
     fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle small_12_reg = GoogleFonts.roboto(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w400,
   );
 
   static final TextStyle small_10 = GoogleFonts.roboto(
