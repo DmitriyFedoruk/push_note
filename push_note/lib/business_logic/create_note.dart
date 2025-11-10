@@ -38,8 +38,6 @@ Future<void> createNote(
       tz.local,
     );
 
-    print('# schedu ${scheduledTime}');
-
     await flutterLocalNotificationsPlugin.zonedSchedule(
       text.hashCode + type.hashCode,
       null,

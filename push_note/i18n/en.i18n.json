@@ -11,7 +11,14 @@
   "createNewTask":"Create a new task",
   "history":"History",
   "scheduled":"Scheduled",
-  "scheduledAt ":"Scheduled at"
+  "scheduledAt":"Scheduled at",
+  "enterSomething":"Enter something",
+  "create":"Create",
+  "high":"High",
+  "important":"Important",
+  "middle":"Middle",
+  "secondary":"Secondary",
+  "low":"Low"
   
 }
 

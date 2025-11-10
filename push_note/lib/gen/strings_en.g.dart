@@ -77,7 +77,28 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get scheduled => 'Scheduled';
 
 	/// en: 'Scheduled at'
-	String get scheduledAt  => 'Scheduled at';
+	String get scheduledAt => 'Scheduled at';
+
+	/// en: 'Enter something'
+	String get enterSomething => 'Enter something';
+
+	/// en: 'Create'
+	String get create => 'Create';
+
+	/// en: 'High'
+	String get high => 'High';
+
+	/// en: 'Important'
+	String get important => 'Important';
+
+	/// en: 'Middle'
+	String get middle => 'Middle';
+
+	/// en: 'Secondary'
+	String get secondary => 'Secondary';
+
+	/// en: 'Low'
+	String get low => 'Low';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -104,7 +125,14 @@ extension on Translations {
 			case 'createNewTask': return 'Create a new task';
 			case 'history': return 'History';
 			case 'scheduled': return 'Scheduled';
-			case 'scheduledAt ': return 'Scheduled at';
+			case 'scheduledAt': return 'Scheduled at';
+			case 'enterSomething': return 'Enter something';
+			case 'create': return 'Create';
+			case 'high': return 'High';
+			case 'important': return 'Important';
+			case 'middle': return 'Middle';
+			case 'secondary': return 'Secondary';
+			case 'low': return 'Low';
 			default: return null;
 		}
 	}

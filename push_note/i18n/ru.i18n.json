@@ -11,6 +11,13 @@
   "createNewTask":"Создать новую задачу",
   "history":"История",
   "scheduled":"Запланированно",
-  "scheduledAt":"Запланированно на"
+  "scheduledAt":"Запланированно на",
+  "enterSomething":"Введите что-нибудь",
+  "create":"Создать",
+  "high":"Высокий",
+  "important":"Важный",
+  "middle":"Средний",
+  "secondary":"Побочный",
+  "low":"Низкий"
 
 }

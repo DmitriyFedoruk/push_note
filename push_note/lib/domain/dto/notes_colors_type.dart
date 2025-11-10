@@ -3,16 +3,15 @@ import 'package:push_note/const/images.dart';
 import 'package:push_note/const/styles/colors.dart';
 
 enum NotesColorsEnum {
-  red(NoteColors.red, 5, 'High'),
-  orange(NoteColors.orange, 4, 'Important'),
-  yellow(NoteColors.yellow, 3, 'Middle'),
-  green(NoteColors.green, 2, 'Secondary'),
-  blue(NoteColors.blue, 1, 'Low');
+  red(NoteColors.red, 5),
+  orange(NoteColors.orange, 4),
+  yellow(NoteColors.yellow, 3),
+  green(NoteColors.green, 2),
+  blue(NoteColors.blue, 1);
 
   final Color color;
   final int priority;
-  final String title;
-  const NotesColorsEnum([this.color = Colors.transparent, this.priority = 0, this.title = '']);
+  const NotesColorsEnum([this.color = Colors.transparent, this.priority = 0]);
 }
 
 const noteColors = NotesColorsEnum.values;

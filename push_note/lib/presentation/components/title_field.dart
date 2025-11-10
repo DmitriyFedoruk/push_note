@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 
 class TitleField extends StatelessWidget {
   final TextEditingController _controller;
@@ -25,7 +25,7 @@ class TitleField extends StatelessWidget {
             horizontal: 20,
             vertical: 15,
           ),
-          hintText: AppStrings.printSomething,
+          hintText: t.enterSomething,
           hintStyle: RobotoTextStyle.middle14.copyWith(color: theme.hoverColor),
           border: const OutlineInputBorder(),
           focusedBorder: OutlineInputBorder(

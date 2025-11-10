@@ -49,6 +49,13 @@ class TranslationsRu implements Translations {
 	@override String get history => 'История';
 	@override String get scheduled => 'Запланированно';
 	@override String get scheduledAt => 'Запланированно на';
+	@override String get enterSomething => 'Введите что-нибудь';
+	@override String get create => 'Создать';
+	@override String get high => 'Высокий';
+	@override String get important => 'Важный';
+	@override String get middle => 'Средний';
+	@override String get secondary => 'Побочный';
+	@override String get low => 'Низкий';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -76,6 +83,13 @@ extension on TranslationsRu {
 			case 'history': return 'История';
 			case 'scheduled': return 'Запланированно';
 			case 'scheduledAt': return 'Запланированно на';
+			case 'enterSomething': return 'Введите что-нибудь';
+			case 'create': return 'Создать';
+			case 'high': return 'Высокий';
+			case 'important': return 'Важный';
+			case 'middle': return 'Средний';
+			case 'secondary': return 'Побочный';
+			case 'low': return 'Низкий';
 			default: return null;
 		}
 	}

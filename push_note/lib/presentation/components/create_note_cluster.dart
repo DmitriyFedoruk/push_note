@@ -3,7 +3,6 @@ import 'package:glassmorphism/glassmorphism.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/create_note.dart';
 import 'package:push_note/const/date.dart';
-import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
@@ -110,7 +109,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                                   clear();
                                 },
                           child: Text(
-                            AppStrings.create,
+                            t.create,
                             style: DMSerifTextStyle.middle_24.copyWith(color: AppColors.secondaryColor),
                           ),
                         ),
@@ -153,6 +152,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
     setState(() {
       _controller.clear();
       noteType = null;
+      scheduledDate = null;
     });
   }
 

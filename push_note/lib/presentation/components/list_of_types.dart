@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 
 class ListOfTypes extends StatelessWidget {
   final NotesColorsEnum? selectedItem;
@@ -75,11 +76,22 @@ class _OneItem extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Text(
-            item.title,
+            getTitle(item),
             style: RobotoTextStyle.small_12_reg,
           )
         ],
       ),
     );
+  }
+
+  String getTitle(NotesColorsEnum note) {
+    return switch (note.priority) {
+      5 => t.high,
+      4 => t.important,
+      3 => t.middle,
+      2 => t.secondary,
+      1 => t.low,
+      int() => t.low,
+    };
   }
 }
