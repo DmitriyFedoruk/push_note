@@ -3,14 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BodyTextStyle {
+class DMSerifTextStyle {
   static final TextStyle appBarTextStyle = GoogleFonts.dmSerifText(
     fontSize: 40.0,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w400,
   );
-}
 
-class DMSerifTextStyle {
   static final TextStyle middle_24 = GoogleFonts.dmSerifText(
     fontSize: 20.0,
     fontWeight: FontWeight.w400,

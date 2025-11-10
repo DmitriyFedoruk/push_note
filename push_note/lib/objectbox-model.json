@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:7249150983328015537",
-      "lastPropertyId": "5:7395108273285936986",
+      "lastPropertyId": "6:1130941132390113400",
       "name": "Note",
       "properties": [
         {
@@ -32,6 +32,11 @@
         {
           "id": "5:7395108273285936986",
           "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "6:1130941132390113400",
+          "name": "scheduledDate",
           "type": 10
         }
       ],

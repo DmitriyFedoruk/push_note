@@ -9,7 +9,8 @@
 import 'dart:typed_data';
 
 import 'package:flat_buffers/flat_buffers.dart' as fb;
-import 'package:objectbox/internal.dart' as obx_int; // generated code can access "internal" functionality
+import 'package:objectbox/internal.dart'
+    as obx_int; // generated code can access "internal" functionality
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
@@ -21,7 +22,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
     id: const obx_int.IdUid(1, 7249150983328015537),
     name: 'Note',
-    lastPropertyId: const obx_int.IdUid(5, 7395108273285936986),
+    lastPropertyId: const obx_int.IdUid(6, 1130941132390113400),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
@@ -51,6 +52,12 @@ final _entities = <obx_int.ModelEntity>[
       obx_int.ModelProperty(
         id: const obx_int.IdUid(5, 7395108273285936986),
         name: 'createdAt',
+        type: 10,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(6, 1130941132390113400),
+        name: 'scheduledDate',
         type: 10,
         flags: 0,
       ),
@@ -122,36 +129,50 @@ obx_int.ModelDefinition getObjectBoxModel() {
       },
       objectToFB: (Note object, fb.Builder fbb) {
         final titleOffset = fbb.writeString(object.title);
-        fbb.startTable(6);
+        fbb.startTable(7);
         fbb.addInt64(0, object.id);
         fbb.addOffset(1, titleOffset);
         fbb.addInt64(2, object.colorValue);
         fbb.addInt64(3, object.priority);
         fbb.addInt64(4, object.createdAt.millisecondsSinceEpoch);
+        fbb.addInt64(5, object.scheduledDate?.millisecondsSinceEpoch);
         fbb.finish(fbb.endTable());
         return object.id;
       },
       objectFromFB: (obx.Store store, ByteData fbData) {
         final buffer = fb.BufferContext(fbData);
         final rootOffset = buffer.derefObject(0);
+        final scheduledDateValue = const fb.Int64Reader().vTableGetNullable(
+          buffer,
+          rootOffset,
+          14,
+        );
         final titleParam = const fb.StringReader(
           asciiOptimization: true,
         ).vTableGet(buffer, rootOffset, 6, '');
         final createdAtParam = DateTime.fromMillisecondsSinceEpoch(
           const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0),
         );
-        final object = Note(title: titleParam, createdAt: createdAtParam)
-          ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
-          ..colorValue = const fb.Int64Reader().vTableGetNullable(
-            buffer,
-            rootOffset,
-            8,
-          )
-          ..priority = const fb.Int64Reader().vTableGetNullable(
-            buffer,
-            rootOffset,
-            10,
-          );
+        final scheduledDateParam = scheduledDateValue == null
+            ? null
+            : DateTime.fromMillisecondsSinceEpoch(scheduledDateValue);
+        final object =
+            Note(
+                title: titleParam,
+                createdAt: createdAtParam,
+                scheduledDate: scheduledDateParam,
+              )
+              ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
+              ..colorValue = const fb.Int64Reader().vTableGetNullable(
+                buffer,
+                rootOffset,
+                8,
+              )
+              ..priority = const fb.Int64Reader().vTableGetNullable(
+                buffer,
+                rootOffset,
+                10,
+              );
 
         return object;
       },
@@ -184,5 +205,10 @@ class Note_ {
   /// See [Note.createdAt].
   static final createdAt = obx.QueryDateProperty<Note>(
     _entities[0].properties[4],
+  );
+
+  /// See [Note.scheduledDate].
+  static final scheduledDate = obx.QueryDateProperty<Note>(
+    _entities[0].properties[5],
   );
 }

@@ -11,11 +11,13 @@ class Note {
   //5 - high,4 - pre_high, 3 - middle, 2 - pre_middle, 1 - low
   int? priority;
   DateTime createdAt;
+  DateTime? scheduledDate;
 
   Note({
     required this.title,
     NotesColorsEnum? type,
     required this.createdAt,
+    required this.scheduledDate,
   })  : colorValue = type?.color.toARGB32(),
         priority = type?.priority;
 

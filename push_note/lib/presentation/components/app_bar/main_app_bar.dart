@@ -4,6 +4,7 @@ import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
+import 'package:push_note/presentation/components/menu_button.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -23,68 +24,33 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(
             AppStrings.appName,
-            style: BodyTextStyle.appBarTextStyle.copyWith(color: theme.textTheme.bodyMedium?.color),
+            style: DMSerifTextStyle.appBarTextStyle.copyWith(color: theme.textTheme.bodyMedium?.color),
           ),
-          MenuAnchor(
-            alignmentOffset: const Offset(-90, 0),
-            builder: (BuildContext context, MenuController controller, Widget? child) {
-              return IconButton(
-                icon: Icon(
-                  Icons.more_vert,
-                  color: theme.textTheme.bodyMedium?.color,
-                ),
-                onPressed: () => controller.open(),
-              );
-            },
-            style: MenuStyle(
-              shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-              backgroundColor: WidgetStateProperty.all(theme.cardColor),
-            ),
-            menuChildren: [
-              _Button(
+          MenuButton(
+            options: [
+              CustomMenuItemButton(
                 onPressed: () => context.go(AppRoutes.scheduled),
                 text: t.scheduled,
               ),
-              _Button(
+              CustomMenuItemButton(
                 onPressed: () => context.go(AppRoutes.history),
                 text: t.history,
               ),
-              _Button(
+              CustomMenuItemButton(
                 onPressed: () => context.go(AppRoutes.settings),
                 text: t.settings,
               ),
             ],
+            offset: const Offset(-90, 0),
+            child: Icon(
+              Icons.more_vert,
+              color: theme.textTheme.bodyMedium?.color,
+            ),
           ),
         ],
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,
-    );
-  }
-}
-
-class _Button extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String text;
-  const _Button({
-    required this.onPressed,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-    return MenuItemButton(
-      onPressed: onPressed,
-      style: ButtonStyle(overlayColor: WidgetStatePropertyAll(theme.hoverColor)),
-      child: SizedBox(
-        width: 100,
-        child: Text(
-          text,
-          style: RobotoTextStyle.small_12_reg.copyWith(color: theme.textTheme.labelMedium?.color),
-          textAlign: TextAlign.center,
-        ),
-      ),
     );
   }
 }

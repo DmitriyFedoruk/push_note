@@ -84,6 +84,7 @@ class _OneItem extends StatelessWidget {
                   title: t.createNewTask,
                   createdAt: DateTime.now(),
                   type: NotesColorsEnum.red,
+                  scheduledDate: null,
                 ),
                 timeFormatType: timeFormatType,
               );

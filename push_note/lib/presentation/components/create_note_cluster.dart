@@ -105,7 +105,11 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                                     noteType,
                                     scheduledDate,
                                   );
-                                  provider.addNote(title: _controller.text, type: noteType);
+                                  provider.addNote(
+                                    title: _controller.text,
+                                    type: noteType,
+                                    scheduledDate: scheduledDate,
+                                  );
                                   clear();
                                 },
                           child: Text(

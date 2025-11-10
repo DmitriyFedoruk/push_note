@@ -32,7 +32,7 @@ class SettingsAppbar extends StatelessWidget implements PreferredSizeWidget {
           ),
           Text(
             t.settings,
-            style: BodyTextStyle.appBarTextStyle.copyWith(color: color),
+            style: DMSerifTextStyle.appBarTextStyle.copyWith(color: color),
           ),
           const SizedBox(
             width: 48,
