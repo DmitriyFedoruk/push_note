@@ -33,6 +33,6 @@ void main() async {
 Future<void> configureLocalTimeZone() async {
   tz.initializeTimeZones();
   final timeZone = await FlutterTimezone.getLocalTimezone();
-  final String? timeZoneName = timeZone.identifier;
-  tz.setLocalLocation(tz.getLocation(timeZoneName!));
+  final String timeZoneName = timeZone.identifier;
+  tz.setLocalLocation(tz.getLocation(timeZoneName));
 }

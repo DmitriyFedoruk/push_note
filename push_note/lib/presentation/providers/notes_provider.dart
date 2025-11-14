@@ -14,9 +14,10 @@ class NotesProvider extends ChangeNotifier {
 
   Future<void> loadNotes() async {
     notes = await objectbox.getAll();
-    notes.sort((a, b) {
-      return b.createdAt.compareTo(a.createdAt);
-    });
+
+    scheduledNotes.clear();
+    historyNotes.clear();
+
     final now = DateTime.now();
     for (var n in notes) {
       if (n.scheduledDate != null && n.scheduledDate!.isAfter(now)) {
@@ -25,6 +26,17 @@ class NotesProvider extends ChangeNotifier {
         historyNotes.add(n);
       }
     }
+
+    scheduledNotes.sort((a, b) {
+      final aData = a.scheduledDate ?? a.createdAt;
+      final bData = b.scheduledDate ?? b.createdAt;
+      return bData.compareTo(aData);
+    });
+
+    historyNotes.sort((a, b) {
+      return b.createdAt.compareTo(a.createdAt);
+    });
+
     notifyListeners();
   }
 
@@ -40,6 +52,12 @@ class NotesProvider extends ChangeNotifier {
       scheduledDate: scheduledDate,
     );
     objectbox.addNote(note);
+    // refresh list
+    loadNotes();
+  }
+
+  void removeNote(Note note) {
+    objectbox.deleteNote(note);
     // refresh list
     loadNotes();
   }

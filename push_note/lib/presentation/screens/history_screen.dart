@@ -69,26 +69,28 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     final type = context.select((SettingsProvider prov) => prov.cardFillType);
     final timeFormatType = context.select((SettingsProvider prov) => prov.timeFormatType);
-    final historyNotes = context.select((NotesProvider prov) => prov.historyNotes);
-    return SliverPadding(
-      padding: const EdgeInsetsGeometry.symmetric(
-        horizontal: 24,
-        vertical: 40,
-      ),
-      sliver: SliverList.separated(
-        itemCount: historyNotes.length,
-        separatorBuilder: (context, index) {
-          return const SizedBox(height: 12);
-        },
-        itemBuilder: (context, index) {
-          return CustomCard(
-            type: type,
-            note: historyNotes[index],
-            timeFormatType: timeFormatType,
-            isScheduled: false,
-          );
-        },
-      ),
-    );
+    return Consumer<NotesProvider>(builder: (context, prov, child) {
+      final historyNotes = prov.historyNotes;
+      return SliverPadding(
+        padding: const EdgeInsetsGeometry.symmetric(
+          horizontal: 24,
+          vertical: 40,
+        ),
+        sliver: SliverList.separated(
+          itemCount: historyNotes.length,
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 12);
+          },
+          itemBuilder: (context, index) {
+            return CustomCard(
+              type: type,
+              note: historyNotes[index],
+              timeFormatType: timeFormatType,
+              isScheduled: false,
+            );
+          },
+        ),
+      );
+    });
   }
 }

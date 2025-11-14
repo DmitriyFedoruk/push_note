@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/create_note.dart';
+import 'package:push_note/business_logic/functions.dart';
 import 'package:push_note/const/date.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
@@ -122,16 +123,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                       Expanded(
                         child: CustomButton(
                           onTap: () async {
-                            final now = DateTime.now();
-                            final first = DateTime(now.year, now.month, now.day + 1);
-                            final res = await showDatePicker(
-                              context: context,
-                              initialDate: first,
-                              firstDate: first,
-                              lastDate: first.add(
-                                const Duration(days: 1825),
-                              ),
-                            );
+                            final res = await datePickerMethod(context);
                             setState(() {
                               scheduledDate = res;
                             });

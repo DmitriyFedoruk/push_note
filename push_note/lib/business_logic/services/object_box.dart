@@ -31,8 +31,8 @@ class ObjectBox {
     _noteBox.put(note);
   }
 
-  // /// Delete
-  // void deleteNote(Note note) {
-  //   _noteBox.put(note);
-  // }
+  /// Delete
+  void deleteNote(Note note) {
+    _noteBox.remove(note.id);
+  }
 }

@@ -25,3 +25,15 @@ String getImage(NotesColorsEnum? type) {
     null => AppImages.logo,
   };
 }
+
+NotesColorsEnum? getTypeFromPriority(int? priority) {
+  return switch (priority) {
+    5 => NotesColorsEnum.red,
+    4 => NotesColorsEnum.orange,
+    3 => NotesColorsEnum.yellow,
+    2 => NotesColorsEnum.green,
+    1 => NotesColorsEnum.blue,
+    null => null,
+    int() => null,
+  };
+}

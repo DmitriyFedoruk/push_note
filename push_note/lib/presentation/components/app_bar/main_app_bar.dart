@@ -28,15 +28,15 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
           ),
           MenuButton(
             options: [
-              CustomMenuItemButton(
+              CustomMenuItemButtonWithText(
                 onPressed: () => context.go(AppRoutes.scheduled),
                 text: t.scheduled,
               ),
-              CustomMenuItemButton(
+              CustomMenuItemButtonWithText(
                 onPressed: () => context.go(AppRoutes.history),
                 text: t.history,
               ),
-              CustomMenuItemButton(
+              CustomMenuItemButtonWithText(
                 onPressed: () => context.go(AppRoutes.settings),
                 text: t.settings,
               ),
