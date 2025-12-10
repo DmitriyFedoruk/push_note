@@ -55,7 +55,12 @@ class SharedPreferencesService {
     _prefs.setString(_localeTypeKey, locale.name);
   }
 
-  static AppLocale getLocale() {
-    return _prefs.getString(_localeTypeKey) == 'ru' ? AppLocale.ru : AppLocale.en;
+  static AppLocale? getLocale() {
+    final locale = _prefs.getString(_localeTypeKey);
+    return locale == 'ru'
+        ? AppLocale.ru
+        : locale == 'en'
+            ? AppLocale.en
+            : null;
   }
 }

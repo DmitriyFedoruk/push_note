@@ -70,6 +70,7 @@ class _OneItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return TapSector(
       onTap: () => context.read<SettingsProvider>().setCardFillType(type),
       child: Column(

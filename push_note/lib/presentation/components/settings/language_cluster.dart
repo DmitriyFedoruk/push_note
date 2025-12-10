@@ -33,7 +33,6 @@ class _OptionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Translations.of(context);
     final activeType = LocaleSettings.currentLocale;
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
