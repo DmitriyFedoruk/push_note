@@ -31,7 +31,7 @@ Future<void> createNote(
     android: androidPlatformChannelSpecifics,
   );
 
-  if (date != null) {
+  if (date != null && date.isAfter(DateTime.now())) {
     // Convert DateTime to TZDateTime
     final tz.TZDateTime scheduledTime = tz.TZDateTime.from(
       date,

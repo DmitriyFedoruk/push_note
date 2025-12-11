@@ -123,7 +123,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                       Expanded(
                         child: CustomButton(
                           onTap: () async {
-                            final res = await datePickerMethod(context);
+                            final res = await dateTimePickerMethod(context);
                             setState(() {
                               scheduledDate = res;
                             });

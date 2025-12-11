@@ -1,15 +1,16 @@
+import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:flutter/material.dart';
 
-Future<DateTime?> datePickerMethod(
+Future<DateTime?> dateTimePickerMethod(
   BuildContext context,
 ) async {
   final now = DateTime.now();
-  final first = DateTime(now.year, now.month, now.day + 1);
-  return await showDatePicker(
+  return await showBoardDateTimePicker(
     context: context,
-    initialDate: first,
-    firstDate: first,
-    lastDate: first.add(
+    pickerType: DateTimePickerType.datetime,
+    initialDate: now,
+    minimumDate: now,
+    maximumDate: now.add(
       const Duration(days: 1825),
     ),
   );

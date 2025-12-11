@@ -62,7 +62,7 @@ class CustomCard extends StatelessWidget {
         if (isScheduled)
           CustomMenuItemButtonWithIcon(
             onPressed: () async {
-              final res = await datePickerMethod(context);
+              final res = await dateTimePickerMethod(context);
               if (res != null) {
                 final String title = note.title;
                 final type = getTypeFromPriority(note.priority);
