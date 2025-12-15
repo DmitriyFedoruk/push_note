@@ -1,3 +1,4 @@
 # push_note
 
-A new Flutter project.
+# To generate translations
+dart run slang 

@@ -1,17 +1,17 @@
-import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 
 Future<DateTime?> dateTimePickerMethod(
   BuildContext context,
 ) async {
   final now = DateTime.now();
-  return await showBoardDateTimePicker(
+  return await showOmniDateTimePicker(
     context: context,
-    pickerType: DateTimePickerType.datetime,
     initialDate: now,
-    minimumDate: now,
-    maximumDate: now.add(
+    firstDate: now,
+    lastDate: now.add(
       const Duration(days: 1825),
     ),
+    is24HourMode: true,
   );
 }

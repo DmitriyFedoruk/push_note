@@ -99,6 +99,18 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Low'
 	String get low => 'Low';
+
+	/// en: 'Today'
+	String get today => 'Today';
+
+	/// en: 'Tomorrow'
+	String get tomorrow => 'Tomorrow';
+
+	/// en: 'Yesterday'
+	String get yesterday => 'Yesterday';
+
+	/// en: 'Now'
+	String get now => 'Now';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -133,6 +145,10 @@ extension on Translations {
 			case 'middle': return 'Middle';
 			case 'secondary': return 'Secondary';
 			case 'low': return 'Low';
+			case 'today': return 'Today';
+			case 'tomorrow': return 'Tomorrow';
+			case 'yesterday': return 'Yesterday';
+			case 'now': return 'Now';
 			default: return null;
 		}
 	}

@@ -31,7 +31,7 @@ dependencies:
   slang_flutter: ^4.9.0
   timezone: ^0.10.1
   flutter_timezone: ^5.0.1
-  board_datetime_picker: ^2.8.4
+  omni_datetime_picker: ^2.3.1
 
 
 

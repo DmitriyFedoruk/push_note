@@ -56,6 +56,10 @@ class TranslationsRu implements Translations {
 	@override String get middle => 'Средний';
 	@override String get secondary => 'Побочный';
 	@override String get low => 'Низкий';
+	@override String get today => 'Сегодня';
+	@override String get tomorrow => 'Завтра';
+	@override String get yesterday => 'Вчера';
+	@override String get now => 'Сейчас';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -90,6 +94,10 @@ extension on TranslationsRu {
 			case 'middle': return 'Средний';
 			case 'secondary': return 'Побочный';
 			case 'low': return 'Низкий';
+			case 'today': return 'Сегодня';
+			case 'tomorrow': return 'Завтра';
+			case 'yesterday': return 'Вчера';
+			case 'now': return 'Сейчас';
 			default: return null;
 		}
 	}
