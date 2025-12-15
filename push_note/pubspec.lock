@@ -357,22 +357,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
-  glass_kit:
-    dependency: "direct main"
-    description:
-      name: glass_kit
-      sha256: ca071693b6b1c5ddc628aee030df0eb99a4063b55b5928cf84bb82f9bc32595f
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
-  glassmorphism:
-    dependency: "direct main"
-    description:
-      name: glassmorphism
-      sha256: c0f65ea2681d4ee6d4125b947946d983335cd44765e835cdc039894b076a6e31
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   glob:
     dependency: transitive
     description:
@@ -397,6 +381,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.3.1"
+  gradient_borders:
+    dependency: "direct main"
+    description:
+      name: gradient_borders
+      sha256: "492bc88ab8d88a4117a7f00e525a669b65f19973bea7ee677f9d9de7603bf037"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   graphs:
     dependency: transitive
     description:
@@ -405,6 +397,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  gusto_neumorphic:
+    dependency: "direct main"
+    description:
+      name: gusto_neumorphic
+      sha256: "9b88298cf9038c2b7e8b18046350abae0b72b8d136242d9ad7510bd0732c18aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2"
   http:
     dependency: transitive
     description:

@@ -23,7 +23,6 @@ class TimeFormatCluster extends StatelessWidget {
         TitleForCluster(icon: AppIcons.timeFormat, title: t.timeFormat),
         const UniversalCluster(
           _OptionsList(),
-          height: 118,
         ),
       ],
     );

@@ -1,10 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:push_note/const/enums.dart';
 import 'package:push_note/domain/models/note.dart';
 import 'package:push_note/infra/date_extension.dart';
 import 'package:push_note/presentation2/widgets/base/app_card.dart';
+import 'package:push_note/presentation2/widgets/base/app_cluster.dart';
 import 'package:push_note/presentation2/widgets/brut/brut_card.dart';
+import 'package:push_note/presentation2/widgets/brut/brut_cluster.dart';
 import 'package:push_note/presentation2/widgets/glass/glass_card.dart';
+import 'package:push_note/presentation2/widgets/glass/glass_cluster.dart';
 import 'package:push_note/presentation2/widgets/neo/neo_card.dart';
+import 'package:push_note/presentation2/widgets/neo/neo_cluster.dart';
 
 class WidgetResolver {
   static AppCard card(
@@ -41,6 +46,21 @@ class WidgetResolver {
           date: date,
           isScheduled: isScheduled,
         );
+    }
+  }
+
+  // Cluster
+  static AppCluster cluster(
+    StyleType style, {
+    required Widget child,
+  }) {
+    switch (style) {
+      case StyleType.glass:
+        return GlassCluster(child);
+      case StyleType.neo:
+        return NeoCluster(child);
+      case StyleType.brut:
+        return BrutCluster(child);
     }
   }
 }

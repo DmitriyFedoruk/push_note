@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 
 class BrutalismCluster extends StatelessWidget {
@@ -10,28 +9,29 @@ class BrutalismCluster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = context.theme.cardColor;
-    return GlassmorphicContainer(
-        width: double.infinity,
-        height: height,
-        borderRadius: 12,
-        linearGradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            color.withValues(alpha: 0.2),
-            color.withValues(alpha: 0),
-          ],
-        ),
-        border: 2,
-        blur: 24,
-        borderGradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            color.withValues(alpha: 1),
-            color.withValues(alpha: 0.1),
-          ],
-        ),
-        child: child);
+    return FlutterLogo();
+    // return GlassmorphicContainer(
+    //     width: double.infinity,
+    //     height: height,
+    //     borderRadius: 12,
+    //     linearGradient: LinearGradient(
+    //       begin: Alignment.topLeft,
+    //       end: Alignment.bottomRight,
+    //       colors: [
+    //         color.withValues(alpha: 0.2),
+    //         color.withValues(alpha: 0),
+    //       ],
+    //     ),
+    //     border: 2,
+    //     blur: 24,
+    //     borderGradient: LinearGradient(
+    //       begin: Alignment.topLeft,
+    //       end: Alignment.bottomRight,
+    //       colors: [
+    //         color.withValues(alpha: 1),
+    //         color.withValues(alpha: 0.1),
+    //       ],
+    //     ),
+    //     child: child);
   }
 }

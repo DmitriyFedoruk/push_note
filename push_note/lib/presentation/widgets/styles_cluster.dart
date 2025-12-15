@@ -8,7 +8,6 @@ import 'package:push_note/presentation/glassmorhic/components/settings/widgets/c
 import 'package:push_note/presentation/glassmorhic/components/settings/widgets/tap_sector.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/widgets/title_for_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
-import 'package:push_note/presentation/widgets/custom_card.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
 import 'package:push_note/presentation2/widgets/base/app_card.dart';
 import 'package:push_note/presentation2/widgets/widget_resolver.dart';
@@ -22,7 +21,9 @@ class StylesCluster extends StatelessWidget {
     return Column(
       children: [
         TitleForCluster(icon: AppIcons.background, title: t.theme),
-        const UniversalCluster(_StylesList())
+        const UniversalCluster(
+          _StylesList(),
+        )
       ],
     );
   }
@@ -35,10 +36,8 @@ class _StylesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: Selector<SettingsProvider,
-              ({StyleType type, TimeFormatType timeFormatType})>(
-          selector: (_, s) =>
-              (type: s.styleType, timeFormatType: s.timeFormatType),
+      child: Selector<SettingsProvider, ({StyleType type, TimeFormatType timeFormatType})>(
+          selector: (_, s) => (type: s.styleType, timeFormatType: s.timeFormatType),
           builder: (_, data, __) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,25 +46,19 @@ class _StylesList extends StatelessWidget {
                   StyleType.glass,
                   isActive: data.type == StyleType.glass,
                   timeFormatType: data.timeFormatType,
-                  onTap: () => context
-                      .read<SettingsProvider>()
-                      .setStyleType(StyleType.glass),
+                  onTap: () => context.read<SettingsProvider>().setStyleType(StyleType.glass),
                 ),
                 _OneItem(
                   StyleType.neo,
                   isActive: data.type == StyleType.neo,
                   timeFormatType: data.timeFormatType,
-                  onTap: () => context
-                      .read<SettingsProvider>()
-                      .setStyleType(StyleType.neo),
+                  onTap: () => context.read<SettingsProvider>().setStyleType(StyleType.neo),
                 ),
                 _OneItem(
                   StyleType.brut,
                   isActive: data.type == StyleType.brut,
                   timeFormatType: data.timeFormatType,
-                  onTap: () => context
-                      .read<SettingsProvider>()
-                      .setStyleType(StyleType.brut),
+                  onTap: () => context.read<SettingsProvider>().setStyleType(StyleType.brut),
                 )
               ],
             );
@@ -88,14 +81,17 @@ class _OneItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppCard card = WidgetResolver.card(styleType,
-        note: Note(
-          title: 'title',
-          createdAt: DateTime.now(),
-          scheduledDate: null,
-        ),
-        timeFormatType: timeFormatType,
-        isScheduled: false);
+    final t = Translations.of(context);
+    final AppCard card = WidgetResolver.card(
+      styleType,
+      note: Note(
+        title: t.createNewTask,
+        createdAt: DateTime.now(),
+        scheduledDate: null,
+      ),
+      timeFormatType: timeFormatType,
+      isScheduled: false,
+    );
     return TapSector(
       onTap: onTap,
       child: Column(
@@ -103,7 +99,7 @@ class _OneItem extends StatelessWidget {
         children: [
           card,
           const SizedBox(height: 12),
-          CustomRadioButton(isActive: isActive)
+          CustomRadioButton(isActive: isActive),
         ],
       ),
     );

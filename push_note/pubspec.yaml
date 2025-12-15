@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
   flutter_local_notifications: ^19.4.0
-  glassmorphism: ^3.0.0
-  glass_kit: ^4.0.2
+  gusto_neumorphic: ^3.3.2
+  gradient_borders: ^1.0.2
   google_fonts: ^6.3.0
   # path
   path: ^1.9.1

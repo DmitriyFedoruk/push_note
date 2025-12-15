@@ -21,7 +21,6 @@ class LanguageCluster extends StatelessWidget {
         TitleForCluster(icon: AppIcons.timeFormat, title: t.language),
         const UniversalCluster(
           _OptionsList(),
-          height: 118,
         ),
       ],
     );
