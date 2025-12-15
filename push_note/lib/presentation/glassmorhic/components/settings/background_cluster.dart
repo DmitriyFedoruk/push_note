@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/images.dart';
 import 'package:push_note/gen/strings.g.dart';
-import 'package:push_note/presentation/components/settings/widgets/custom_radio_button.dart';
-import 'package:push_note/presentation/components/settings/widgets/tap_sector.dart';
-import 'package:push_note/presentation/components/settings/widgets/title_for_cluster.dart';
-import 'package:push_note/presentation/components/settings/widgets/universal_cluster.dart';
+import 'package:push_note/presentation/glassmorhic/components/settings/widgets/custom_radio_button.dart';
+import 'package:push_note/presentation/glassmorhic/components/settings/widgets/tap_sector.dart';
+import 'package:push_note/presentation/glassmorhic/components/settings/widgets/title_for_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
+import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
 class BackgroundCluster extends StatelessWidget {
   const BackgroundCluster({super.key});

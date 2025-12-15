@@ -48,3 +48,18 @@ enum TimeFormatType {
     };
   }
 }
+
+enum StyleType {
+  glassmorphic,
+  neumorphic,
+  brutalism;
+
+  factory StyleType.fromString(String str) {
+    return switch (str) {
+      'glassmorphic' => StyleType.glassmorphic,
+      'neumorphic' => StyleType.neumorphic,
+      'brutalism' => StyleType.brutalism,
+      String() => StyleType.glassmorphic,
+    };
+  }
+}

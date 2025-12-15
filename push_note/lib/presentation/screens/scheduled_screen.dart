@@ -5,9 +5,9 @@ import 'package:push_note/const/enums.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
-import 'package:push_note/presentation/components/cards/custom_card.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
+import 'package:push_note/presentation/widgets/custom_card.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 class ScheduledScreen extends StatelessWidget {
@@ -67,7 +67,7 @@ class _List extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final type = context.select((SettingsProvider prov) => prov.cardFillType);
+    final styleType = context.select((SettingsProvider prov) => prov.styleType);
     final timeFormatType = context.select((SettingsProvider prov) => prov.timeFormatType);
     return Consumer<NotesProvider>(builder: (context, prov, child) {
       final scheduledNotes = prov.scheduledNotes;
@@ -84,7 +84,7 @@ class _List extends StatelessWidget {
           },
           itemBuilder: (context, index) {
             return CustomCard(
-              type: type,
+              styleType: styleType,
               note: scheduledNotes[index],
               timeFormatType: timeFormatType,
               isScheduled: true,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
-import 'package:push_note/routing/app_routes.dart';
 
 class SettingsAppbar extends StatelessWidget implements PreferredSizeWidget {
   const SettingsAppbar({super.key});
@@ -17,27 +15,9 @@ class SettingsAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: false,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              context.go(AppRoutes.root);
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              size: 32,
-              color: color,
-            ),
-          ),
-          Text(
-            t.settings,
-            style: DMSerifTextStyle.appBarTextStyle.copyWith(color: color),
-          ),
-          const SizedBox(
-            width: 48,
-          )
-        ],
+      title: Text(
+        t.settings,
+        style: DMSerifTextStyle.appBarTextStyle.copyWith(color: color),
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,

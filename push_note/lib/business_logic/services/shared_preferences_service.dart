@@ -3,6 +3,8 @@ import 'package:push_note/gen/strings.g.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
+  static const String _styleTypeKey = 'styleTypeKey';
+
   static const String _backgroundKey = 'background';
   static const String _cardFillTypeKey = 'cardFillTypeKey';
   static const String _timeFormatTypeKey = 'timeFormatTypeKey';
@@ -22,6 +24,15 @@ class SharedPreferencesService {
   }
 
   //Methods
+
+  //Style
+  static void setStyleType(StyleType styleType) {
+    _prefs.setString(_styleTypeKey, styleType.name);
+  }
+
+  static StyleType getStyleType() {
+    return StyleType.fromString(_prefs.getString(_backgroundKey) ?? '');
+  }
 
   //Background
   static void setBackgroundString(String background) {

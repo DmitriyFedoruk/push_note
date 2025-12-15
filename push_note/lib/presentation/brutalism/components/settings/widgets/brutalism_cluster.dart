@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 
-class UniversalCluster extends StatelessWidget {
+class BrutalismCluster extends StatelessWidget {
   final Widget child;
   final double height;
-  const UniversalCluster(this.child, {this.height = 192, super.key});
+  const BrutalismCluster(this.child, {this.height = 192, super.key});
 
   @override
   Widget build(BuildContext context) {

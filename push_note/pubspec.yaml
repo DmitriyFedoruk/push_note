@@ -12,6 +12,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   flutter_local_notifications: ^19.4.0
   glassmorphism: ^3.0.0
+  glass_kit: ^4.0.2
   google_fonts: ^6.3.0
   # path
   path: ^1.9.1
@@ -25,7 +26,6 @@ dependencies:
   intl: ^0.20.2
   shared_preferences: ^2.5.3
   flutter_svg: ^2.2.1
-  adaptive_theme: ^3.7.2
   #localization
   slang: ^4.9.2
   slang_flutter: ^4.9.0

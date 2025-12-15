@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/const/enums.dart';
-import 'package:push_note/presentation/components/app_bar/settings_app_bar.dart';
-import 'package:push_note/presentation/components/settings/background_cluster.dart';
-import 'package:push_note/presentation/components/settings/gradient_cluster.dart';
-import 'package:push_note/presentation/components/settings/language_cluster.dart';
-import 'package:push_note/presentation/components/settings/theme_cluster.dart';
-import 'package:push_note/presentation/components/settings/time_format_cluster.dart';
+import 'package:push_note/presentation/glassmorhic/components/app_bar/settings_app_bar.dart';
+import 'package:push_note/presentation/glassmorhic/components/settings/background_cluster.dart';
+import 'package:push_note/presentation/glassmorhic/components/settings/language_cluster.dart';
+import 'package:push_note/presentation/glassmorhic/components/settings/time_format_cluster.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
+import 'package:push_note/presentation/widgets/styles_cluster.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -41,11 +40,11 @@ class SettingsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 30.0),
+                    StylesCluster(),
+                    SizedBox(height: 36.0),
                     BackgroundCluster(),
                     SizedBox(height: 36.0),
-                    ThemeCluster(),
-                    SizedBox(height: 36.0),
-                    GradientCluster(),
+                    // GradientCluster(),
                     SizedBox(height: 36.0),
                     TimeFormatCluster(),
                     SizedBox(height: 36.0),
