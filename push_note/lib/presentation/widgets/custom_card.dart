@@ -82,12 +82,13 @@ class CustomCard extends StatelessWidget {
         ],
         offset: const Offset(180, -20),
         child: switch (styleType) {
-          StyleType.glassmorphic => GlassmorphicCard(note: note, timeFormatType: timeFormatType),
-          StyleType.neumorphic => BrutalismCard(
+          StyleType.glass =>
+            GlassmorphicCard(note: note, timeFormatType: timeFormatType),
+          StyleType.neo => BrutalismCard(
               note: note,
               timeFormatType: timeFormatType,
             ),
-          StyleType.brutalism => NeumorphicCard(
+          StyleType.brut => NeumorphicCard(
               note: note,
               timeFormatType: timeFormatType,
             ),

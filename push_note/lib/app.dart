@@ -24,12 +24,10 @@ class _App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((SettingsProvider provider) => provider.theme);
     return MaterialApp.router(
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      theme: theme,
       debugShowCheckedModeBanner: false,
       routerConfig: router,
     );

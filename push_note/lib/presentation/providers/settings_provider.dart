@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:push_note/business_logic/services/shared_preferences_service.dart';
 import 'package:push_note/const/enums.dart';
-import 'package:push_note/const/styles/themes.dart';
 
 class SettingsProvider extends ChangeNotifier {
-  ThemeData theme = glassmorphicTheme;
-  StyleType styleType = StyleType.glassmorphic;
+  StyleType styleType = StyleType.glass;
 
   AppBackgrounds background = AppBackgrounds.background1;
   CardFillType cardFillType = CardFillType.gradient;
@@ -18,13 +16,8 @@ class SettingsProvider extends ChangeNotifier {
   void initialLoad() {
     styleType = SharedPreferencesService.getStyleType();
 
-    theme = switch (styleType) {
-      StyleType.glassmorphic => glassmorphicTheme,
-      StyleType.neumorphic => neumorphicTheme,
-      StyleType.brutalism => brutalismTheme,
-    };
-
-    background = AppBackgrounds.fromString(SharedPreferencesService.getBackgroundString());
+    background = AppBackgrounds.fromString(
+        SharedPreferencesService.getBackgroundString());
     cardFillType = SharedPreferencesService.getCardFillType();
     timeFormatType = SharedPreferencesService.getTimeFormatType();
     notifyListeners();

@@ -7,23 +7,21 @@ import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class UniversalCluster extends StatelessWidget {
   final Widget child;
-  // final double height;
-  const UniversalCluster(this.child,
-      { //this.height = 192,
-      super.key});
+  final double height;
+  const UniversalCluster(this.child, {this.height = 192, super.key});
 
   @override
   Widget build(BuildContext context) {
     final styleType = context.select((SettingsProvider prov) => prov.styleType);
     return switch (styleType) {
-      StyleType.glassmorphic => GlassmorphicCluster(
+      StyleType.glass => GlassmorphicCluster(
           child,
-          //  height: height,
+          height: height,
         ),
-      StyleType.neumorphic => throw UnimplementedError(),
-      StyleType.brutalism => BrutalismCluster(
+      StyleType.neo => throw UnimplementedError(),
+      StyleType.brut => BrutalismCluster(
           child,
-          // height: height,
+          height: height,
         ),
     };
   }
