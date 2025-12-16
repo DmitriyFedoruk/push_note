@@ -4,6 +4,7 @@ class AppColors {
   static const Color white = Color(0xffFFFFFF);
   static const Color black = Color(0xff000000);
   static const Color grey = Color(0xffD9D9D9);
+  static const Color lightGrey = Color.fromARGB(255, 207, 212, 220);
   static const Color greyDark = Color(0xff8D8C8C);
   static const Color turquoise = Color(0xffBFD7EA);
 
@@ -14,6 +15,13 @@ class AppColors {
   static const Color secondaryColor = Color(0xff461515);
 
   static const Color inactiveColor = Color(0xff8D8C8C);
+
+  static const Color neoText = Color.fromARGB(255, 108, 110, 111);
+  static const Color neoAccent = Color.fromARGB(255, 176, 55, 192);
+
+  static const Color glassText = Color(0xffFFFFFF);
+
+  static const Color brutText = Color(0xff000000);
 }
 
 class NoteColors {

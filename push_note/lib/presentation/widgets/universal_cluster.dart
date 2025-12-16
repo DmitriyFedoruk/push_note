@@ -5,8 +5,7 @@ import 'package:push_note/presentation2/widgets/widget_resolver.dart';
 
 class UniversalCluster extends StatelessWidget {
   final Widget child;
-  final double height;
-  const UniversalCluster(this.child, {this.height = 192, super.key});
+  const UniversalCluster(this.child, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -17,6 +17,7 @@ class AppIcons {
   static const String theme = 'assets/icons/theme.svg';
   static const String gradient = 'assets/icons/gradient.svg';
   static const String timeFormat = 'assets/icons/time_format.svg';
+  static const String language = 'assets/icons/language.svg';
 
   static const String add = 'assets/icons/add.svg';
   static const String reschedule = 'assets/icons/reschedule.svg';

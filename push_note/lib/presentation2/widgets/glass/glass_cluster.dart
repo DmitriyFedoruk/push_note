@@ -5,11 +5,12 @@ import 'package:push_note/presentation2/widgets/base/app_cluster.dart';
 
 class GlassCluster extends AppCluster {
   final Widget child;
-  const GlassCluster(this.child, {super.key});
+  final double width;
+  const GlassCluster({required this.child, this.width = 2, super.key});
 
   @override
   Widget build(BuildContext context) {
-    const color = AppColors.black;
+    const color = AppColors.white;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -18,7 +19,7 @@ class GlassCluster extends AppCluster {
             color.withValues(alpha: 1),
             color.withValues(alpha: 0.3),
           ]),
-          width: 2,
+          width: width,
         ),
         gradient: LinearGradient(
           begin: Alignment.topLeft,

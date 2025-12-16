@@ -1,62 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:push_note/const/enums.dart';
-import 'package:push_note/const/styles/styles.dart';
-import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 import 'package:push_note/presentation/providers/settings_provider.dart';
+import 'package:push_note/presentation/widgets/custom_app_bar.dart';
 import 'package:push_note/presentation/widgets/custom_card.dart';
-import 'package:push_note/routing/app_routes.dart';
+import 'package:push_note/presentation/widgets/universal_background.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          // Background Image
-          Positioned.fill(
-            child: Selector<SettingsProvider, AppBackgrounds>(
-              selector: (_, prov) => prov.background,
-              builder: (context, background, _) {
-                return Image.asset(
-                  background.image,
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-          ),
-          CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                floating: true,
-                pinned: true,
-                leading: IconButton(
-                  onPressed: () {
-                    context.go(AppRoutes.root);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    size: 32,
-                    color: theme.cardColor,
-                  ),
-                ),
-                centerTitle: true,
-                title: Text(
-                  t.history,
-                  style: DMSerifTextStyle.appBarTextStyle.copyWith(color: theme.cardColor),
-                ),
-                backgroundColor: theme.textTheme.labelMedium?.color,
-              ),
-              const _List(),
-            ],
-          ),
-        ],
+      extendBodyBehindAppBar: true,
+      appBar: CustomAppbar(t.history),
+      body: const Stack(
+        alignment: Alignment.topCenter,
+        children: [UniversalBackground(), SafeArea(child: _List())],
       ),
     );
   }
@@ -69,28 +30,27 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     final styleType = context.select((SettingsProvider prov) => prov.styleType);
     final timeFormatType = context.select((SettingsProvider prov) => prov.timeFormatType);
-    return Consumer<NotesProvider>(builder: (context, prov, child) {
-      final historyNotes = prov.historyNotes;
-      return SliverPadding(
-        padding: const EdgeInsetsGeometry.symmetric(
-          horizontal: 24,
-          vertical: 40,
-        ),
-        sliver: SliverList.separated(
-          itemCount: historyNotes.length,
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 12);
-          },
-          itemBuilder: (context, index) {
-            return CustomCard(
-              styleType: styleType,
-              note: historyNotes[index],
-              timeFormatType: timeFormatType,
-              isScheduled: false,
-            );
-          },
-        ),
-      );
-    });
+    return Consumer<NotesProvider>(
+      builder: (context, prov, child) {
+        final historyNotes = prov.historyNotes + prov.historyNotes + prov.historyNotes;
+        return ListView.separated(
+            padding: const EdgeInsetsGeometry.symmetric(
+              horizontal: 24,
+              vertical: 40,
+            ),
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 12);
+            },
+            itemCount: historyNotes.length,
+            itemBuilder: (context, index) {
+              return CustomCard(
+                styleType: styleType,
+                note: historyNotes[index],
+                timeFormatType: timeFormatType,
+                isScheduled: false,
+              );
+            });
+      },
+    );
   }
 }

@@ -7,7 +7,7 @@ import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/widgets/custom_radio_button.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/widgets/tap_sector.dart';
-import 'package:push_note/presentation/glassmorhic/components/settings/widgets/title_for_cluster.dart';
+import 'package:push_note/presentation/widgets/universal_title.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
 class LanguageCluster extends StatelessWidget {
@@ -18,7 +18,7 @@ class LanguageCluster extends StatelessWidget {
     final t = Translations.of(context);
     return Column(
       children: [
-        TitleForCluster(icon: AppIcons.timeFormat, title: t.language),
+        UniversalTitle(icon: AppIcons.language, title: t.language),
         const UniversalCluster(
           _OptionsList(),
         ),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:push_note/const/enums.dart';
-import 'package:push_note/presentation/glassmorhic/components/app_bar/settings_app_bar.dart';
-import 'package:push_note/presentation/glassmorhic/components/settings/background_cluster.dart';
+import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/language_cluster.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/time_format_cluster.dart';
-import 'package:push_note/presentation/providers/settings_provider.dart';
+import 'package:push_note/presentation/widgets/custom_app_bar.dart';
 import 'package:push_note/presentation/widgets/styles_cluster.dart';
+import 'package:push_note/presentation/widgets/universal_background.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -15,24 +13,12 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const SettingsAppbar(),
-      body: Stack(
+      appBar: CustomAppbar(t.settings),
+      body: const Stack(
         alignment: Alignment.topCenter,
         children: [
-          SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Selector<SettingsProvider, AppBackgrounds>(
-              selector: (_, prov) => prov.background,
-              builder: (context, background, _) {
-                return Image.asset(
-                  background.image,
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-          ),
-          const SafeArea(
+          UniversalBackground(),
+          SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: SingleChildScrollView(
@@ -41,10 +27,6 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: 30.0),
                     StylesCluster(),
-                    SizedBox(height: 36.0),
-                    BackgroundCluster(),
-                    SizedBox(height: 36.0),
-                    // GradientCluster(),
                     SizedBox(height: 36.0),
                     TimeFormatCluster(),
                     SizedBox(height: 36.0),

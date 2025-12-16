@@ -27,40 +27,45 @@ class BrutCard extends AppCard {
     const textColor = AppColors.black;
 
     return BrutCluster(
-      Row(
-        children: [
-          Priority(note.priority),
-          const SizedBox(width: 4),
-          Expanded(
-            child: Text(
-              note.title,
-              style: DMSerifTextStyle.middle.copyWith(color: textColor),
+      isCard: true,
+      width: 1.5,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Priority(note.priority),
+            const SizedBox(width: 4),
+            Expanded(
+              child: Text(
+                note.title,
+                style: DMSerifTextStyle.middle.copyWith(color: textColor),
+              ),
             ),
-          ),
-          if (isScheduled)
-            SvgPicture.asset(
-              AppIcons.scheduled,
-              width: 24,
-              height: 24,
-              colorFilter: textColor.toFilter,
-            ),
-          SizedBox(
-            width: 70,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  time,
-                  style: RobotoTextStyle.small_12.copyWith(color: textColor),
-                ),
-                Text(
-                  date,
-                  style: RobotoTextStyle.small_8.copyWith(color: textColor),
-                ),
-              ],
-            ),
-          )
-        ],
+            if (isScheduled)
+              SvgPicture.asset(
+                AppIcons.scheduled,
+                width: 24,
+                height: 24,
+                colorFilter: textColor.toFilter,
+              ),
+            SizedBox(
+              width: 70,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    time,
+                    style: RobotoTextStyle.small_12.copyWith(color: textColor),
+                  ),
+                  Text(
+                    date,
+                    style: RobotoTextStyle.small_8.copyWith(color: textColor),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
