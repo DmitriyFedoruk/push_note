@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/create_note.dart';
@@ -90,6 +91,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                   Expanded(
                     child: CustomButton(
                       onTap: () async {
+                        AdaptiveTheme.of(context).setLight();
                         final res = await dateTimePickerMethod(context);
                         setState(() {
                           scheduledDate = res;

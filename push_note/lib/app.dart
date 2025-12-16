@@ -24,6 +24,8 @@ class PushNoteApp extends StatelessWidget {
         dark: darkTheme,
         initial: AdaptiveThemeMode.light,
         builder: (theme, darkTheme) => MaterialApp.router(
+          theme: theme,
+          darkTheme: darkTheme,
           locale: TranslationProvider.of(context).flutterLocale,
           supportedLocales: AppLocaleUtils.supportedLocales,
           localizationsDelegates: GlobalMaterialLocalizations.delegates,

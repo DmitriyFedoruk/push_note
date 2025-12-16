@@ -3,7 +3,7 @@ import 'package:push_note/const/styles/colors.dart';
 
 ThemeData get lightTheme => ThemeData(
       useMaterial3: true,
-      cardColor: AppColors.white,
+      cardColor: AppColors.black,
       dividerColor: AppColors.grey,
       textTheme: const TextTheme(
         bodyMedium: TextStyle(color: AppColors.white),
@@ -13,7 +13,7 @@ ThemeData get lightTheme => ThemeData(
         ),
       ),
       shadowColor: AppColors.black,
-      hoverColor: AppColors.grey,
+      hoverColor: AppColors.greyDark,
     );
 
 ThemeData get darkTheme => ThemeData(

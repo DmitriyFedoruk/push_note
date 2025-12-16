@@ -15,7 +15,6 @@ void main() async {
   await initializeNotification();
   await SharedPreferencesService.init();
   await initLocale();
-
   objectbox = await ObjectBox.create();
   var orientations = [
     DeviceOrientation.portraitUp,
