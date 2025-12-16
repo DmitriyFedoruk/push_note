@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
-import 'package:push_note/gen/strings.g.dart';
-import 'package:push_note/presentation/glassmorhic/components/menu_button.dart';
-import 'package:push_note/routing/app_routes.dart';
 
 class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppbar({super.key});
@@ -25,27 +21,6 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
           Text(
             AppStrings.appName,
             style: DMSerifTextStyle.appBarTextStyle.copyWith(color: theme.textTheme.bodyMedium?.color),
-          ),
-          MenuButton(
-            options: [
-              CustomMenuItemButtonWithText(
-                onPressed: () => context.go(AppRoutes.scheduled),
-                text: t.scheduled,
-              ),
-              CustomMenuItemButtonWithText(
-                onPressed: () => context.go(AppRoutes.history),
-                text: t.history,
-              ),
-              CustomMenuItemButtonWithText(
-                onPressed: () => context.go(AppRoutes.settings),
-                text: t.settings,
-              ),
-            ],
-            offset: const Offset(-90, 0),
-            child: Icon(
-              Icons.more_vert,
-              color: theme.textTheme.bodyMedium?.color,
-            ),
           ),
         ],
       ),

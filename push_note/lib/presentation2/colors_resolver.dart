@@ -13,4 +13,15 @@ class ColorsResolver {
         return AppColors.brutText;
     }
   }
+
+  static Color hoverColor(StyleType style) {
+    switch (style) {
+      case StyleType.glass:
+        return AppColors.glassHover;
+      case StyleType.neo:
+        return AppColors.neoHover;
+      case StyleType.brut:
+        return AppColors.brutHover;
+    }
+  }
 }

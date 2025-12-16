@@ -77,7 +77,6 @@ class CustomCard extends StatelessWidget {
           icon: AppIcons.trash,
         ),
       ],
-      offset: const Offset(180, -20),
       child: WidgetResolver.card(
         styleType,
         note: note,

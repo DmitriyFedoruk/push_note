@@ -19,7 +19,6 @@ class BrutCluster extends AppCluster {
           width: width,
         ),
       ),
-      padding: const EdgeInsets.all(8.0),
       child: child,
     );
   }
