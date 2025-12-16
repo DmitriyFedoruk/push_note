@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "86.0.0"
+  adaptive_theme:
+    dependency: "direct main"
+    description:
+      name: adaptive_theme
+      sha256: "5caccff82e40ef6d3ebb28caaa091ab1865b0e35bd2ab2ddccf49cd336331012"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.2"
   analyzer:
     dependency: transitive
     description:
@@ -381,14 +389,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.3.1"
-  gradient_borders:
-    dependency: "direct main"
-    description:
-      name: gradient_borders
-      sha256: "492bc88ab8d88a4117a7f00e525a669b65f19973bea7ee677f9d9de7603bf037"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
   graphs:
     dependency: transitive
     description:
@@ -397,14 +397,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
-  gusto_neumorphic:
-    dependency: "direct main"
-    description:
-      name: gusto_neumorphic
-      sha256: "9b88298cf9038c2b7e8b18046350abae0b72b8d136242d9ad7510bd0732c18aa"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.3.2"
   http:
     dependency: transitive
     description:

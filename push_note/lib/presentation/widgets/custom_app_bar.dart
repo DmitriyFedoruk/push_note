@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:push_note/const/styles/styles.dart';
-import 'package:push_note/presentation/providers/settings_provider.dart';
-import 'package:push_note/presentation2/colors_resolver.dart';
+import 'package:push_note/extensions/theme_extension.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -13,8 +11,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = context.select((SettingsProvider prov) => prov.styleType);
-    final color = ColorsResolver.textColor(style);
+    final color = context.theme.cardColor;
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: false,

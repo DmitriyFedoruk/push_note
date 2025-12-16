@@ -1,8 +1,5 @@
 class AppImages {
-  static const String background = 'assets/background.jpg';
-  static const String background1 = 'assets/background1.png';
-  static const String background2 = 'assets/background2.png';
-  static const String background3 = 'assets/background3.png';
+  static const String background = 'assets/background2.png';
 
   static const String logo = 'assets/logo.png';
   static const String statusHigh = 'assets/status_high.png';

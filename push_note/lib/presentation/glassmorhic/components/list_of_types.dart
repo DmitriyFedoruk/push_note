@@ -3,6 +3,7 @@ import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
+import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
 class ListOfTypes extends StatelessWidget {
   final NotesColorsEnum? selectedItem;
@@ -15,26 +16,28 @@ class ListOfTypes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ...noteColors.map(
-                  (e) => _OneItem(
-                    e,
-                    isSelected: selectedItem == e,
-                    onTap: () {
-                      chooseItem(e);
-                    },
-                  ),
-                )
-              ],
-            ),
-          ],
-        ));
+    return UniversalCluster(
+      child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ...noteColors.map(
+                    (e) => _OneItem(
+                      e,
+                      isSelected: selectedItem == e,
+                      onTap: () {
+                        chooseItem(e);
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ],
+          )),
+    );
   }
 }
 
