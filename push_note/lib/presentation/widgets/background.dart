@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:push_note/const/images.dart';
 
 class Background extends StatelessWidget {
@@ -9,8 +10,8 @@ class Background extends StatelessWidget {
     return SizedBox(
       height: double.infinity,
       width: double.infinity,
-      child: Image.asset(
-        AppImages.background,
+      child: SvgPicture.asset(
+        AppImages.back5,
         fit: BoxFit.fill,
       ),
     );

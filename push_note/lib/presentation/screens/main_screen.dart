@@ -19,16 +19,12 @@ class MainScreen extends StatelessWidget {
           Background(),
           Padding(
             padding: EdgeInsets.only(
-              left: 30.0,
-              top: 200,
+              left: 30,
+              top: 120,
               right: 30,
               bottom: 30,
             ),
-            child: Column(
-              children: [
-                CreateNoteCluster(),
-              ],
-            ),
+            child: CreateNoteCluster(),
           )
         ],
       ),

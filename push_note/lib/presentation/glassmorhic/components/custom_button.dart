@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:push_note/const/styles/colors.dart';
+import 'package:push_note/extensions/theme_extension.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onTap;
@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return MaterialButton(
       height: 48.0,
       elevation: 0,
@@ -20,13 +21,9 @@ class CustomButton extends StatelessWidget {
       highlightElevation: 0,
       hoverElevation: 0,
       enableFeedback: false,
-      color: AppColors.turquoise,
-      disabledColor: AppColors.disabledColor,
+      color: theme.cardColor,
+      disabledColor: theme.dividerColor,
       highlightColor: Colors.transparent,
-      splashColor: AppColors.buttonColor.withValues(alpha: 0.2),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
-      ),
       onPressed: onTap,
       child: child,
     );

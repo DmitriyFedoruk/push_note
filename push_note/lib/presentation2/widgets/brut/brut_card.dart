@@ -32,7 +32,7 @@ class BrutCard extends AppCard {
           Expanded(
             child: Text(
               note.title,
-              style: DMSerifTextStyle.middle.copyWith(color: _textColor),
+              style: BebasTextStyle.middle.copyWith(color: _textColor),
             ),
           ),
           if (isScheduled)

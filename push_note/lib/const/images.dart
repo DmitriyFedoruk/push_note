@@ -7,6 +7,12 @@ class AppImages {
   static const String statusMiddle = 'assets/status_middle.png';
   static const String statusPreMiddle = 'assets/status_pre_middle.png';
   static const String statusLow = 'assets/status_low.png';
+
+  static const String back1 = 'assets/back1.svg';
+  static const String back2 = 'assets/back2.svg';
+  static const String back3 = 'assets/back3.svg';
+  static const String back4 = 'assets/back4.svg';
+  static const String back5 = 'assets/back5.svg';
 }
 
 class AppIcons {

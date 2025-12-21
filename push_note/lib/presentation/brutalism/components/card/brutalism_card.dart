@@ -56,7 +56,7 @@ class BrutalismCard extends StatelessWidget {
             Expanded(
               child: Text(
                 note.title,
-                style: DMSerifTextStyle.middle.copyWith(color: theme.textTheme.labelMedium?.color),
+                style: BebasTextStyle.middle.copyWith(color: theme.textTheme.labelMedium?.color),
               ),
             ),
             if (isScheduled)

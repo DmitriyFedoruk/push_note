@@ -4,10 +4,12 @@ import 'package:push_note/const/styles/colors.dart';
 ThemeData get lightTheme => ThemeData(
       useMaterial3: true,
       cardColor: AppColors.black,
+      primaryColor: AppColors.white,
       dividerColor: AppColors.grey,
+      splashColor: AppColors.accentColor,
       textTheme: const TextTheme(
-        bodyMedium: TextStyle(color: AppColors.white),
-        labelMedium: TextStyle(color: AppColors.black),
+        bodyMedium: TextStyle(color: AppColors.black),
+        labelMedium: TextStyle(color: AppColors.white),
         labelLarge: TextStyle(
           color: AppColors.greyDark,
         ),

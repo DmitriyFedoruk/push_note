@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:push_note/business_logic/create_note.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/domain/models/note.dart';
 import 'package:push_note/main.dart';
@@ -40,11 +41,16 @@ class NotesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addNote({
+  Future<void> addNote({
     required String title,
     required NotesColorsEnum? type,
     required DateTime? scheduledDate,
-  }) {
+  }) async {
+    await createNote(
+      title,
+      type,
+      scheduledDate,
+    );
     final note = Note(
       title: title,
       type: type,

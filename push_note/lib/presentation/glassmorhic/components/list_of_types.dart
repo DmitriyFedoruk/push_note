@@ -74,13 +74,13 @@ class _OneItem extends StatelessWidget {
             padding: const EdgeInsets.all(6),
             child: Image.asset(
               getImage(item),
-              color: context.theme.cardColor,
+              color: isSelected ? context.theme.cardColor : context.theme.primaryColor,
             ),
           ),
           const SizedBox(height: 8.0),
           Text(
             getTitle(item),
-            style: RobotoTextStyle.small_12_reg,
+            style: isSelected ? RobotoTextStyle.small_12 : RobotoTextStyle.small_12_reg,
           )
         ],
       ),

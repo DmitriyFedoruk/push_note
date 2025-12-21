@@ -13,11 +13,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final color = context.theme.cardColor;
     return AppBar(
-      centerTitle: true,
+      centerTitle: false,
       automaticallyImplyLeading: false,
-      title: Text(
-        title,
-        style: DMSerifTextStyle.appBarTextStyle.copyWith(color: color),
+      title: Padding(
+        padding: const EdgeInsets.only(top: 10, left: 12),
+        child: Text(
+          title,
+          style: BebasTextStyle.appBarTextStyle.copyWith(color: color),
+        ),
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,
