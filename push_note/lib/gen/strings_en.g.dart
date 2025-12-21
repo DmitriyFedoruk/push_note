@@ -102,6 +102,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Low'
 	String get low => 'Low';
+
+	/// en: 'Coming soon'
+	String get comingSoon => 'Coming soon';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -137,6 +140,7 @@ extension on Translations {
 			case 'middle': return 'Middle';
 			case 'secondary': return 'Secondary';
 			case 'low': return 'Low';
+			case 'comingSoon': return 'Coming soon';
 			default: return null;
 		}
 	}

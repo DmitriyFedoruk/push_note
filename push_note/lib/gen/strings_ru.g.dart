@@ -57,6 +57,7 @@ class TranslationsRu implements Translations {
 	@override String get middle => 'Средний';
 	@override String get secondary => 'Побочный';
 	@override String get low => 'Низкий';
+	@override String get comingSoon => 'Скоро появится';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -92,6 +93,7 @@ extension on TranslationsRu {
 			case 'middle': return 'Средний';
 			case 'secondary': return 'Побочный';
 			case 'low': return 'Низкий';
+			case 'comingSoon': return 'Скоро появится';
 			default: return null;
 		}
 	}

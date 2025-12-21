@@ -5,7 +5,7 @@ import 'package:push_note/presentation/screens/main_screen.dart';
 import 'package:push_note/presentation/screens/root_screen.dart';
 import 'package:push_note/presentation/screens/scheduled_screen.dart';
 import 'package:push_note/presentation/screens/settings_screen.dart';
-import 'package:push_note/presentation/screens/statistic_screen.dart';
+import 'package:push_note/presentation/screens/progress_screen.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -25,7 +25,7 @@ final GoRouter router = GoRouter(
               GoRoute(
                 path: AppRoutes.statistic,
                 builder: (BuildContext context, GoRouterState state) {
-                  return const StatisticScreen();
+                  return const ProgressScreen();
                 },
               ),
             ],
