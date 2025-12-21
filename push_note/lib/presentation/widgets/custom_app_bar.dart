@@ -11,19 +11,43 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = context.theme.cardColor;
     return AppBar(
       centerTitle: false,
       automaticallyImplyLeading: false,
-      title: Padding(
-        padding: const EdgeInsets.only(top: 10, left: 12),
-        child: Text(
-          title,
-          style: BebasTextStyle.appBarTextStyle.copyWith(color: color),
-        ),
-      ),
+      title: _Text(title),
       elevation: 0,
       backgroundColor: Colors.transparent,
+    );
+  }
+}
+
+class CustomSliverAppBar extends StatelessWidget {
+  final String title;
+  const CustomSliverAppBar(this.title, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      floating: true,
+      title: _Text(title),
+      backgroundColor: Colors.transparent,
+    );
+  }
+}
+
+class _Text extends StatelessWidget {
+  final String title;
+  const _Text(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    final color = context.theme.cardColor;
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, left: 12),
+      child: Text(
+        title,
+        style: BebasTextStyle.appBarTextStyle.copyWith(color: color),
+      ),
     );
   }
 }
