@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:push_note/extensions/theme_extension.dart';
+import 'package:push_note/gen/strings.g.dart';
 
 class RootScreen extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
@@ -10,92 +12,72 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
           selectedIndex: navigationShell.currentIndex,
-          indicatorColor: Colors.transparent,
+          indicatorColor: theme.splashColor,
           onDestinationSelected: navigationShell.goBranch,
-          destinations: const [
+          backgroundColor: Colors.white,
+          destinations: [
             NavigationDestination(
-              icon: Icon(Icons.bar_chart),
-              label: 'Statistic',
+              selectedIcon: Icon(
+                Icons.bar_chart,
+                color: theme.primaryColor,
+              ),
+              icon: Icon(
+                Icons.bar_chart,
+                color: theme.cardColor,
+              ),
+              label: t.progress,
             ),
             NavigationDestination(
-              icon: Icon(Icons.schedule_rounded),
-              label: 'Scheduled',
+              selectedIcon: Icon(
+                Icons.timer,
+                color: theme.primaryColor,
+              ),
+              icon: Icon(
+                Icons.timer,
+                color: theme.cardColor,
+              ),
+              label: t.scheduled,
             ),
             NavigationDestination(
-              icon: Icon(Icons.add_box_rounded),
-              label: 'Create',
+              selectedIcon: Icon(
+                Icons.add_box_sharp,
+                color: theme.primaryColor,
+              ),
+              icon: Icon(
+                Icons.add_box_sharp,
+                color: theme.cardColor,
+              ),
+              label: t.create,
             ),
             NavigationDestination(
-              icon: Icon(Icons.format_list_bulleted_rounded),
-              label: 'History',
+              selectedIcon: Icon(
+                Icons.task_sharp,
+                color: theme.primaryColor,
+              ),
+              icon: Icon(
+                Icons.task_sharp,
+                color: theme.cardColor,
+              ),
+              label: t.history,
             ),
             NavigationDestination(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
+              selectedIcon: Icon(
+                Icons.account_box_sharp,
+                color: theme.primaryColor,
+              ),
+              icon: Icon(
+                Icons.account_box_sharp,
+                color: theme.cardColor,
+              ),
+              label: t.settings,
             ),
           ]),
     );
   }
 }
-
-// class RootScreen extends StatefulWidget {
-//   const RootScreen({super.key});
-
-//   @override
-//   State<RootScreen> createState() => _RootScreenState();
-// }
-
-// class _RootScreenState extends State<RootScreen> {
-//   int _selectedIndex = 0;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: switch (_selectedIndex) {
-//         0 => const SizedBox(),
-//         1 => const ScheduledScreen(),
-//         2 => const MainScreen(),
-//         3 => const HistoryScreen(),
-//         4 => const SettingsScreen(),
-//         int() => const SizedBox(),
-//       },
-//       bottomNavigationBar: BottomNavigationBar(
-//           type: BottomNavigationBarType.shifting,
-//           selectedItemColor: Colors.green,
-//           unselectedItemColor: Colors.grey,
-//           backgroundColor: Colors.blue,
-//           currentIndex: _selectedIndex,
-//           onTap: (value) {
-//             setState(() {
-//               _selectedIndex = value;
-//             });
-//           },
-//           items: const [
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.bar_chart),
-//               label: 'Statistic',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.schedule_rounded),
-//               label: 'Scheduled',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.add_box_rounded),
-//               label: 'Create',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.format_list_bulleted_rounded),
-//               label: 'History',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.settings),
-//               label: 'Settings',
-//             ),
-//           ]),
-//     );
-//   }
-// }

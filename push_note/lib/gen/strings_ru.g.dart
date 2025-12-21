@@ -46,6 +46,7 @@ class TranslationsRu implements Translations {
 	@override String get reschedule => 'Перенести';
 	@override String get remove => 'Удалить';
 	@override String get createNewTask => 'Создать новую задачу';
+	@override String get progress => 'Достижения';
 	@override String get history => 'История';
 	@override String get scheduled => 'Запланированно';
 	@override String get scheduledAt => 'Запланированно на';
@@ -56,10 +57,6 @@ class TranslationsRu implements Translations {
 	@override String get middle => 'Средний';
 	@override String get secondary => 'Побочный';
 	@override String get low => 'Низкий';
-	@override String get today => 'Сегодня';
-	@override String get tomorrow => 'Завтра';
-	@override String get yesterday => 'Вчера';
-	@override String get now => 'Сейчас';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -84,6 +81,7 @@ extension on TranslationsRu {
 			case 'reschedule': return 'Перенести';
 			case 'remove': return 'Удалить';
 			case 'createNewTask': return 'Создать новую задачу';
+			case 'progress': return 'Достижения';
 			case 'history': return 'История';
 			case 'scheduled': return 'Запланированно';
 			case 'scheduledAt': return 'Запланированно на';
@@ -94,10 +92,6 @@ extension on TranslationsRu {
 			case 'middle': return 'Средний';
 			case 'secondary': return 'Побочный';
 			case 'low': return 'Низкий';
-			case 'today': return 'Сегодня';
-			case 'tomorrow': return 'Завтра';
-			case 'yesterday': return 'Вчера';
-			case 'now': return 'Сейчас';
 			default: return null;
 		}
 	}

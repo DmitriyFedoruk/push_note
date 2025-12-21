@@ -70,6 +70,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	/// en: 'Create a new task'
 	String get createNewTask => 'Create a new task';
 
+	/// en: 'Progress'
+	String get progress => 'Progress';
+
 	/// en: 'History'
 	String get history => 'History';
 
@@ -99,18 +102,6 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Low'
 	String get low => 'Low';
-
-	/// en: 'Today'
-	String get today => 'Today';
-
-	/// en: 'Tomorrow'
-	String get tomorrow => 'Tomorrow';
-
-	/// en: 'Yesterday'
-	String get yesterday => 'Yesterday';
-
-	/// en: 'Now'
-	String get now => 'Now';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -135,6 +126,7 @@ extension on Translations {
 			case 'reschedule': return 'Reschedule';
 			case 'remove': return 'Remove';
 			case 'createNewTask': return 'Create a new task';
+			case 'progress': return 'Progress';
 			case 'history': return 'History';
 			case 'scheduled': return 'Scheduled';
 			case 'scheduledAt': return 'Scheduled at';
@@ -145,10 +137,6 @@ extension on Translations {
 			case 'middle': return 'Middle';
 			case 'secondary': return 'Secondary';
 			case 'low': return 'Low';
-			case 'today': return 'Today';
-			case 'tomorrow': return 'Tomorrow';
-			case 'yesterday': return 'Yesterday';
-			case 'now': return 'Now';
 			default: return null;
 		}
 	}
