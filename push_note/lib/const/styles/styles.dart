@@ -24,6 +24,11 @@ class BebasTextStyle {
     fontSize: 18.0,
     fontWeight: FontWeight.w400,
   );
+
+  static final TextStyle superSmall = GoogleFonts.bebasNeue(
+    fontSize: 16.0,
+    fontWeight: FontWeight.w400,
+  );
 }
 
 class RobotoTextStyle {

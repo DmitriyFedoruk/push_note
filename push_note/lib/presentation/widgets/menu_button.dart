@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
@@ -26,6 +25,8 @@ class MenuButton extends StatelessWidget {
       style: MenuStyle(
         shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(0))),
         side: const WidgetStatePropertyAll(BorderSide(width: 1.5)),
+        elevation: WidgetStateProperty.all(1.0),
+        // padding: const WidgetStatePropertyAll(EdgeInsets.zero),
         backgroundColor: WidgetStateProperty.all(context.theme.primaryColor),
       ),
       menuChildren: options,
@@ -45,7 +46,7 @@ class CustomMenuItemButton extends StatelessWidget {
 class CustomMenuItemButtonWithIcon extends CustomMenuItemButton {
   final VoidCallback onPressed;
   final String text;
-  final String icon;
+  final IconData icon;
   const CustomMenuItemButtonWithIcon({
     super.key,
     required this.onPressed,
@@ -55,25 +56,23 @@ class CustomMenuItemButtonWithIcon extends CustomMenuItemButton {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return MenuItemButton(
       onPressed: onPressed,
-      // style: ButtonStyle(overlayColor: WidgetStatePropertyAll(hoverColor)),
+      style: ButtonStyle(overlayColor: WidgetStatePropertyAll(theme.splashColor)),
       child: SizedBox(
         width: 100,
         child: Row(
           children: [
-            SvgPicture.asset(
+            Icon(
               icon,
-              width: 16,
-              height: 16,
-              // colorFilter: color.toFilter,
+              size: 16,
+              color: theme.cardColor,
             ),
             const SizedBox(width: 4),
             Text(
               text,
-              style: RobotoTextStyle.small_12_reg.copyWith(
-                  // color: color
-                  ),
+              style: BebasTextStyle.superSmall.copyWith(color: theme.cardColor),
               textAlign: TextAlign.center,
             ),
           ],

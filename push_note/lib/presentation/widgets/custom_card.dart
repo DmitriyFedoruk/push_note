@@ -50,7 +50,7 @@ class CustomCard extends StatelessWidget {
               );
             },
             text: t.addNow,
-            icon: AppIcons.add,
+            icon: Icons.add_box_sharp,
           ),
           if (isScheduled)
             CustomMenuItemButtonWithIcon(
@@ -67,14 +67,14 @@ class CustomCard extends StatelessWidget {
                 }
               },
               text: t.reschedule,
-              icon: AppIcons.reschedule,
+              icon: Icons.calendar_month,
             ),
           CustomMenuItemButtonWithIcon(
             onPressed: () {
               provider.removeNote(note);
             },
             text: t.remove,
-            icon: AppIcons.trash,
+            icon: Icons.delete_sharp,
           ),
         ],
         child: Row(
