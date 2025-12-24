@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:push_note/const/images.dart';
+import 'package:provider/provider.dart';
+import 'package:push_note/const/enums.dart';
+import 'package:push_note/presentation/providers/settings_provider.dart';
 
 class Background extends StatelessWidget {
   const Background({super.key});
@@ -10,10 +12,14 @@ class Background extends StatelessWidget {
     return SizedBox(
       height: double.infinity,
       width: double.infinity,
-      child: SvgPicture.asset(
-        AppImages.back5,
-        fit: BoxFit.fill,
-      ),
+      child: Selector<SettingsProvider, BackgroundType>(
+          selector: (_, s) => s.backgroundType,
+          builder: (context, backType, _) {
+            return SvgPicture.asset(
+              backType.path,
+              fit: BoxFit.fill,
+            );
+          }),
     );
   }
 }

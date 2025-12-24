@@ -14,6 +14,7 @@ class LanguageCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Column(
       children: [
         UniversalTitle(icon: AppIcons.language, title: t.language),

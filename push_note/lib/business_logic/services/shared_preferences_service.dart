@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesService {
   static const String _timeFormatTypeKey = 'timeFormatTypeKey';
   static const String _localeTypeKey = 'localeTypeKey';
+  static const String _backgroundTypeKey = 'backgroundTypeKey';
 
   static late SharedPreferences _prefs;
 
@@ -28,6 +29,15 @@ class SharedPreferencesService {
 
   static TimeFormatType getTimeFormatType() {
     return TimeFormatType.fromString(_prefs.getString(_timeFormatTypeKey) ?? '');
+  }
+
+  //BackgroundType
+  static void setBackgroundType(BackgroundType type) {
+    _prefs.setString(_backgroundTypeKey, type.name);
+  }
+
+  static BackgroundType getBackgroundType() {
+    return BackgroundType.fromString(_prefs.getString(_backgroundTypeKey) ?? '');
   }
 
   //TimeFormatType

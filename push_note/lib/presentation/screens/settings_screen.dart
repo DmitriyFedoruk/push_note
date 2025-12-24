@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/widgets/background.dart';
 import 'package:push_note/presentation/widgets/custom_app_bar.dart';
+import 'package:push_note/presentation/widgets/settings/background_cluster.dart';
 import 'package:push_note/presentation/widgets/settings/language_cluster.dart';
+import 'package:push_note/presentation/widgets/settings/time_format_cluster.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -16,33 +18,6 @@ class SettingsScreen extends StatelessWidget {
           _Body(),
         ],
       ),
-//       extendBodyBehindAppBar: true,
-//       appBar: CustomAppbar(t.settings),
-//       body: const Stack(
-//         alignment: Alignment.topCenter,
-//         children: [
-//           UniversalBackground(),
-//           SafeArea(
-//             child: Padding(
-//               padding: EdgeInsets.symmetric(horizontal: 16.0),
-//               child: SingleChildScrollView(
-//                 physics: BouncingScrollPhysics(),
-//                 child: Column(
-//                   children: [
-//                     SizedBox(height: 30.0),
-//                     StylesCluster(),
-//                     SizedBox(height: 36.0),
-//                     TimeFormatCluster(),
-//                     SizedBox(height: 36.0),
-//                     LanguageCluster(),
-//                     SizedBox(height: 16.0),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
     );
   }
 }
@@ -56,7 +31,20 @@ class _Body extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         CustomSliverAppBar(t.settings),
-        const SliverPadding(padding: EdgeInsets.only(top: 30)),
+        const SliverPadding(padding: EdgeInsets.only(top: 60)),
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: BackgroundCluster(),
+          ),
+        ),
+        const SliverPadding(padding: EdgeInsets.only(top: 36)),
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: TimeFormatCluster(),
+          ),
+        ),
         const SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
