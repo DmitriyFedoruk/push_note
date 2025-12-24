@@ -27,7 +27,7 @@ class TitleField extends StatelessWidget {
               horizontal: 20,
               vertical: 15,
             ),
-            hintText: t.enterSomething,
+            hintText: t.enterTheNote,
             hintStyle: RobotoTextStyle.middle14.copyWith(color: theme.hoverColor),
             border: const OutlineInputBorder(),
             focusedBorder: OutlineInputBorder(

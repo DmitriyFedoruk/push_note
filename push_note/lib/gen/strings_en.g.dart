@@ -82,8 +82,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	/// en: 'Scheduled at'
 	String get scheduledAt => 'Scheduled at';
 
-	/// en: 'Enter something'
-	String get enterSomething => 'Enter something';
+	/// en: 'Enter the note :)'
+	String get enterTheNote => 'Enter the note :)';
 
 	/// en: 'Create'
 	String get create => 'Create';
@@ -133,7 +133,7 @@ extension on Translations {
 			case 'history': return 'History';
 			case 'scheduled': return 'Scheduled';
 			case 'scheduledAt': return 'Scheduled at';
-			case 'enterSomething': return 'Enter something';
+			case 'enterTheNote': return 'Enter the note :)';
 			case 'create': return 'Create';
 			case 'high': return 'High';
 			case 'important': return 'Important';

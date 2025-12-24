@@ -1,66 +1,100 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class BebasTextStyle {
-  static final TextStyle appBarTextStyle = GoogleFonts.bebasNeue(
+  static const TextStyle appBarTextStyle = TextStyle(
+    fontFamily: 'BebasNeue',
     fontSize: 60.0,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
     height: 60,
   );
 
-  static final TextStyle middle_24 = GoogleFonts.bebasNeue(
+  static const TextStyle middle_24 = TextStyle(
+    fontFamily: 'BebasNeue',
     fontSize: 20.0,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
   );
 
-  static final TextStyle middle = GoogleFonts.bebasNeue(
+  static const TextStyle middle = TextStyle(
+    fontFamily: 'BebasNeue',
     fontSize: 20.0,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
   );
 
-  static final TextStyle small = GoogleFonts.bebasNeue(
-    fontSize: 18.0,
-    fontWeight: FontWeight.w400,
-  );
-
-  static final TextStyle superSmall = GoogleFonts.bebasNeue(
-    fontSize: 16.0,
-    fontWeight: FontWeight.w400,
-  );
-}
-
-class RobotoTextStyle {
-  static final TextStyle middle = GoogleFonts.roboto(
+  static const TextStyle small = TextStyle(
+    fontFamily: 'BebasNeue',
     fontSize: 18.0,
     fontWeight: FontWeight.w600,
   );
 
-  static final TextStyle middle14 = GoogleFonts.roboto(
+  static const TextStyle superSmall = TextStyle(
+    fontFamily: 'BebasNeue',
+    fontSize: 16.0,
+    fontWeight: FontWeight.w600,
+  );
+}
+
+class RobotoTextStyle {
+  static const TextStyle middle = TextStyle(
+    fontFamily: 'Roboto',
+    fontSize: 18.0,
+    fontWeight: FontWeight.w600,
+  );
+  // GoogleFonts.roboto(
+  //   fontSize: 18.0,
+  //   fontWeight: FontWeight.w600,
+  // );
+
+  static const TextStyle middle14 = TextStyle(
+    fontFamily: 'Roboto',
     fontSize: 18.0,
     fontWeight: FontWeight.w400,
   );
+  // GoogleFonts.roboto(
+  //   fontSize: 18.0,
+  //   fontWeight: FontWeight.w400,
+  // );
 
-  static final TextStyle small_12 = GoogleFonts.roboto(
+  static const TextStyle small_12 = TextStyle(
+    fontFamily: 'Roboto',
     fontSize: 12.0,
     fontWeight: FontWeight.w500,
   );
+  // GoogleFonts.roboto(
+  //   fontSize: 12.0,
+  //   fontWeight: FontWeight.w500,
+  // );
 
-  static final TextStyle small_12_reg = GoogleFonts.roboto(
+  static const TextStyle small_12_reg = TextStyle(
+    fontFamily: 'Roboto',
     fontSize: 12.0,
     fontWeight: FontWeight.w400,
   );
+  // GoogleFonts.roboto(
+  //   fontSize: 12.0,
+  //   fontWeight: FontWeight.w400,
+  // );
 
-  static final TextStyle small_10 = GoogleFonts.roboto(
+  static const TextStyle small_10 = TextStyle(
+    fontFamily: 'Roboto',
     fontSize: 10.0,
     fontWeight: FontWeight.w400,
   );
+  // GoogleFonts.roboto(
+  //   fontSize: 10.0,
+  //   fontWeight: FontWeight.w400,
+  // );
 
-  static final TextStyle small_8 = GoogleFonts.roboto(
+  static const TextStyle small_8 = TextStyle(
+    fontFamily: 'Roboto',
     fontSize: 8.0,
     fontWeight: FontWeight.w500,
   );
+  // GoogleFonts.roboto(
+  //   fontSize: 8.0,
+  //   fontWeight: FontWeight.w500,
+  // );
 }
 
 List<BoxShadow> shadow(final Color color) => [

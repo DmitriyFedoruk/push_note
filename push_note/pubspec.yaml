@@ -11,7 +11,6 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
   flutter_local_notifications: ^19.4.0
-  google_fonts: ^6.3.0
   # path
   path: ^1.9.1
   path_provider: ^2.1.5
@@ -58,4 +57,22 @@ flutter:
   assets: 
     - assets/
     - assets/icons/
+
+  fonts:
+    - family: BebasNeue
+      fonts:
+        - asset: assets/fonts/BebasNeue/BebasNeue-Thin.otf
+          weight: 100
+        - asset: assets/fonts/BebasNeue/BebasNeue-Light.otf
+          weight: 200
+        - asset: assets/fonts/BebasNeue/BebasNeue-Book.otf
+          weight: 300
+        - asset: assets/fonts/BebasNeue/BebasNeue-Regular.otf
+          weight: 400
+        - asset: assets/fonts/BebasNeue/BebasNeue-Bold.otf
+          weight: 600
+    
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto.ttf
 
