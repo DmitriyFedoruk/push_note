@@ -3,11 +3,12 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/main/main_variables.dart';
 import 'package:timezone/timezone.dart' as tz;
 
-Future<void> createNote(
+Future<bool> createNote(
   String text,
   NotesColorsEnum? type,
   DateTime? date,
@@ -30,6 +31,16 @@ Future<void> createNote(
   NotificationDetails platformChannelSpecifics = NotificationDetails(
     android: androidPlatformChannelSpecifics,
   );
+
+  await Permission.notification.isGranted.then((isGranted) {
+    if (!isGranted) {
+      Permission.notification.request();
+    }
+  });
+
+  final isGranted = await Permission.notification.isGranted;
+
+  if (!isGranted) return false;
 
   if (date != null && date.isAfter(DateTime.now())) {
     // Convert DateTime to TZDateTime
@@ -55,6 +66,7 @@ Future<void> createNote(
       platformChannelSpecifics,
     );
   }
+  return true;
 }
 
 Future<String> getImageFilePathFromAssets(String assetPath) async {

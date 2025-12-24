@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/functions.dart';
+import 'package:push_note/business_logic/services/notification_display.dart';
 import 'package:push_note/const/date.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
@@ -83,12 +84,16 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                   onTap: isDisabled
                       ? null
                       : () async {
-                          await provider.addNote(
+                          final isSuccess = await provider.addNote(
                             title: _controller.text,
                             type: noteType,
                             scheduledDate: scheduledDate,
                           );
-                          clear();
+                          if (isSuccess) {
+                            clear();
+                          } else {
+                            NotificationDisplay.showInfo(t.accessForUsingNotifications);
+                          }
                         },
                   child: Text(
                     t.create,

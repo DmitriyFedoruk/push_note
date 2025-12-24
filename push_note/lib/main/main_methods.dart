@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:push_note/main/main_variables.dart';
 
 /// Streams are created so that app can respond to notification-related events
@@ -27,9 +28,11 @@ void notificationTapBackground(NotificationResponse notificationResponse) {
 
 Future<void> initializeNotification() async {
   if (Platform.isAndroid) {
-    flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()!
-        .requestNotificationsPermission();
+    await Permission.notification.isGranted.then((isGranted) {
+      if (!isGranted) {
+        Permission.notification.request();
+      }
+    });
   }
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');

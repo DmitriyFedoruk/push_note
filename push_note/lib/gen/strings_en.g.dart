@@ -105,6 +105,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Coming soon'
 	String get comingSoon => 'Coming soon';
+
+	/// en: 'It is necessary to give access for using notifications to use this feature'
+	String get accessForUsingNotifications => 'It is necessary to give access for using notifications to use this feature';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -141,6 +144,7 @@ extension on Translations {
 			case 'secondary': return 'Secondary';
 			case 'low': return 'Low';
 			case 'comingSoon': return 'Coming soon';
+			case 'accessForUsingNotifications': return 'It is necessary to give access for using notifications to use this feature';
 			default: return null;
 		}
 	}

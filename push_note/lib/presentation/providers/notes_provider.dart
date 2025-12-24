@@ -41,16 +41,18 @@ class NotesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addNote({
+  Future<bool> addNote({
     required String title,
     required NotesColorsEnum? type,
     required DateTime? scheduledDate,
   }) async {
-    await createNote(
+    final isSuccessfully = await createNote(
       title,
       type,
       scheduledDate,
     );
+    if (!isSuccessfully) return false;
+
     final note = Note(
       title: title,
       type: type,
@@ -59,7 +61,8 @@ class NotesProvider extends ChangeNotifier {
     );
     objectbox.addNote(note);
     // refresh list
-    loadNotes();
+    await loadNotes();
+    return true;
   }
 
   void removeNote(Note note) {
