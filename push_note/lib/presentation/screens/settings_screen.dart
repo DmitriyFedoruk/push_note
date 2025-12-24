@@ -52,6 +52,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return CustomScrollView(
       slivers: [
         CustomSliverAppBar(t.settings),

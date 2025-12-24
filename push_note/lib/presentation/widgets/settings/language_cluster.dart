@@ -3,7 +3,6 @@ import 'package:push_note/business_logic/services/shared_preferences_service.dar
 import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
-import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/widgets/custom_radio_button.dart';
 import 'package:push_note/presentation/glassmorhic/components/settings/widgets/tap_sector.dart';
@@ -15,11 +14,11 @@ class LanguageCluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = Translations.of(context);
     return Column(
       children: [
         UniversalTitle(icon: AppIcons.language, title: t.language),
         const UniversalCluster(
+          padding: 14,
           child: _OptionsList(),
         ),
       ],
@@ -32,22 +31,27 @@ class _OptionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeType = LocaleSettings.currentLocale;
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _OneItem(
-              type: AppLocale.en,
-              activeType: activeType,
-            ),
-            _OneItem(
-              type: AppLocale.ru,
-              activeType: activeType,
-            ),
-          ],
-        ));
+    return StreamBuilder(
+        stream: LocaleSettings.getLocaleStream(),
+        initialData: LocaleSettings.currentLocale,
+        builder: (context, asyncSnapshot) {
+          final locale = asyncSnapshot.data;
+          return locale == null
+              ? const SizedBox.shrink()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _OneItem(
+                      type: AppLocale.en,
+                      activeType: locale,
+                    ),
+                    _OneItem(
+                      type: AppLocale.ru,
+                      activeType: locale,
+                    ),
+                  ],
+                );
+        });
   }
 }
 
@@ -72,7 +76,7 @@ class _OneItem extends StatelessWidget {
           _Cluster(
             text: type == AppLocale.en ? AppStrings.english : AppStrings.russian,
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
           CustomRadioButton(isActive: type == activeType),
         ],
       ),
@@ -86,19 +90,11 @@ class _Cluster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
-    return Container(
-      width: 76.0,
-      height: 26.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: theme.cardColor,
-        boxShadow: shadow(theme.shadowColor),
-      ),
-      alignment: Alignment.center,
+    return UniversalCluster(
+      padding: 10,
       child: Text(
         text,
-        style: RobotoTextStyle.small_12.copyWith(color: theme.textTheme.labelLarge?.color),
+        style: RobotoTextStyle.small_12,
       ),
     );
   }

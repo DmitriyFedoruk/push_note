@@ -5,9 +5,11 @@ class UniversalCluster extends StatelessWidget {
   final Widget child;
   final double borderWidth;
   final VoidCallback? onTap;
+  final double padding;
   const UniversalCluster({
     required this.child,
     this.borderWidth = 1.5,
+    this.padding = 20,
     this.onTap,
     super.key,
   });
@@ -35,13 +37,13 @@ class UniversalCluster extends StatelessWidget {
               child: InkWell(
                 onTap: onTap,
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(padding),
                   child: child,
                 ),
               ),
             )
           : Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(padding),
               child: child,
             ),
     );
