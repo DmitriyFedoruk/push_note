@@ -11,8 +11,8 @@ import 'package:push_note/extensions/color_extension.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/infra/date_extension.dart';
-import 'package:push_note/presentation/glassmorhic/components/priority.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
+import 'package:push_note/presentation/widgets/main_screen/priority.dart';
 import 'package:push_note/presentation/widgets/menu_button.dart';
 
 class CustomCard extends StatelessWidget {

@@ -4,8 +4,8 @@ import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/gen/strings.g.dart';
-import 'package:push_note/presentation/glassmorhic/components/settings/widgets/custom_radio_button.dart';
-import 'package:push_note/presentation/glassmorhic/components/settings/widgets/tap_sector.dart';
+import 'package:push_note/presentation/widgets/settings/custom_radio_button.dart';
+import 'package:push_note/presentation/widgets/settings/tap_sector.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
 import 'package:push_note/presentation/widgets/universal_title.dart';
 

@@ -7,10 +7,10 @@ import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
-import 'package:push_note/presentation/glassmorhic/components/list_of_types.dart';
-import 'package:push_note/presentation/glassmorhic/components/title_field.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 import 'package:push_note/presentation/widgets/custom_button.dart';
+import 'package:push_note/presentation/widgets/main_screen/list_of_types.dart';
+import 'package:push_note/presentation/widgets/main_screen/title_field.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
 class CreateNoteCluster extends StatefulWidget {
