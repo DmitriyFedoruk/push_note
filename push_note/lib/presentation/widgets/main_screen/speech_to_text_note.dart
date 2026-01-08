@@ -6,6 +6,8 @@ import 'package:push_note/presentation/widgets/custom_button.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
+//TODO work only with internet
+//+ add animation for listening
 class SpeechToTextNote extends StatefulWidget {
   final TextEditingController controller;
   final ScrollController scrollController;
