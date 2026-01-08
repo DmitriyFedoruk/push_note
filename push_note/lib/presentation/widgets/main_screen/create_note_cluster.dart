@@ -10,6 +10,7 @@ import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
 import 'package:push_note/presentation/widgets/custom_button.dart';
 import 'package:push_note/presentation/widgets/main_screen/list_of_types.dart';
+import 'package:push_note/presentation/widgets/main_screen/speech_to_text_note.dart';
 import 'package:push_note/presentation/widgets/main_screen/title_field.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
@@ -22,6 +23,7 @@ class CreateNoteCluster extends StatefulWidget {
 
 class _CreateNoteClusterState extends State<CreateNoteCluster> {
   final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
   bool isDisabled = true;
   NotesColorsEnum? noteType;
   DateTime? scheduledDate;
@@ -39,7 +41,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        TitleField(_controller),
+        TitleField(_controller, _scrollController),
         const SizedBox(height: 24.0),
         ListOfTypes(
           selectedItem: noteType,
@@ -76,6 +78,10 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                     color: theme.primaryColor,
                   ),
                 ),
+              ),
+              const SizedBox(width: 22),
+              Expanded(
+                child: SpeechToTextNote(_controller, _scrollController),
               ),
               const SizedBox(width: 22),
               Expanded(

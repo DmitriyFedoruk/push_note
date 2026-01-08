@@ -21,6 +21,7 @@
   "secondary":"Secondary",
   "low":"Low",
   "comingSoon":"Coming soon",
-  "accessForUsingNotifications":"It is necessary to give access for using notifications to use this feature"
+  "accessForUsingNotifications":"It is necessary to give access for using notifications to use this feature",
+  "speechNotAvailable":"Speech not available"
 }
 

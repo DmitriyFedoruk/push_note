@@ -59,6 +59,7 @@ class TranslationsRu implements Translations {
 	@override String get low => 'Низкий';
 	@override String get comingSoon => 'Скоро появится';
 	@override String get accessForUsingNotifications => 'Для использования этой функции необходимо предоставить доступ к уведомлениям';
+	@override String get speechNotAvailable => 'Речь недоступна';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -96,6 +97,7 @@ extension on TranslationsRu {
 			case 'low': return 'Низкий';
 			case 'comingSoon': return 'Скоро появится';
 			case 'accessForUsingNotifications': return 'Для использования этой функции необходимо предоставить доступ к уведомлениям';
+			case 'speechNotAvailable': return 'Речь недоступна';
 			default: return null;
 		}
 	}

@@ -108,6 +108,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'It is necessary to give access for using notifications to use this feature'
 	String get accessForUsingNotifications => 'It is necessary to give access for using notifications to use this feature';
+
+	/// en: 'Speech not available'
+	String get speechNotAvailable => 'Speech not available';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -145,6 +148,7 @@ extension on Translations {
 			case 'low': return 'Low';
 			case 'comingSoon': return 'Coming soon';
 			case 'accessForUsingNotifications': return 'It is necessary to give access for using notifications to use this feature';
+			case 'speechNotAvailable': return 'Speech not available';
 			default: return null;
 		}
 	}

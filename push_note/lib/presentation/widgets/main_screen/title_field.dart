@@ -7,7 +7,8 @@ import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
 class TitleField extends StatelessWidget {
   final TextEditingController _controller;
-  const TitleField(this._controller, {super.key});
+  final ScrollController _scrollController;
+  const TitleField(this._controller, this._scrollController, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class TitleField extends StatelessWidget {
         height: 60.0,
         child: TextFormField(
           controller: _controller,
+          scrollController: _scrollController,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
           textCapitalization: TextCapitalization.sentences,
           cursorColor: theme.cardColor,
