@@ -111,6 +111,12 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Speech not available'
 	String get speechNotAvailable => 'Speech not available';
+
+	/// en: 'This language is not supported right now. If you are offline, please try to turn on the network connection'
+	String get languageNotSupported => 'This language is not supported right now. If you are offline, please try to turn on the network connection';
+
+	/// en: 'Something went wrong. Please check the network connection'
+	String get somethingWentWrong => 'Something went wrong. Please check the network connection';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -149,6 +155,8 @@ extension on Translations {
 			case 'comingSoon': return 'Coming soon';
 			case 'accessForUsingNotifications': return 'It is necessary to give access for using notifications to use this feature';
 			case 'speechNotAvailable': return 'Speech not available';
+			case 'languageNotSupported': return 'This language is not supported right now. If you are offline, please try to turn on the network connection';
+			case 'somethingWentWrong': return 'Something went wrong. Please check the network connection';
 			default: return null;
 		}
 	}

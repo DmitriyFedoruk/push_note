@@ -1,13 +1,16 @@
+import 'dart:developer';
+
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:push_note/business_logic/services/notification_display.dart';
+import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/widgets/custom_button.dart';
+import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
-//TODO work only with internet
-//+ add animation for listening
 class SpeechToTextNote extends StatefulWidget {
   final TextEditingController controller;
   final ScrollController scrollController;
@@ -30,13 +33,33 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
   /// This has to happen only once per app
   void _initSpeech() async {
     _speechToText = SpeechToText();
-    _speechEnabled = await _speechToText.initialize();
+    _speechEnabled = await _speechToText.initialize(
+      onStatus: statusListener,
+      onError: errorListener,
+    );
+
     setState(() {});
+  }
+
+  void statusListener(String status) {
+    log('Received listener status: $status, listening: ${_speechToText.isListening}');
+  }
+
+  void errorListener(SpeechRecognitionError error) {
+    log('Received error status: $error, listening: ${_speechToText.isListening}');
+    if (error.errorMsg == 'error_language_not_supported') {
+      NotificationDisplay.showInfo(t.languageNotSupported);
+    } else {
+      NotificationDisplay.showInfo(t.somethingWentWrong);
+    }
+    widget.controller.clear();
+
+    _stopListening();
   }
 
   /// Each time to start a speech recognition session
   void _startListening() async {
-    if (!_speechEnabled) {
+    if (!_speechEnabled || !_speechToText.isAvailable) {
       NotificationDisplay.showInfo(t.speechNotAvailable);
       return;
     }
@@ -76,12 +99,16 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
               color: context.theme.primaryColor,
             ),
           )
-        : CustomButton(
-            onTap: _stopListening,
-            child: Icon(
-              Icons.mic_off_rounded,
-              size: 24,
-              color: context.theme.primaryColor,
+        : AvatarGlow(
+            glowColor: AppColors.recordColor,
+            glowRadiusFactor: 0.48,
+            child: CustomButton(
+              onTap: _stopListening,
+              child: Icon(
+                Icons.mic_off_rounded,
+                size: 24,
+                color: context.theme.primaryColor,
+              ),
             ),
           );
   }

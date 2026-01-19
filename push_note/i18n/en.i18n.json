@@ -22,6 +22,10 @@
   "low":"Low",
   "comingSoon":"Coming soon",
   "accessForUsingNotifications":"It is necessary to give access for using notifications to use this feature",
-  "speechNotAvailable":"Speech not available"
+  "speechNotAvailable":"Speech not available",
+  "languageNotSupported":"This language is not supported right now. If you are offline, please try to turn on the network connection",
+  "somethingWentWrong":"Something went wrong. Please check the network connection"
+
+
 }
 

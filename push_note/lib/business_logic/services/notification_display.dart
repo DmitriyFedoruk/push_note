@@ -7,7 +7,11 @@ class NotificationDisplay {
     return toastification.show(
       type: ToastificationType.info,
       style: ToastificationStyle.flat,
-      title: Text(text, style: BebasTextStyle.small),
+      title: Text(
+        text,
+        style: BebasTextStyle.small,
+        maxLines: 5,
+      ),
       autoCloseDuration: Duration(seconds: seconds),
       showProgressBar: false,
     );

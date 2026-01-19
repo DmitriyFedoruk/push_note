@@ -60,6 +60,8 @@ class TranslationsRu implements Translations {
 	@override String get comingSoon => 'Скоро появится';
 	@override String get accessForUsingNotifications => 'Для использования этой функции необходимо предоставить доступ к уведомлениям';
 	@override String get speechNotAvailable => 'Речь недоступна';
+	@override String get languageNotSupported => 'Этот язык сейчас не поддерживается. Если вы не в сети, попробуйте включить подключение к интернету';
+	@override String get somethingWentWrong => 'Что-то пошло не так. Пожалуйста, проверьте подключение к интернету';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -98,6 +100,8 @@ extension on TranslationsRu {
 			case 'comingSoon': return 'Скоро появится';
 			case 'accessForUsingNotifications': return 'Для использования этой функции необходимо предоставить доступ к уведомлениям';
 			case 'speechNotAvailable': return 'Речь недоступна';
+			case 'languageNotSupported': return 'Этот язык сейчас не поддерживается. Если вы не в сети, попробуйте включить подключение к интернету';
+			case 'somethingWentWrong': return 'Что-то пошло не так. Пожалуйста, проверьте подключение к интернету';
 			default: return null;
 		}
 	}

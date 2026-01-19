@@ -15,6 +15,8 @@ class AppColors {
   static const Color secondaryColor = Color(0xff461515);
 
   static const Color inactiveColor = Color(0xff8D8C8C);
+
+  static const Color recordColor = Color(0xfff83743);
 }
 
 class NoteColors {
