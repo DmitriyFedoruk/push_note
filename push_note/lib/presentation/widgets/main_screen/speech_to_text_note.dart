@@ -63,7 +63,9 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
       NotificationDisplay.showInfo(t.speechNotAvailable);
       return;
     }
-    await _speechToText.listen(onResult: _onSpeechResult, localeId: LocaleSettings.currentLocale.languageCode);
+    //Russian locale work better. Because it gave an opportunity to use both English and Russian languages
+    // LocaleSettings.currentLocale.languageCode
+    await _speechToText.listen(onResult: _onSpeechResult, localeId: 'ru');
     setState(() {});
   }
 
