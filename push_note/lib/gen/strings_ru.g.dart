@@ -62,6 +62,7 @@ class TranslationsRu implements Translations {
 	@override String get speechNotAvailable => 'Речь недоступна';
 	@override String get languageNotSupported => 'Этот язык сейчас не поддерживается. Если вы не в сети, попробуйте включить подключение к интернету';
 	@override String get somethingWentWrong => 'Что-то пошло не так. Пожалуйста, проверьте подключение к интернету';
+	@override String get countByAllTime => 'Количество заметок за всё время';
 }
 
 /// The flat map containing all translations for locale <ru>.
@@ -102,6 +103,7 @@ extension on TranslationsRu {
 			case 'speechNotAvailable': return 'Речь недоступна';
 			case 'languageNotSupported': return 'Этот язык сейчас не поддерживается. Если вы не в сети, попробуйте включить подключение к интернету';
 			case 'somethingWentWrong': return 'Что-то пошло не так. Пожалуйста, проверьте подключение к интернету';
+			case 'countByAllTime': return 'Количество заметок за всё время';
 			default: return null;
 		}
 	}

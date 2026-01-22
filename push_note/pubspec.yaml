@@ -35,6 +35,8 @@ dependencies:
   speech_to_text: ^7.3.0
   #Animate for state when record audio
   avatar_glow: ^3.0.1
+  #Use for progress screen
+  fl_chart: ^1.1.1
 
 
 

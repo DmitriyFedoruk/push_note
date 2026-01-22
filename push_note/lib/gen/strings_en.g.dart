@@ -117,6 +117,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Something went wrong. Please check the network connection'
 	String get somethingWentWrong => 'Something went wrong. Please check the network connection';
+
+	/// en: 'Count of notes by all time'
+	String get countByAllTime => 'Count of notes by all time';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -157,6 +160,7 @@ extension on Translations {
 			case 'speechNotAvailable': return 'Speech not available';
 			case 'languageNotSupported': return 'This language is not supported right now. If you are offline, please try to turn on the network connection';
 			case 'somethingWentWrong': return 'Something went wrong. Please check the network connection';
+			case 'countByAllTime': return 'Count of notes by all time';
 			default: return null;
 		}
 	}
