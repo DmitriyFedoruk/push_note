@@ -1,10 +1,14 @@
-import 'dart:math' as math;
+import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/const/styles/styles.dart';
+import 'package:push_note/domain/dto/notes_colors_type.dart';
+import 'package:push_note/domain/models/note.dart';
 import 'package:push_note/gen/strings.g.dart';
+import 'package:push_note/presentation/providers/notes_provider.dart';
 import 'package:push_note/presentation/widgets/universal_cluster.dart';
 
 class CountOfTasksChart extends StatelessWidget {
@@ -28,7 +32,7 @@ class CountOfTasksChart extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          UniversalCluster(child: BarChartSample7()),
+          const UniversalCluster(child: BarChartSample7()),
         ],
       ),
     );
@@ -36,201 +40,216 @@ class CountOfTasksChart extends StatelessWidget {
 }
 
 class BarChartSample7 extends StatefulWidget {
-  BarChartSample7({super.key});
-
-  final dataList = [
-    const _BarData(NoteColors.red, 18),
-    const _BarData(NoteColors.orange, 17),
-    const _BarData(NoteColors.yellow, 10),
-    const _BarData(NoteColors.green, 2.5),
-    const _BarData(NoteColors.blue, 2),
-    const _BarData(Colors.grey, 2),
-  ];
+  const BarChartSample7({super.key});
 
   @override
   State<BarChartSample7> createState() => _BarChartSample7State();
 }
 
 class _BarChartSample7State extends State<BarChartSample7> {
-  BarChartGroupData generateBarGroup(
-    int x,
-    Color color,
-    double value,
-  ) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: value,
-          color: color,
-          width: 6,
-        ),
-      ],
-      showingTooltipIndicators: touchedGroupIndex == x ? [0] : [],
-    );
+  List<_BarData> dataList = [];
+  int maxCount = 0;
+
+  void generateDataList(List<Note> notes) {
+    int redCount = 0;
+    int orangeCount = 0;
+    int yellowCount = 0;
+    int greenCount = 0;
+    int blueCount = 0;
+    int emptyTypeCount = 0;
+    for (var n in notes) {
+      switch (n.priority) {
+        case 5:
+          redCount++;
+          break;
+        case 4:
+          orangeCount++;
+          break;
+        case 3:
+          yellowCount++;
+          break;
+        case 2:
+          greenCount++;
+          break;
+        case 1:
+          blueCount++;
+          break;
+        default:
+          emptyTypeCount++;
+      }
+    }
+    final list = [redCount, orangeCount, yellowCount, greenCount, blueCount, emptyTypeCount];
+    maxCount = list.reduce(max);
+
+    dataList = [
+      _BarData(
+        NotesColorsEnum.red,
+        redCount,
+      ),
+      _BarData(NotesColorsEnum.orange, orangeCount),
+      _BarData(NotesColorsEnum.yellow, yellowCount),
+      _BarData(NotesColorsEnum.green, greenCount),
+      _BarData(NotesColorsEnum.blue, blueCount),
+      _BarData(null, emptyTypeCount),
+    ];
   }
 
   int touchedGroupIndex = -1;
-
-  int rotationTurns = 1;
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.4,
-      child: BarChart(
-        BarChartData(
-          alignment: BarChartAlignment.spaceBetween,
-          rotationQuarterTurns: rotationTurns,
-          borderData: FlBorderData(
-            show: true,
-            border: Border.symmetric(
-              horizontal: BorderSide(
-                color: Colors.grey.withValues(alpha: 0.2),
+      child: Selector<NotesProvider, List<Note>>(
+        selector: (_, state) => state.notes,
+        builder: (context, notes, child) {
+          generateDataList(notes);
+          return BarChart(
+            BarChartData(
+              alignment: BarChartAlignment.spaceBetween,
+              borderData: FlBorderData(
+                show: true,
+                border: const Border.symmetric(
+                  horizontal: BorderSide(
+                    color: Colors.grey,
+                  ),
+                ),
               ),
-            ),
-          ),
-          titlesData: FlTitlesData(
-            show: true,
-            leftTitles: const AxisTitles(
-              drawBelowEverything: true,
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 30,
+              titlesData: FlTitlesData(
+                show: true,
+                leftTitles: const AxisTitles(
+                  drawBelowEverything: true,
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    reservedSize: 30,
+                    interval: 1,
+                  ),
+                ),
+                bottomTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    reservedSize: 36,
+                    getTitlesWidget: (value, meta) {
+                      final index = value.toInt();
+                      return SideTitleWidget(
+                        meta: meta,
+                        child: _IconWidget(
+                          type: dataList[index].type,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                rightTitles: const AxisTitles(),
+                topTitles: const AxisTitles(),
               ),
-            ),
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 36,
-                getTitlesWidget: (value, meta) {
-                  final index = value.toInt();
-                  return SideTitleWidget(
-                    meta: meta,
-                    child: _IconWidget(
-                      color: widget.dataList[index].color,
-                      isSelected: touchedGroupIndex == index,
-                    ),
-                  );
+              gridData: FlGridData(
+                show: true,
+                horizontalInterval: 1,
+                drawVerticalLine: false,
+                getDrawingHorizontalLine: (value) => FlLine(
+                  color: Colors.grey.withValues(alpha: 0.2),
+                  strokeWidth: 1,
+                ),
+              ),
+              barGroups: dataList.asMap().entries.map((e) {
+                final index = e.key;
+                final data = e.value;
+                return generateBarGroup(
+                  index,
+                  data.type?.color ?? AppColors.grey,
+                  data.value,
+                );
+              }).toList(),
+              maxY: maxCount + 2.0,
+              barTouchData: BarTouchData(
+                enabled: true,
+                handleBuiltInTouches: false,
+                touchTooltipData: BarTouchTooltipData(
+                  getTooltipColor: (group) => Colors.transparent,
+                  tooltipMargin: 0,
+                  getTooltipItem: (
+                    BarChartGroupData group,
+                    int groupIndex,
+                    BarChartRodData rod,
+                    int rodIndex,
+                  ) {
+                    return BarTooltipItem(
+                      rod.toY.toString(),
+                      TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: rod.color,
+                        fontSize: 18,
+                        shadows: const [
+                          Shadow(
+                            color: Colors.black26,
+                            blurRadius: 12,
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                touchCallback: (event, response) {
+                  if (event.isInterestedForInteractions && response != null && response.spot != null) {
+                    setState(() {
+                      touchedGroupIndex = response.spot!.touchedBarGroupIndex;
+                    });
+                  } else {
+                    setState(() {
+                      touchedGroupIndex = -1;
+                    });
+                  }
                 },
               ),
             ),
-            rightTitles: const AxisTitles(),
-            topTitles: const AxisTitles(),
-          ),
-          gridData: FlGridData(
-            show: true,
-            drawVerticalLine: false,
-            getDrawingHorizontalLine: (value) => FlLine(
-              color: Colors.grey.withValues(alpha: 0.2),
-              strokeWidth: 1,
-            ),
-          ),
-          barGroups: widget.dataList.asMap().entries.map((e) {
-            final index = e.key;
-            final data = e.value;
-            return generateBarGroup(
-              index,
-              data.color,
-              data.value,
-            );
-          }).toList(),
-          maxY: 20,
-          barTouchData: BarTouchData(
-            enabled: true,
-            handleBuiltInTouches: false,
-            touchTooltipData: BarTouchTooltipData(
-              getTooltipColor: (group) => Colors.transparent,
-              tooltipMargin: 0,
-              getTooltipItem: (
-                BarChartGroupData group,
-                int groupIndex,
-                BarChartRodData rod,
-                int rodIndex,
-              ) {
-                return BarTooltipItem(
-                  rod.toY.toString(),
-                  TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: rod.color,
-                    fontSize: 18,
-                    shadows: const [
-                      Shadow(
-                        color: Colors.black26,
-                        blurRadius: 12,
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
-            touchCallback: (event, response) {
-              if (event.isInterestedForInteractions && response != null && response.spot != null) {
-                setState(() {
-                  touchedGroupIndex = response.spot!.touchedBarGroupIndex;
-                });
-              } else {
-                setState(() {
-                  touchedGroupIndex = -1;
-                });
-              }
-            },
-          ),
-        ),
+          );
+        },
       ),
+    );
+  }
+
+  BarChartGroupData generateBarGroup(
+    int x,
+    Color color,
+    int value,
+  ) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: value.toDouble(),
+          color: color,
+          width: 12,
+        ),
+      ],
+      showingTooltipIndicators: touchedGroupIndex == x ? [0] : [],
     );
   }
 }
 
 class _BarData {
   const _BarData(
-    this.color,
+    this.type,
     this.value,
   );
 
-  final Color color;
-  final double value;
+  final NotesColorsEnum? type;
+  final int value;
 }
 
-class _IconWidget extends ImplicitlyAnimatedWidget {
+class _IconWidget extends StatelessWidget {
+  final NotesColorsEnum? type;
   const _IconWidget({
-    required this.color,
-    required this.isSelected,
-  }) : super(duration: const Duration(milliseconds: 300));
-  final Color color;
-  final bool isSelected;
-
-  @override
-  ImplicitlyAnimatedWidgetState<ImplicitlyAnimatedWidget> createState() => _IconWidgetState();
-}
-
-class _IconWidgetState extends AnimatedWidgetBaseState<_IconWidget> {
-  Tween<double>? _rotationTween;
+    required this.type,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final rotation = math.pi * 4 * _rotationTween!.evaluate(animation);
-    final scale = 1 + _rotationTween!.evaluate(animation) * 0.5;
-    return Transform(
-      transform: Matrix4.rotationZ(rotation).scaledByDouble(scale, scale, scale, 1.0),
-      origin: const Offset(14, 14),
-      child: Icon(
-        widget.isSelected ? Icons.face_retouching_natural : Icons.face,
-        color: widget.color,
-        size: 28,
-      ),
+    return Image.asset(
+      getImage(type),
+      width: 30,
+      height: 30,
     );
-  }
-
-  @override
-  void forEachTween(TweenVisitor<dynamic> visitor) {
-    _rotationTween = visitor(
-      _rotationTween,
-      widget.isSelected ? 1.0 : 0.0,
-      (dynamic value) => Tween<double>(
-        begin: value as double,
-        end: widget.isSelected ? 1.0 : 0.0,
-      ),
-    ) as Tween<double>?;
   }
 }

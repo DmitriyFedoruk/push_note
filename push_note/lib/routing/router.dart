@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:push_note/presentation/screens/history_screen.dart';
 import 'package:push_note/presentation/screens/main_screen.dart';
+import 'package:push_note/presentation/screens/progress_screen.dart';
 import 'package:push_note/presentation/screens/root_screen.dart';
 import 'package:push_note/presentation/screens/scheduled_screen.dart';
 import 'package:push_note/presentation/screens/settings_screen.dart';
-import 'package:push_note/presentation/screens/progress_screen.dart';
 import 'package:push_note/routing/app_routes.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
