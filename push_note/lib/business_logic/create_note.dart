@@ -15,7 +15,7 @@ Future<bool> createNote(
 ) async {
   final String imagePath = await getImageFilePathFromAssets(getImage(type));
 
-  AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
+  final AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
     // Unique channel ID
     'push_note',
     // Channel name visible in settings
@@ -28,7 +28,7 @@ Future<bool> createNote(
     largeIcon: FilePathAndroidBitmap(imagePath),
   );
 
-  NotificationDetails platformChannelSpecifics = NotificationDetails(
+  final NotificationDetails platformChannelSpecifics = NotificationDetails(
     android: androidPlatformChannelSpecifics,
   );
 

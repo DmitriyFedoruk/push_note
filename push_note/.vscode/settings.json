@@ -1,5 +1,4 @@
 {
-  "CodeGPT.apiKey": "OpenAI",
   "dart.lineLength": 120,
   "editor.formatOnSave": true,
   "notebook.formatOnSave.enabled": true,
@@ -10,7 +9,4 @@
     ],
     "editor.formatOnSave": true,
   },
-  "cmake.ignoreCMakeListsMissing": true,
-  "chat.agent.enabled": true,
-  "dart.flutterSdkPath": ".fvm/versions/3.35.5"
 }

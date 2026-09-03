@@ -48,7 +48,6 @@ class _List extends StatelessWidget {
                 return CustomCard(
                   note: notes[index],
                   timeFormatType: timeFormatType,
-                  isScheduled: false,
                 );
               },
             ),

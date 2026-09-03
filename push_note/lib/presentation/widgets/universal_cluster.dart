@@ -17,11 +17,10 @@ class UniversalCluster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
           color: theme.primaryColor,
           border: Border.all(
-            strokeAlign: BorderSide.strokeAlignInside,
             color: theme.cardColor,
             width: borderWidth,
           ),

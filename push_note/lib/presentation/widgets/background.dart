@@ -9,9 +9,7 @@ class Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: double.infinity,
-      width: double.infinity,
+    return SizedBox.expand(
       child: Selector<SettingsProvider, BackgroundType>(
           selector: (_, s) => s.backgroundType,
           builder: (context, backType, _) {

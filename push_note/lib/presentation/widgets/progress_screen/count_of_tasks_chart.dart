@@ -61,19 +61,14 @@ class _BarChartSample7State extends State<BarChartSample7> {
       switch (n.priority) {
         case 5:
           redCount++;
-          break;
         case 4:
           orangeCount++;
-          break;
         case 3:
           yellowCount++;
-          break;
         case 2:
           greenCount++;
-          break;
         case 1:
           blueCount++;
-          break;
         default:
           emptyTypeCount++;
       }
@@ -116,9 +111,7 @@ class _BarChartSample7State extends State<BarChartSample7> {
                 ),
               ),
               titlesData: FlTitlesData(
-                show: true,
                 leftTitles: const AxisTitles(
-                  drawBelowEverything: true,
                   sideTitles: SideTitles(
                     showTitles: true,
                     reservedSize: 30,
@@ -144,7 +137,6 @@ class _BarChartSample7State extends State<BarChartSample7> {
                 topTitles: const AxisTitles(),
               ),
               gridData: FlGridData(
-                show: true,
                 horizontalInterval: 1,
                 drawVerticalLine: false,
                 getDrawingHorizontalLine: (value) => FlLine(

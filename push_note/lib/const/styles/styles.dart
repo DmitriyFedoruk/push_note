@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names, constant_identifier_names
-
 import 'package:flutter/material.dart';
 
 class BebasTextStyle {
@@ -66,6 +64,7 @@ class RobotoTextStyle {
   //   fontWeight: FontWeight.w500,
   // );
 
+  // ignore: constant_identifier_names
   static const TextStyle small_12_reg = TextStyle(
     fontFamily: 'Roboto',
     fontSize: 12.0,

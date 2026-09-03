@@ -39,7 +39,6 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
     final theme = context.theme;
     final provider = context.read<NotesProvider>();
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         TitleField(_controller, _scrollController),
         const SizedBox(height: 24.0),

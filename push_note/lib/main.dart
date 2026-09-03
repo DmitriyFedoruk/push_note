@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:push_note/app.dart';
@@ -16,12 +18,12 @@ void main() async {
   await SharedPreferencesService.init();
   await initLocale();
   objectbox = await ObjectBox.create();
-  var orientations = [
+  final orientations = [
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ];
 
-  SystemChrome.setPreferredOrientations(orientations);
+  unawaited(SystemChrome.setPreferredOrientations(orientations));
   runApp(TranslationProvider(
     child: const PushNoteApp(),
   ));

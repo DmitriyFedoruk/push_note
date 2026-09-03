@@ -12,7 +12,7 @@ Future<void> initLocale() async {
     SharedPreferencesService.setLocale(currentLocale);
   }
 
-  LocaleSettings.setLocale(currentLocale);
+  await LocaleSettings.setLocale(currentLocale);
 }
 
 Future<void> configureLocalTimeZone() async {

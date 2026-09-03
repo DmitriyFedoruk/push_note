@@ -43,7 +43,7 @@ class CustomCard extends StatelessWidget {
             onPressed: () async {
               final String title = note.title;
               final type = getTypeFromPriority(note.priority);
-              provider.addNote(
+              await provider.addNote(
                 title: title,
                 type: type,
                 scheduledDate: null,
@@ -59,7 +59,7 @@ class CustomCard extends StatelessWidget {
                 if (res != null) {
                   final String title = note.title;
                   final type = getTypeFromPriority(note.priority);
-                  provider.addNote(
+                  await provider.addNote(
                     title: title,
                     type: type,
                     scheduledDate: res,

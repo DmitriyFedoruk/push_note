@@ -31,7 +31,7 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
   }
 
   /// This has to happen only once per app
-  void _initSpeech() async {
+  Future<void> _initSpeech() async {
     _speechToText = SpeechToText();
     _speechEnabled = await _speechToText.initialize(
       onStatus: statusListener,
@@ -58,7 +58,7 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
   }
 
   /// Each time to start a speech recognition session
-  void _startListening() async {
+  Future<void> _startListening() async {
     if (!_speechEnabled || !_speechToText.isAvailable) {
       NotificationDisplay.showInfo(t.speechNotAvailable);
       return;
@@ -73,7 +73,7 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
   /// Note that there are also timeouts that each platform enforces
   /// and the SpeechToText plugin supports setting timeouts on the
   /// listen method.
-  void _stopListening() async {
+  Future<void> _stopListening() async {
     await _speechToText.stop();
     setState(() {});
   }
