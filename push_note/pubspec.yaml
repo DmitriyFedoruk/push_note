@@ -28,7 +28,6 @@ dependencies:
   slang_flutter: ^4.19.0
   timezone: ^0.11.2
   flutter_timezone: ^5.1.1
-  omni_datetime_picker: ^2.3.2
   adaptive_theme: ^3.8.0
   permission_handler: ^13.0.2
   toastification: ^3.2.0
@@ -38,6 +37,8 @@ dependencies:
   #Use for progress screen
   fl_chart: ^1.2.0
   material_ui: ^1.7.0
+  flutter_localizations:
+    sdk: flutter
 
 
 dev_dependencies:

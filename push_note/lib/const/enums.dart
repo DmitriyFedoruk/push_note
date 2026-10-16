@@ -26,6 +26,8 @@ enum TimeFormatType {
   hours24,
   hours12;
 
+  bool get is24Hour => this == TimeFormatType.hours24;
+
   factory TimeFormatType.fromString(String str) {
     return switch (str) {
       'hours24' => TimeFormatType.hours24,
