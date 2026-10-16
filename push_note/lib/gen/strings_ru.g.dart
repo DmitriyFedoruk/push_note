@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,25 +11,26 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsRu implements Translations {
+class TranslationsRu with BaseTranslations<AppLocale, Translations> implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsRu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ru,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <ru>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsRu _root = this; // ignore: unused_field
 
@@ -72,40 +74,35 @@ class TranslationsRu implements Translations {
 /// so the map is split into smaller functions (512 entries each).
 extension on TranslationsRu {
 	dynamic _flatMapFunction(String path) {
-		return _flatMapFunction$0(path);
-	}
-
-	dynamic _flatMapFunction$0(String path) {
-		switch (path) {
-			case 'settings': return 'Настройки';
-			case 'background': return 'Фон';
-			case 'theme': return 'Тема';
-			case 'gradient': return 'Градиент';
-			case 'timeFormat': return 'Формат времени';
-			case 'language': return 'Язык';
-			case 'addNow': return 'Добавить';
-			case 'reschedule': return 'Перенести';
-			case 'remove': return 'Удалить';
-			case 'createNewTask': return 'Создать новую задачу';
-			case 'progress': return 'Прогресс';
-			case 'history': return 'История';
-			case 'scheduled': return 'Планы';
-			case 'scheduledAt': return 'Запланированно на';
-			case 'enterTheNote': return 'Введите заметку :)';
-			case 'create': return 'Создать';
-			case 'high': return 'Высокий';
-			case 'important': return 'Важный';
-			case 'middle': return 'Средний';
-			case 'secondary': return 'Побочный';
-			case 'low': return 'Низкий';
-			case 'comingSoon': return 'Скоро появится';
-			case 'accessForUsingNotifications': return 'Для использования этой функции необходимо предоставить доступ к уведомлениям';
-			case 'speechNotAvailable': return 'Речь недоступна';
-			case 'languageNotSupported': return 'Этот язык сейчас не поддерживается. Если вы не в сети, попробуйте включить подключение к интернету';
-			case 'somethingWentWrong': return 'Что-то пошло не так. Пожалуйста, проверьте подключение к интернету';
-			case 'countByAllTime': return 'Количество заметок за всё время';
-			default: return null;
-		}
+		return switch (path) {
+			'settings' => 'Настройки',
+			'background' => 'Фон',
+			'theme' => 'Тема',
+			'gradient' => 'Градиент',
+			'timeFormat' => 'Формат времени',
+			'language' => 'Язык',
+			'addNow' => 'Добавить',
+			'reschedule' => 'Перенести',
+			'remove' => 'Удалить',
+			'createNewTask' => 'Создать новую задачу',
+			'progress' => 'Прогресс',
+			'history' => 'История',
+			'scheduled' => 'Планы',
+			'scheduledAt' => 'Запланированно на',
+			'enterTheNote' => 'Введите заметку :)',
+			'create' => 'Создать',
+			'high' => 'Высокий',
+			'important' => 'Важный',
+			'middle' => 'Средний',
+			'secondary' => 'Побочный',
+			'low' => 'Низкий',
+			'comingSoon' => 'Скоро появится',
+			'accessForUsingNotifications' => 'Для использования этой функции необходимо предоставить доступ к уведомлениям',
+			'speechNotAvailable' => 'Речь недоступна',
+			'languageNotSupported' => 'Этот язык сейчас не поддерживается. Если вы не в сети, попробуйте включить подключение к интернету',
+			'somethingWentWrong' => 'Что-то пошло не так. Пожалуйста, проверьте подключение к интернету',
+			'countByAllTime' => 'Количество заметок за всё время',
+			_ => null,
+		};
 	}
 }
-

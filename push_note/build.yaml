@@ -1,0 +1,17 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - test/**
+      - i18n/**
+      - $package$
+    builders:
+      slang_build_runner:
+        enabled: false
+      slang_build_runner:legacy:
+        enabled: true
+        options:
+          base_locale: en
+          input_directory: i18n
+          output_directory: lib/gen
+          output_file_name: strings.g.dart

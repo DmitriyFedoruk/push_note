@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
-import 'package:push_note/extensions/theme_extension.dart';
 
 Future<DateTime?> dateTimePickerMethod(
   BuildContext context,
@@ -16,8 +15,7 @@ Future<DateTime?> dateTimePickerMethod(
     is24HourMode: true,
     //UI
     borderRadius: BorderRadius.circular(0),
-    theme: context.theme,
-
+    // theme: context.theme,
     //
   );
 }

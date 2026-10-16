@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/widgets/background.dart';
 import 'package:push_note/presentation/widgets/custom_app_bar.dart';

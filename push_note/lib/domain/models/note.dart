@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 

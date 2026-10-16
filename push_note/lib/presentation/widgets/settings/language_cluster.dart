@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:push_note/business_logic/services/shared_preferences_service.dart';
 import 'package:push_note/const/images.dart';
 import 'package:push_note/const/strings.dart';

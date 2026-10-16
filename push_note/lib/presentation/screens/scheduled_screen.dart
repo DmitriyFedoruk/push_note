@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/gen/strings.g.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';

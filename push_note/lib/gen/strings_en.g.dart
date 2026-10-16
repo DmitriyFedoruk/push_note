@@ -3,12 +3,13 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 part of 'strings.g.dart';
 
 // Path: <root>
 typedef TranslationsEn = Translations; // ignore: unused_element
-class Translations implements BaseTranslations<AppLocale, Translations> {
+class Translations with BaseTranslations<AppLocale, Translations> {
 	/// Returns the current translations of the given [context].
 	///
 	/// Usage:
@@ -19,20 +20,21 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.en,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <en>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	dynamic operator[](String key) => $meta.getTranslation(key);
+	dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final Translations _root = this; // ignore: unused_field
 
@@ -129,40 +131,35 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 /// so the map is split into smaller functions (512 entries each).
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
-		return _flatMapFunction$0(path);
-	}
-
-	dynamic _flatMapFunction$0(String path) {
-		switch (path) {
-			case 'settings': return 'Settings';
-			case 'background': return 'Background';
-			case 'theme': return 'Theme';
-			case 'gradient': return 'Gradient';
-			case 'timeFormat': return 'Time format';
-			case 'language': return 'Language';
-			case 'addNow': return 'Add now';
-			case 'reschedule': return 'Reschedule';
-			case 'remove': return 'Remove';
-			case 'createNewTask': return 'Create a new task';
-			case 'progress': return 'Progress';
-			case 'history': return 'History';
-			case 'scheduled': return 'Scheduled';
-			case 'scheduledAt': return 'Scheduled at';
-			case 'enterTheNote': return 'Enter the note :)';
-			case 'create': return 'Create';
-			case 'high': return 'High';
-			case 'important': return 'Important';
-			case 'middle': return 'Middle';
-			case 'secondary': return 'Secondary';
-			case 'low': return 'Low';
-			case 'comingSoon': return 'Coming soon';
-			case 'accessForUsingNotifications': return 'It is necessary to give access for using notifications to use this feature';
-			case 'speechNotAvailable': return 'Speech not available';
-			case 'languageNotSupported': return 'This language is not supported right now. If you are offline, please try to turn on the network connection';
-			case 'somethingWentWrong': return 'Something went wrong. Please check the network connection';
-			case 'countByAllTime': return 'Count of notes by all time';
-			default: return null;
-		}
+		return switch (path) {
+			'settings' => 'Settings',
+			'background' => 'Background',
+			'theme' => 'Theme',
+			'gradient' => 'Gradient',
+			'timeFormat' => 'Time format',
+			'language' => 'Language',
+			'addNow' => 'Add now',
+			'reschedule' => 'Reschedule',
+			'remove' => 'Remove',
+			'createNewTask' => 'Create a new task',
+			'progress' => 'Progress',
+			'history' => 'History',
+			'scheduled' => 'Scheduled',
+			'scheduledAt' => 'Scheduled at',
+			'enterTheNote' => 'Enter the note :)',
+			'create' => 'Create',
+			'high' => 'High',
+			'important' => 'Important',
+			'middle' => 'Middle',
+			'secondary' => 'Secondary',
+			'low' => 'Low',
+			'comingSoon' => 'Coming soon',
+			'accessForUsingNotifications' => 'It is necessary to give access for using notifications to use this feature',
+			'speechNotAvailable' => 'Speech not available',
+			'languageNotSupported' => 'This language is not supported right now. If you are offline, please try to turn on the network connection',
+			'somethingWentWrong' => 'Something went wrong. Please check the network connection',
+			'countByAllTime' => 'Count of notes by all time',
+			_ => null,
+		};
 	}
 }
-

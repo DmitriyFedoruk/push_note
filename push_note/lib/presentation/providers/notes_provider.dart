@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:push_note/business_logic/create_note.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/domain/models/note.dart';

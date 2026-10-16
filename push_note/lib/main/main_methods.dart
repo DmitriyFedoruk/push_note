@@ -44,7 +44,8 @@ Future<void> initializeNotification() async {
     iOS: initializationSettingsIOS,
   );
 
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+  await flutterLocalNotificationsPlugin.initialize(
+      settings: initializationSettings,
       onDidReceiveNotificationResponse: selectNotificationStream.add,
       onDidReceiveBackgroundNotificationResponse: notificationTapBackground);
 }

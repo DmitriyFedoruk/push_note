@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:push_note/const/images.dart';
 
 class Priority extends StatelessWidget {

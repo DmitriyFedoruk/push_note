@@ -3,7 +3,6 @@ import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -54,7 +53,7 @@ android {
 
      productFlavors {
         create("dev") {
-            dimension = "airheadmobile"
+            dimension = "push_note"
             applicationId = "com.dev.push_note"
             resValue("string", "app_name", "Push Note Dev")
             versionNameSuffix = ".dev"

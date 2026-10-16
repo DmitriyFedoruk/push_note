@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:push_note/business_logic/services/notification_display.dart';
 import 'package:push_note/const/styles/colors.dart';
 import 'package:push_note/extensions/theme_extension.dart';
@@ -65,7 +65,7 @@ class _SpeechToTextNoteState extends State<SpeechToTextNote> {
     }
     //Russian locale work better. Because it gave an opportunity to use both English and Russian languages
     // LocaleSettings.currentLocale.languageCode
-    await _speechToText.listen(onResult: _onSpeechResult, localeId: 'ru');
+    await _speechToText.listen(onResult: _onSpeechResult, listenOptions: SpeechListenOptions(localeId: 'ru'));
     setState(() {});
   }
 

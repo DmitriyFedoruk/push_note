@@ -50,20 +50,18 @@ Future<bool> createNote(
     );
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      text.hashCode + type.hashCode,
-      null,
-      text,
+      id: text.hashCode + type.hashCode,
+      body: text,
       // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-      scheduledTime,
-      platformChannelSpecifics,
+      scheduledDate: scheduledTime,
+      notificationDetails: platformChannelSpecifics,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   } else {
     await flutterLocalNotificationsPlugin.show(
-      text.hashCode + type.hashCode,
-      null,
-      text,
-      platformChannelSpecifics,
+      id: text.hashCode + type.hashCode,
+      body: text,
+      notificationDetails: platformChannelSpecifics,
     );
   }
   return true;

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:push_note/presentation/screens/history_screen.dart';
 import 'package:push_note/presentation/screens/main_screen.dart';
