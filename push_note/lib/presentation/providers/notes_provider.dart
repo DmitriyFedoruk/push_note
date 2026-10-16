@@ -65,9 +65,32 @@ class NotesProvider extends ChangeNotifier {
     return true;
   }
 
-  void removeNote(Note note) {
+  Future<void> updateNote({
+    required DateTime? scheduledDate,
+    required Note originalNote,
+  }) async {
+    final title = originalNote.title;
+    final type = getTypeFromPriority(originalNote.priority);
+    final isSuccessfully = await createNote(
+      title,
+      type,
+      scheduledDate,
+    );
+    if (!isSuccessfully) return;
+
+    final note = Note(
+      title: title,
+      type: type,
+      createdAt: DateTime.now(),
+      scheduledDate: scheduledDate,
+    );
+    objectbox.addNote(note);
+    await removeNote(originalNote);
+  }
+
+  Future<void> removeNote(Note note) async {
     objectbox.deleteNote(note);
     // refresh list
-    loadNotes();
+    await loadNotes();
   }
 }

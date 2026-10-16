@@ -1,5 +1,5 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/functions.dart';
 import 'package:push_note/const/enums.dart';
@@ -57,12 +57,9 @@ class CustomCard extends StatelessWidget {
               onPressed: () async {
                 final res = await dateTimePickerMethod(context);
                 if (res != null) {
-                  final String title = note.title;
-                  final type = getTypeFromPriority(note.priority);
-                  await provider.addNote(
-                    title: title,
-                    type: type,
+                  await provider.updateNote(
                     scheduledDate: res,
+                    originalNote: note,
                   );
                 }
               },
@@ -70,8 +67,8 @@ class CustomCard extends StatelessWidget {
               icon: Icons.calendar_month,
             ),
           CustomMenuItemButtonWithIcon(
-            onPressed: () {
-              provider.removeNote(note);
+            onPressed: () async {
+              await provider.removeNote(note);
             },
             text: t.remove,
             icon: Icons.delete_sharp,

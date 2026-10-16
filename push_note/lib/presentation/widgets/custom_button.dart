@@ -25,6 +25,7 @@ class CustomButton extends StatelessWidget {
       disabledColor: theme.dividerColor,
       highlightColor: Colors.transparent,
       onPressed: onTap,
+      padding: EdgeInsets.zero,
       child: child,
     );
   }

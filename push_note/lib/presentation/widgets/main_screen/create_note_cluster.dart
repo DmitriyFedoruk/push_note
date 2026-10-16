@@ -69,6 +69,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
         const SizedBox(height: 24.0),
         UniversalCluster(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: CustomButton(
@@ -85,11 +86,11 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
                   ),
                 ),
               ),
-              const SizedBox(width: 22),
+              const SizedBox(width: 12),
               Expanded(
                 child: SpeechToTextNote(_controller, _scrollController),
               ),
-              const SizedBox(width: 22),
+              const SizedBox(width: 12),
               Expanded(
                 flex: 2,
                 child: CustomButton(

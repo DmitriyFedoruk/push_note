@@ -32,7 +32,12 @@ class CountOfTasksChart extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          const UniversalCluster(child: BarChartSample7()),
+          const UniversalCluster(
+              padding: 0,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
+                child: BarChartSample7(),
+              )),
         ],
       ),
     );
@@ -98,7 +103,27 @@ class _BarChartSample7State extends State<BarChartSample7> {
       child: Selector<NotesProvider, List<Note>>(
         selector: (_, state) => state.notes,
         builder: (context, notes, child) {
-          generateDataList(notes);
+          final notes1 = notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes +
+              notes;
+          final interval = (notes1.length ~/ 10).toDouble();
+          generateDataList(notes1);
           return BarChart(
             BarChartData(
               alignment: BarChartAlignment.spaceBetween,
@@ -111,17 +136,17 @@ class _BarChartSample7State extends State<BarChartSample7> {
                 ),
               ),
               titlesData: FlTitlesData(
-                leftTitles: const AxisTitles(
+                leftTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
-                    reservedSize: 30,
-                    interval: 1,
+                    reservedSize: 50,
+                    interval: interval,
                   ),
                 ),
                 bottomTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
-                    reservedSize: 36,
+                    reservedSize: 50,
                     getTitlesWidget: (value, meta) {
                       final index = value.toInt();
                       return SideTitleWidget(
@@ -137,7 +162,7 @@ class _BarChartSample7State extends State<BarChartSample7> {
                 topTitles: const AxisTitles(),
               ),
               gridData: FlGridData(
-                horizontalInterval: 1,
+                horizontalInterval: interval,
                 drawVerticalLine: false,
                 getDrawingHorizontalLine: (value) => FlLine(
                   color: Colors.grey.withValues(alpha: 0.2),
@@ -172,12 +197,6 @@ class _BarChartSample7State extends State<BarChartSample7> {
                         fontWeight: FontWeight.bold,
                         color: rod.color,
                         fontSize: 18,
-                        shadows: const [
-                          Shadow(
-                            color: Colors.black26,
-                            blurRadius: 12,
-                          )
-                        ],
                       ),
                     );
                   },

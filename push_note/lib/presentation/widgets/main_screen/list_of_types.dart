@@ -17,26 +17,23 @@ class ListOfTypes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UniversalCluster(
-      child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ...noteColors.map(
-                    (e) => _OneItem(
-                      e,
-                      isSelected: selectedItem == e,
-                      onTap: () {
-                        chooseItem(e);
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ],
-          )),
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: 16,
+        runSpacing: 16,
+        children: [
+          ...noteColors.map(
+            (e) => _OneItem(
+              e,
+              isSelected: selectedItem == e,
+              onTap: () {
+                chooseItem(e);
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 }

@@ -17,8 +17,8 @@ ThemeData get lightTheme => ThemeData(
       ),
       shadowColor: AppColors.black,
       hoverColor: AppColors.greyDark,
-      navigationBarTheme: const NavigationBarThemeData(
-        labelTextStyle: WidgetStatePropertyAll(BebasTextStyle.small),
+      navigationBarTheme: NavigationBarThemeData(
+        labelTextStyle: WidgetStatePropertyAll(BebasTextStyle.small.copyWith(overflow: TextOverflow.ellipsis)),
       ),
     );
 
