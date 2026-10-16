@@ -20,7 +20,7 @@ class MainScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(
               left: 30,
-              top: 120,
+              top: 100,
               right: 30,
               bottom: 30,
             ),

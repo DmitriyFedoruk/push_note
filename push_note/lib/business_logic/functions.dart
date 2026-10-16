@@ -15,6 +15,7 @@ Future<DateTime?> dateTimePickerMethod(
     firstDate: today,
     lastDate: lastDate,
   );
+
   if (pickedDate == null || !context.mounted) {
     return null;
   }
@@ -24,7 +25,7 @@ Future<DateTime?> dateTimePickerMethod(
   final pickedTime = await showTimePicker(
     context: context,
     initialEntryMode: TimePickerEntryMode.input,
-    initialTime: TimeOfDay.now(),
+    initialTime: TimeOfDay(hour: now.hour, minute: now.minute + 5),
     builder: (context, child) {
       return MediaQuery(
         data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: timeFormat.is24Hour),
@@ -32,7 +33,7 @@ Future<DateTime?> dateTimePickerMethod(
       );
     },
   );
-  if (pickedTime == null || !context.mounted) {
+  if (pickedTime == null) {
     return null;
   }
 

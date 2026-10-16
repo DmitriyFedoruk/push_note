@@ -103,27 +103,10 @@ class _BarChartSample7State extends State<BarChartSample7> {
       child: Selector<NotesProvider, List<Note>>(
         selector: (_, state) => state.notes,
         builder: (context, notes, child) {
-          final notes1 = notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes +
-              notes;
-          final interval = (notes1.length ~/ 10).toDouble();
-          generateDataList(notes1);
+          print('notes: ${notes.length} interval: ${notes.length ~/ 10}');
+          final defaultInterval = notes.length ~/ 10;
+          final interval = (defaultInterval == 0 ? 1 : defaultInterval).toDouble();
+          generateDataList(notes);
           return BarChart(
             BarChartData(
               alignment: BarChartAlignment.spaceBetween,
