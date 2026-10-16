@@ -2,12 +2,13 @@ import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:push_note/business_logic/functions.dart';
 import 'package:push_note/business_logic/services/notification_display.dart';
-import 'package:push_note/const/date.dart';
 import 'package:push_note/const/styles/styles.dart';
 import 'package:push_note/domain/dto/notes_colors_type.dart';
 import 'package:push_note/extensions/theme_extension.dart';
 import 'package:push_note/gen/strings.g.dart';
+import 'package:push_note/infra/date_extension.dart';
 import 'package:push_note/presentation/providers/notes_provider.dart';
+import 'package:push_note/presentation/providers/settings_provider.dart';
 import 'package:push_note/presentation/widgets/custom_button.dart';
 import 'package:push_note/presentation/widgets/main_screen/list_of_types.dart';
 import 'package:push_note/presentation/widgets/main_screen/speech_to_text_note.dart';
@@ -38,6 +39,12 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final provider = context.read<NotesProvider>();
+    final timeFormatType = context.select((SettingsProvider prov) => prov.timeFormatType);
+    String time = '';
+    if (scheduledDate != null) {
+      final scheduledTime = scheduledDate!.toReadFormat(timeFormatType);
+      time = '${t.scheduledAt} ${scheduledTime.last} (${scheduledTime.first})';
+    }
     return Column(
       children: [
         TitleField(_controller, _scrollController),
@@ -53,7 +60,7 @@ class _CreateNoteClusterState extends State<CreateNoteCluster> {
               child: SizedBox(
                 width: double.infinity,
                 child: Text(
-                  scheduledDate == null ? '' : '${t.scheduledAt} ${formatOnlyForDate.format(scheduledDate!)}',
+                  time,
                   style: RobotoTextStyle.middle14,
                 ),
               ),
