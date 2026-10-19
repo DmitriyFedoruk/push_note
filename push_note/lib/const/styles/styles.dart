@@ -5,7 +5,7 @@ class BebasTextStyle {
     fontFamily: 'BebasNeue',
     fontSize: 60.0,
     fontWeight: FontWeight.w600,
-    height: 60,
+    height: 0.9,
   );
 
   static const TextStyle middle_24 = TextStyle(

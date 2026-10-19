@@ -10,13 +10,15 @@ class ProgressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: CustomAppbar(t.progress),
-      body: const Stack(
-        alignment: Alignment.topCenter,
+      body: Stack(
         children: [
-          Background(),
-          Center(child: CountOfTasksChart()),
+          const Background(),
+          CustomScrollView(
+            slivers: [
+              CustomSliverAppBar(t.progress),
+              const SliverToBoxAdapter(child: CountOfTasksChart()),
+            ],
+          ),
         ],
       ),
     );

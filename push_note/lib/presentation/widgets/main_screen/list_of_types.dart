@@ -22,21 +22,39 @@ class ListOfTypes extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 1),
         child: SizedBox(
           height: 70,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) => const SizedBox(width: 4),
-            itemBuilder: (context, index) => Padding(
-              padding: EdgeInsets.only(left: index == 0 ? 10 : 0, right: index == noteColors.length - 1 ? 10 : 0),
-              child: _OneItem(
-                noteColors[index],
-                isSelected: selectedItem == noteColors[index],
-                onTap: () {
-                  chooseItem(noteColors[index]);
-                },
-              ),
-            ),
-            itemCount: noteColors.length,
-          ),
+          child: LayoutBuilder(builder: (context, constraints) {
+            print(constraints.maxWidth);
+            return constraints.maxWidth < 300
+                ? ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    separatorBuilder: (context, index) => const SizedBox(width: 4),
+                    itemBuilder: (context, index) => Padding(
+                      padding:
+                          EdgeInsets.only(left: index == 0 ? 10 : 0, right: index == noteColors.length - 1 ? 10 : 0),
+                      child: _OneItem(
+                        noteColors[index],
+                        isSelected: selectedItem == noteColors[index],
+                        onTap: () {
+                          chooseItem(noteColors[index]);
+                        },
+                      ),
+                    ),
+                    itemCount: noteColors.length,
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: noteColors
+                        .map(
+                          (e) => _OneItem(
+                            e,
+                            isSelected: selectedItem == e,
+                            onTap: () {
+                              chooseItem(e);
+                            },
+                          ),
+                        )
+                        .toList());
+          }),
         ),
       ),
     );

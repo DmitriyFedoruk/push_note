@@ -11,21 +11,18 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: true,
-      appBar: CustomAppbar(AppStrings.appName),
       body: Stack(
-        alignment: Alignment.topCenter,
         children: [
           Background(),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 30,
-              top: 100,
-              right: 30,
-              bottom: 30,
-            ),
-            child: CreateNoteCluster(),
-          )
+          CustomScrollView(
+            slivers: [
+              CustomSliverAppBar(AppStrings.appName),
+              SliverPadding(
+                padding: EdgeInsets.all(30),
+                sliver: SliverToBoxAdapter(child: CreateNoteCluster()),
+              ),
+            ],
+          ),
         ],
       ),
     );

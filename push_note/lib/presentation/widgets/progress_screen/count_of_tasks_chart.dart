@@ -36,7 +36,7 @@ class CountOfTasksChart extends StatelessWidget {
               padding: 0,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
-                child: BarChartSample7(),
+                child: _Chart(),
               )),
         ],
       ),
@@ -44,14 +44,14 @@ class CountOfTasksChart extends StatelessWidget {
   }
 }
 
-class BarChartSample7 extends StatefulWidget {
-  const BarChartSample7({super.key});
+class _Chart extends StatefulWidget {
+  const _Chart();
 
   @override
-  State<BarChartSample7> createState() => _BarChartSample7State();
+  State<_Chart> createState() => _ChartState();
 }
 
-class _BarChartSample7State extends State<BarChartSample7> {
+class _ChartState extends State<_Chart> {
   List<_BarData> dataList = [];
   int maxCount = 0;
 
@@ -124,6 +124,7 @@ class _BarChartSample7State extends State<BarChartSample7> {
                     showTitles: true,
                     reservedSize: 50,
                     interval: interval,
+                    maxIncluded: false,
                   ),
                 ),
                 bottomTitles: AxisTitles(
